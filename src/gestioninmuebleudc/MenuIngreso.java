@@ -4,9 +4,9 @@
  */
 package gestioninmuebleudc;
  
-import java.awt.Image; //esta biblioteca sirve para fines esteticos
+import java.awt.Image; //esta biblioteca sirve para fines esteticos 
 import java.awt.Toolkit; // lo mismo
-//entre ambas sirven para añadir un icono a la aplicacion
+//entre ambas sirven para añadir un icono a la aplicacion en la barra de tareas
 
 /**
  *
@@ -40,12 +40,15 @@ public class MenuIngreso extends javax.swing.JFrame {
         jButtonExit = new javax.swing.JButton();
         jButtonEmpresa = new javax.swing.JButton();
         jButtonPersona = new javax.swing.JButton();
+        JLabelBienvenido = new javax.swing.JLabel();
         jLabelLain = new javax.swing.JLabel();
         jLabelFondo = new javax.swing.JLabel();
+        jLabelMensajeServicios = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setIconImage(getIconImage());
         setUndecorated(true);
+        setPreferredSize(new java.awt.Dimension(720, 410));
         getContentPane().setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
         jButtonExit.setFont(new java.awt.Font("Segoe UI", 1, 12)); // NOI18N
@@ -55,7 +58,7 @@ public class MenuIngreso extends javax.swing.JFrame {
                 jButtonExitActionPerformed(evt);
             }
         });
-        getContentPane().add(jButtonExit, new org.netbeans.lib.awtextra.AbsoluteConstraints(330, 20, -1, -1));
+        getContentPane().add(jButtonExit, new org.netbeans.lib.awtextra.AbsoluteConstraints(650, 0, -1, -1));
 
         jButtonEmpresa.setFont(new java.awt.Font("Segoe UI", 1, 12)); // NOI18N
         jButtonEmpresa.setText("Empresa");
@@ -64,19 +67,26 @@ public class MenuIngreso extends javax.swing.JFrame {
                 jButtonEmpresaActionPerformed(evt);
             }
         });
-        getContentPane().add(jButtonEmpresa, new org.netbeans.lib.awtextra.AbsoluteConstraints(190, 310, -1, -1));
+        getContentPane().add(jButtonEmpresa, new org.netbeans.lib.awtextra.AbsoluteConstraints(500, 190, -1, -1));
 
         jButtonPersona.setFont(new java.awt.Font("Segoe UI", 1, 12)); // NOI18N
         jButtonPersona.setText("Persona");
-        getContentPane().add(jButtonPersona, new org.netbeans.lib.awtextra.AbsoluteConstraints(190, 340, -1, -1));
+        getContentPane().add(jButtonPersona, new org.netbeans.lib.awtextra.AbsoluteConstraints(500, 220, -1, -1));
+
+        JLabelBienvenido.setFont(new java.awt.Font("Segoe UI", 1, 18)); // NOI18N
+        JLabelBienvenido.setText("¡Bienvenido!");
+        getContentPane().add(JLabelBienvenido, new org.netbeans.lib.awtextra.AbsoluteConstraints(480, 60, 130, 40));
 
         jLabelLain.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagenes/lain.png"))); // NOI18N
         jLabelLain.setText("jLabel1");
-        getContentPane().add(jLabelLain, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 430, 410));
+        getContentPane().add(jLabelLain, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 410, 410));
 
         jLabelFondo.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagenes/fondo.png"))); // NOI18N
         jLabelFondo.setText(" ");
-        getContentPane().add(jLabelFondo, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 430, 410));
+        getContentPane().add(jLabelFondo, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 410, 410));
+
+        jLabelMensajeServicios.setText("Desea usar nuestros servicios en su vista como:");
+        getContentPane().add(jLabelMensajeServicios, new org.netbeans.lib.awtextra.AbsoluteConstraints(420, 130, 280, 60));
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
@@ -87,6 +97,12 @@ public class MenuIngreso extends javax.swing.JFrame {
 
     private void jButtonEmpresaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonEmpresaActionPerformed
         // TODO add your handling code here:
+        //con esto lo que estamos haciendo es llamar a otro JFrame, 
+        //cuando el usuario presiona el Boton "Empresa" se llama a otro JFrame con opciones de empresa
+        MenuEmpresa empresa = new MenuEmpresa(); //JFrame de empresa
+        empresa.setVisible(true); //aca cambiamos un valor del JFrame que lo hace invisible, para hacerlo visible ponemos true
+     
+        setVisible(false); //hacemos invisible el JFrame de MenuIngreso
     }//GEN-LAST:event_jButtonEmpresaActionPerformed
 
     /**
@@ -125,10 +141,12 @@ public class MenuIngreso extends javax.swing.JFrame {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JLabel JLabelBienvenido;
     private javax.swing.JButton jButtonEmpresa;
     private javax.swing.JButton jButtonExit;
     private javax.swing.JButton jButtonPersona;
     private javax.swing.JLabel jLabelFondo;
     private javax.swing.JLabel jLabelLain;
+    private javax.swing.JLabel jLabelMensajeServicios;
     // End of variables declaration//GEN-END:variables
 }

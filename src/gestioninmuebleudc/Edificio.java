@@ -2,6 +2,7 @@ package gestioninmuebleudc;
 import java.util.ArrayList;
 
 public class Edificio extends Inmueble {
+    private String nombreEdificio; //el nombre del edificio sera usado como una ID
     private ArrayList<Piso> listaPisos;
     private ArrayList<Local> listaLocales;
 

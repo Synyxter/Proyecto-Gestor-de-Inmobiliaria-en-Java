@@ -11,7 +11,7 @@ public class GestionInmuebleUdc {
     private ArrayList<Inmueble> listaInmuebles;
     private ArrayList<Usuario> listaUsuarios;
     private ArrayList<MovimientoBancario> listaMovimientosBancarios;
-
+     
     public GestionInmuebleUdc() {
         listaInmuebles = new ArrayList<Inmueble>();
         listaUsuarios = new ArrayList<Usuario>();
@@ -22,7 +22,13 @@ public class GestionInmuebleUdc {
      public static void main(String[] args) {
         
         GestionInmuebleUdc InmuebleUdc = new GestionInmuebleUdc(); //instanciamos
-        
+        //con esto conseguimos crear un objeto del JFrame
+        MenuIngreso sc = new MenuIngreso();
+        sc.setVisible(true); //aca cambiamos un valor del JFrame que lo hace invisible, para hacerlo visible ponemos true
+         
+        //esto esta en comentario porque esta siendo pasado al JFRAME en forma de interfaz grafica
+        //NO BORRAR AUN
+        /*
         int seleccion = 0;
         
         do{ //do while del menu
@@ -47,7 +53,7 @@ public class GestionInmuebleUdc {
                 //sub-menu de inmuebles
                 switch(aux){
                     case 1:
-                        InmuebleUdc.agregarEdificio();
+//                        InmuebleUdc.agregarEdificio();
                         break;
                     case 2:
                         break;
@@ -72,9 +78,11 @@ public class GestionInmuebleUdc {
              case 0: 
                  break;
          }
-        }while(seleccion != 0);
+        }while(seleccion != 0); */
     }
-    
+     
+//NO BORRAR AUN     
+ /*   
 //metodo para agregar un edificio
     public void agregarEdificio(){
         String direccion = JOptionPane.showInputDialog(null, "Ingrese la direccion","Cyberia",JOptionPane.QUESTION_MESSAGE);
@@ -95,13 +103,13 @@ public class GestionInmuebleUdc {
             case 2:
                 break;
         } 
-        
+ 
         JOptionPane.showInputDialog(null,"SU DIRECCION ES: " + listaInmuebles.getLast().getDireccion());
         
     }
 
     
-    
+   */ 
     
     public void modificarInmueble(String direccion, int numero, Map<String, Object> nuevosDatos) {
         
