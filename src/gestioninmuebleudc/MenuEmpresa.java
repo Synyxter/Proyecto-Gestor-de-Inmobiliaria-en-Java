@@ -1,13 +1,6 @@
-/*
- * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
- * Click nbfs://nbhost/SystemFileSystem/Templates/GUIForms/JFrame.java to edit this template
- */
+ 
 package gestioninmuebleudc;
-
-/**
- *
- * @author Danyysk
- */
+ 
 public class MenuEmpresa extends javax.swing.JFrame {
 
     /**
@@ -17,7 +10,7 @@ public class MenuEmpresa extends javax.swing.JFrame {
         initComponents();
         this.setLocationRelativeTo(null); //con esta linea centramos la interfaz para que aparezca centrada al usuario
     }
-
+     
     /**
      * This method is called from within the constructor to initialize the form.
      * WARNING: Do NOT modify this code. The content of this method is always
@@ -89,9 +82,11 @@ public class MenuEmpresa extends javax.swing.JFrame {
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
                 .addGap(183, 183, 183)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addComponent(jLabelDeseaAgregar)
-                    .addComponent(jLabelTituloInmobiliaria))
+                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
+                        .addComponent(jLabelTituloInmobiliaria)
+                        .addGap(14, 14, 14)))
                 .addGap(0, 0, Short.MAX_VALUE))
             .addGroup(layout.createSequentialGroup()
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -156,6 +151,10 @@ public class MenuEmpresa extends javax.swing.JFrame {
 
     private void jButtonEdificioActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonEdificioActionPerformed
         // TODO add your handling code here:
+        AgregarEdificio edificio = new AgregarEdificio(); //creamos un objeto de edificio para el menu
+        edificio.setVisible(true); //abrimos una ventana del JFrame 
+        
+        setVisible(false); //cerramos la ventana anterior, es decir la de MenuEmpresa
     }//GEN-LAST:event_jButtonEdificioActionPerformed
 
     private void jButtonBackActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonBackActionPerformed

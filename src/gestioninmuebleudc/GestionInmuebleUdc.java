@@ -23,9 +23,9 @@ public class GestionInmuebleUdc {
         
         GestionInmuebleUdc InmuebleUdc = new GestionInmuebleUdc(); //instanciamos
         //con esto conseguimos crear un objeto del JFrame
-        MenuIngreso sc = new MenuIngreso();
-        sc.setVisible(true); //aca cambiamos un valor del JFrame que lo hace invisible, para hacerlo visible ponemos true
-         
+        Inicio inicio = new Inicio(); //creamos un objeto
+        inicio.setVisible(true); //hacemos visible la ventana del JFrame
+        
         //esto esta en comentario porque esta siendo pasado al JFRAME en forma de interfaz grafica
         //NO BORRAR AUN
         /*
