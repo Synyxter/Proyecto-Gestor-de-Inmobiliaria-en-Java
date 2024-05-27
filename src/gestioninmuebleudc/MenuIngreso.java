@@ -107,7 +107,7 @@ public class MenuIngreso extends javax.swing.JFrame {
         MenuEmpresa empresa = new MenuEmpresa(); //JFrame de empresa
         empresa.setVisible(true); //aca cambiamos un valor del JFrame que lo hace invisible, para hacerlo visible ponemos true
      
-        setVisible(false); //hacemos invisible el JFrame de MenuIngreso
+        this.setVisible(false); //hacemos invisible el JFrame de MenuIngreso
     }//GEN-LAST:event_empresaActionPerformed
 
     private void personaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_personaActionPerformed

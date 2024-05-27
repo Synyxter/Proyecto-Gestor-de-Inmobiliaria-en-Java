@@ -20,8 +20,8 @@ public class MenuEmpresa extends javax.swing.JFrame {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
-        jButtonBack = new javax.swing.JButton();
-        jButtomExit = new javax.swing.JButton();
+        Back = new javax.swing.JButton();
+        Exit = new javax.swing.JButton();
         jButtonEdificio = new javax.swing.JButton();
         jButtonLocal = new javax.swing.JButton();
         jButtonPiso = new javax.swing.JButton();
@@ -31,25 +31,30 @@ public class MenuEmpresa extends javax.swing.JFrame {
         jLabelGerenteMensaje1 = new javax.swing.JLabel();
         jLabelGerenteMensaje2 = new javax.swing.JLabel();
         jLabelImagen = new javax.swing.JLabel();
+        jLabel1 = new javax.swing.JLabel();
+        jButton1 = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setUndecorated(true);
+        getContentPane().setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
-        jButtonBack.setFont(new java.awt.Font("Segoe UI", 1, 12)); // NOI18N
-        jButtonBack.setText("Back");
-        jButtonBack.addActionListener(new java.awt.event.ActionListener() {
+        Back.setFont(new java.awt.Font("Segoe UI", 1, 12)); // NOI18N
+        Back.setText("Back");
+        Back.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jButtonBackActionPerformed(evt);
+                BackActionPerformed(evt);
             }
         });
+        getContentPane().add(Back, new org.netbeans.lib.awtextra.AbsoluteConstraints(360, 0, -1, -1));
 
-        jButtomExit.setFont(new java.awt.Font("Segoe UI", 1, 12)); // NOI18N
-        jButtomExit.setText("Exit");
-        jButtomExit.addActionListener(new java.awt.event.ActionListener() {
+        Exit.setFont(new java.awt.Font("Segoe UI", 1, 12)); // NOI18N
+        Exit.setText("Exit");
+        Exit.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jButtomExitActionPerformed(evt);
+                ExitActionPerformed(evt);
             }
         });
+        getContentPane().add(Exit, new org.netbeans.lib.awtextra.AbsoluteConstraints(438, 0, -1, -1));
 
         jButtonEdificio.setText("Edificio");
         jButtonEdificio.addActionListener(new java.awt.event.ActionListener() {
@@ -57,97 +62,52 @@ public class MenuEmpresa extends javax.swing.JFrame {
                 jButtonEdificioActionPerformed(evt);
             }
         });
+        getContentPane().add(jButtonEdificio, new org.netbeans.lib.awtextra.AbsoluteConstraints(230, 390, -1, -1));
 
         jButtonLocal.setText("Local");
+        getContentPane().add(jButtonLocal, new org.netbeans.lib.awtextra.AbsoluteConstraints(230, 420, -1, -1));
 
         jButtonPiso.setText("Piso");
+        getContentPane().add(jButtonPiso, new org.netbeans.lib.awtextra.AbsoluteConstraints(230, 450, -1, -1));
 
         jButtonFinca.setText("Finca");
+        getContentPane().add(jButtonFinca, new org.netbeans.lib.awtextra.AbsoluteConstraints(230, 480, -1, -1));
 
         jLabelTituloInmobiliaria.setFont(new java.awt.Font("Segoe UI", 1, 18)); // NOI18N
         jLabelTituloInmobiliaria.setText("¡Inmobiliaria UdC!");
+        getContentPane().add(jLabelTituloInmobiliaria, new org.netbeans.lib.awtextra.AbsoluteConstraints(192, 25, -1, -1));
 
         jLabelDeseaAgregar.setText("Desea Agregar a Nuestra Empresa");
+        getContentPane().add(jLabelDeseaAgregar, new org.netbeans.lib.awtextra.AbsoluteConstraints(184, 368, -1, -1));
 
         jLabelGerenteMensaje1.setText("Como nuestro gerente de confianza");
+        getContentPane().add(jLabelGerenteMensaje1, new org.netbeans.lib.awtextra.AbsoluteConstraints(169, 56, -1, -1));
 
         jLabelGerenteMensaje2.setText(" le ofrecemos una calida bienvenida");
+        getContentPane().add(jLabelGerenteMensaje2, new org.netbeans.lib.awtextra.AbsoluteConstraints(169, 78, -1, -1));
 
         jLabelImagen.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagenes/User.png"))); // NOI18N
         jLabelImagen.setText(" ");
+        getContentPane().add(jLabelImagen, new org.netbeans.lib.awtextra.AbsoluteConstraints(138, 100, -1, -1));
 
-        javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
-        getContentPane().setLayout(layout);
-        layout.setHorizontalGroup(
-            layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(layout.createSequentialGroup()
-                .addGap(183, 183, 183)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(jLabelDeseaAgregar)
-                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                        .addComponent(jLabelTituloInmobiliaria)
-                        .addGap(14, 14, 14)))
-                .addGap(0, 0, Short.MAX_VALUE))
-            .addGroup(layout.createSequentialGroup()
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(layout.createSequentialGroup()
-                        .addGap(169, 169, 169)
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(jLabelGerenteMensaje2)
-                            .addComponent(jLabelGerenteMensaje1)))
-                    .addGroup(layout.createSequentialGroup()
-                        .addGap(234, 234, 234)
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(jButtonFinca)
-                            .addComponent(jButtonPiso)
-                            .addComponent(jButtonLocal)
-                            .addComponent(jButtonEdificio))))
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                .addContainerGap(138, Short.MAX_VALUE)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                        .addComponent(jLabelImagen)
-                        .addGap(109, 109, 109))
-                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                        .addComponent(jButtonBack)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(jButtomExit))))
-        );
-        layout.setVerticalGroup(
-            layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jButtomExit)
-                    .addComponent(jButtonBack))
-                .addGap(2, 2, 2)
-                .addComponent(jLabelTituloInmobiliaria)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(jLabelGerenteMensaje1)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(jLabelGerenteMensaje2)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(jLabelImagen)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 47, Short.MAX_VALUE)
-                .addComponent(jLabelDeseaAgregar)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                .addComponent(jButtonEdificio)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(jButtonLocal)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(jButtonPiso)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(jButtonFinca)
-                .addGap(33, 33, 33))
-        );
+        jLabel1.setText("O quizas...");
+        getContentPane().add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(240, 510, -1, -1));
+
+        jButton1.setText("Ver lista de inmuebles disponibles");
+        jButton1.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton1ActionPerformed(evt);
+            }
+        });
+        getContentPane().add(jButton1, new org.netbeans.lib.awtextra.AbsoluteConstraints(160, 530, -1, -1));
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
-    private void jButtomExitActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtomExitActionPerformed
+    private void ExitActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_ExitActionPerformed
         // TODO add your handling code here:
         System.exit(0); //con esta linea nos salimos del programa al pulsar exit
-    }//GEN-LAST:event_jButtomExitActionPerformed
+    }//GEN-LAST:event_ExitActionPerformed
 
     private void jButtonEdificioActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonEdificioActionPerformed
         // TODO add your handling code here:
@@ -157,13 +117,22 @@ public class MenuEmpresa extends javax.swing.JFrame {
         setVisible(false); //cerramos la ventana anterior, es decir la de MenuEmpresa
     }//GEN-LAST:event_jButtonEdificioActionPerformed
 
-    private void jButtonBackActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonBackActionPerformed
+    private void BackActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_BackActionPerformed
         // TODO add your handling code here:
         MenuIngreso sc = new MenuIngreso();
         sc.setVisible(true); //aca cambiamos un valor del JFrame que lo hace invisible, para hacerlo visible ponemos true
         //creamos otro objeto para abrir nuevamente el JFrame del Menu de ingreso como si estuvieramos volviendo
         setVisible(false); //con esto ocultamos el JFrame del Menu Empresa
-    }//GEN-LAST:event_jButtonBackActionPerformed
+    }//GEN-LAST:event_BackActionPerformed
+
+    private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
+      
+        ListaDisponible is = new ListaDisponible();
+        
+        is.setVisible(true); //hacemos visible el nuevo menu
+        
+        this.setVisible(false); //ocultamos el anterior
+    }//GEN-LAST:event_jButton1ActionPerformed
 
     /**
      * @param args the command line arguments
@@ -201,12 +170,14 @@ public class MenuEmpresa extends javax.swing.JFrame {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JButton jButtomExit;
-    private javax.swing.JButton jButtonBack;
+    private javax.swing.JButton Back;
+    private javax.swing.JButton Exit;
+    private javax.swing.JButton jButton1;
     private javax.swing.JButton jButtonEdificio;
     private javax.swing.JButton jButtonFinca;
     private javax.swing.JButton jButtonLocal;
     private javax.swing.JButton jButtonPiso;
+    private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabelDeseaAgregar;
     private javax.swing.JLabel jLabelGerenteMensaje1;
     private javax.swing.JLabel jLabelGerenteMensaje2;

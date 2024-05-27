@@ -11,7 +11,7 @@ public class GestionInmuebleUdc {
     private ArrayList<Inmueble> listaInmuebles;
     private ArrayList<Usuario> listaUsuarios;
     private ArrayList<MovimientoBancario> listaMovimientosBancarios;
-     
+    
     public GestionInmuebleUdc() {
         listaInmuebles = new ArrayList<Inmueble>();
         listaUsuarios = new ArrayList<Usuario>();
