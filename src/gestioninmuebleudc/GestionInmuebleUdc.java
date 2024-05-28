@@ -1,10 +1,15 @@
 package gestioninmuebleudc;
 
 import java.util.List;
-import java.util.Map;
 import java.util.Date;
 import java.util.ArrayList;
 import javax.swing.JOptionPane;
+import java.io.BufferedReader;
+import java.io.BufferedWriter;
+import java.io.FileReader;
+import java.io.FileWriter;
+import java.io.IOException;
+
 
 public class GestionInmuebleUdc {
     //atributos
@@ -25,6 +30,17 @@ public class GestionInmuebleUdc {
         //con esto conseguimos crear un objeto del JFrame
         Inicio inicio = new Inicio(); //creamos un objeto
         inicio.setVisible(true); //hacemos visible la ventana del JFrame
+        MenuEmpresa empresa = new MenuEmpresa();
+        MenuIngreso mi = new MenuIngreso();
+        String rutaInmuebles = "inmuebles.txt";
+        String rutaUsuarios = "usuarios.txt";
+        String rutaMovimientos = "movimientos.txt";
+        
+        InmuebleUdc.listaInmuebles = leerTextoInmueble(rutaInmuebles);
+        InmuebleUdc.listaUsuarios = leerTextoUsuario(rutaUsuarios);
+        InmuebleUdc.listaMovimientosBancarios = leerTextoMovimientoBancario(rutaMovimientos);
+
+        inicio.setVisible(true);
         
         //esto esta en comentario porque esta siendo pasado al JFRAME en forma de interfaz grafica
         //NO BORRAR AUN
@@ -79,7 +95,8 @@ public class GestionInmuebleUdc {
                  break;
          }
         }while(seleccion != 0); */
-    }
+        }
+    
      
 //NO BORRAR AUN     
  /*   
@@ -110,6 +127,88 @@ public class GestionInmuebleUdc {
 
     
    */ 
+
+ // Método para escribir la lista de inmuebles a un archivo de texto
+    public static void escribirTextoInmueble(String ruta, ArrayList<Inmueble> lista) {
+        try (BufferedWriter writer = new BufferedWriter(new FileWriter(ruta))) {
+            for (Inmueble inmueble : lista) {
+                writer.write(inmueble.toString()); // Convertimos el objeto a una cadena
+                writer.newLine(); // Añadimos una nueva línea
+            }
+        } catch (IOException ex) {
+            System.out.println(ex); // Imprimimos cualquier error que ocurra
+        }
+    }
+
+    // Método para leer la lista de inmuebles desde un archivo de texto
+    public static ArrayList<Inmueble> leerTextoInmueble(String ruta) {
+        ArrayList<Inmueble> lista = new ArrayList<>();
+        try (BufferedReader reader = new BufferedReader(new FileReader(ruta))) {
+            String line;
+            while ((line = reader.readLine()) != null) {
+                Inmueble inmueble = Inmueble.fromString(line); // Convertimos la cadena a un objeto
+                lista.add(inmueble); // Añadimos el objeto a la lista
+            }
+        } catch (IOException ex) {
+            System.out.println(ex); // Imprimimos cualquier error que ocurra
+        }
+        return lista;
+    }
+
+    // Método para escribir la lista de usuarios a un archivo de texto
+    public static void escribirTextoUsuario(String ruta, ArrayList<Usuario> lista) {
+        try (BufferedWriter writer = new BufferedWriter(new FileWriter(ruta))) {
+            for (Usuario usuario : lista) {
+                writer.write(usuario.toString()); // Convertimos el objeto a una cadena
+                writer.newLine(); // Añadimos una nueva línea
+            }
+        } catch (IOException ex) {
+            System.out.println(ex); // Imprimimos cualquier error que ocurra
+        }
+    }
+
+    // Método para leer la lista de usuarios desde un archivo de texto
+    public static ArrayList<Usuario> leerTextoUsuario(String ruta) {
+        ArrayList<Usuario> lista = new ArrayList<>();
+        try (BufferedReader reader = new BufferedReader(new FileReader(ruta))) {
+            String line;
+            while ((line = reader.readLine()) != null) {
+                Usuario usuario = Usuario.fromString(line); // Convertimos la cadena a un objeto
+                lista.add(usuario); // Añadimos el objeto a la lista
+            }
+        } catch (IOException ex) {
+            System.out.println(ex); // Imprimimos cualquier error que ocurra
+        }
+        return lista;
+    }
+
+    // Método para escribir la lista de movimientos bancarios a un archivo de texto
+    public static void escribirTextoMovimientoBancario(String ruta, ArrayList<MovimientoBancario> lista) {
+        try (BufferedWriter writer = new BufferedWriter(new FileWriter(ruta))) {
+            for (MovimientoBancario movimiento : lista) {
+                writer.write(movimiento.toString()); // Convertimos el objeto a una cadena
+                writer.newLine(); // Añadimos una nueva línea
+            }
+        } catch (IOException ex) {
+            System.out.println(ex); // Imprimimos cualquier error que ocurra
+        }
+    }
+
+    // Método para leer la lista de movimientos bancarios desde un archivo de texto
+    public static ArrayList<MovimientoBancario> leerTextoMovimientoBancario(String ruta) {
+        ArrayList<MovimientoBancario> lista = new ArrayList<>();
+        try (BufferedReader reader = new BufferedReader(new FileReader(ruta))) {
+            String line;
+            while ((line = reader.readLine()) != null) {
+                MovimientoBancario movimiento = MovimientoBancario.fromString(line); // Convertimos la cadena a un objeto
+                lista.add(movimiento); // Añadimos el objeto a la lista
+            }
+        } catch (IOException ex) {
+            System.out.println(ex); // Imprimimos cualquier error que ocurra
+        }
+        return lista;
+    }
+}
     
     public void modificarInmueble(String direccion, int numero, Map<String, Object> nuevosDatos) {
         
