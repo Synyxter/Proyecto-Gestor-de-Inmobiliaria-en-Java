@@ -27,61 +27,200 @@ public class AgregarEdificio extends javax.swing.JFrame {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
-        jButtonExit = new javax.swing.JButton();
-        jButtonBack = new javax.swing.JButton();
+        exit = new javax.swing.JButton();
+        back = new javax.swing.JButton();
+        textNombre = new javax.swing.JLabel();
+        textDireccion = new javax.swing.JLabel();
+        textPisos = new javax.swing.JLabel();
+        textPrecio = new javax.swing.JLabel();
+        nombre = new javax.swing.JTextField();
+        direccion = new javax.swing.JTextField();
+        pisos = new javax.swing.JTextField();
+        precio = new javax.swing.JTextField();
+        tituloMenu = new javax.swing.JLabel();
+        confirmar = new javax.swing.JButton();
+        textLocales = new javax.swing.JLabel();
+        local = new javax.swing.JTextField();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setUndecorated(true);
 
-        jButtonExit.setFont(new java.awt.Font("Segoe UI", 1, 12)); // NOI18N
-        jButtonExit.setText("Exit");
-        jButtonExit.addActionListener(new java.awt.event.ActionListener() {
+        exit.setFont(new java.awt.Font("Segoe UI", 1, 12)); // NOI18N
+        exit.setText("Exit");
+        exit.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jButtonExitActionPerformed(evt);
+                exitActionPerformed(evt);
             }
         });
 
-        jButtonBack.setFont(new java.awt.Font("Segoe UI", 1, 12)); // NOI18N
-        jButtonBack.setText("Back");
-        jButtonBack.addActionListener(new java.awt.event.ActionListener() {
+        back.setFont(new java.awt.Font("Segoe UI", 1, 12)); // NOI18N
+        back.setText("Back");
+        back.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jButtonBackActionPerformed(evt);
+                backActionPerformed(evt);
             }
         });
+
+        textNombre.setText("Nombre Edificio:");
+
+        textDireccion.setText("Direccion Edificio:");
+
+        textPisos.setText("Pisos Edificio:");
+
+        textPrecio.setText("Precio Alquiler:");
+
+        nombre.setText(" ");
+        nombre.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                nombreActionPerformed(evt);
+            }
+        });
+
+        direccion.setText(" ");
+
+        pisos.setText(" ");
+        pisos.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                pisosActionPerformed(evt);
+            }
+        });
+
+        precio.setText(" ");
+
+        tituloMenu.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
+        tituloMenu.setText("AGREGAR EDIFICIO");
+
+        confirmar.setText("Confirmar");
+        confirmar.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                confirmarActionPerformed(evt);
+            }
+        });
+
+        textLocales.setText("Locales:");
+
+        local.setText(" ");
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                .addGap(0, 429, Short.MAX_VALUE)
-                .addComponent(jButtonBack)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(jButtonExit))
+            .addGroup(layout.createSequentialGroup()
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
+                        .addGap(0, 0, Short.MAX_VALUE)
+                        .addComponent(back)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addComponent(exit))
+                    .addGroup(layout.createSequentialGroup()
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addGroup(layout.createSequentialGroup()
+                                .addGap(72, 72, 72)
+                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                    .addComponent(tituloMenu)
+                                    .addGroup(layout.createSequentialGroup()
+                                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                                            .addComponent(textDireccion, javax.swing.GroupLayout.Alignment.LEADING)
+                                            .addComponent(textPisos, javax.swing.GroupLayout.Alignment.LEADING)
+                                            .addComponent(textPrecio, javax.swing.GroupLayout.Alignment.LEADING)
+                                            .addComponent(textNombre, javax.swing.GroupLayout.Alignment.LEADING)
+                                            .addComponent(textLocales, javax.swing.GroupLayout.Alignment.LEADING))
+                                        .addGap(32, 32, 32)
+                                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                                            .addComponent(nombre)
+                                            .addComponent(direccion)
+                                            .addComponent(pisos)
+                                            .addComponent(precio)
+                                            .addComponent(local, javax.swing.GroupLayout.DEFAULT_SIZE, 115, Short.MAX_VALUE)))))
+                            .addGroup(layout.createSequentialGroup()
+                                .addGap(153, 153, 153)
+                                .addComponent(confirmar)))
+                        .addGap(0, 89, Short.MAX_VALUE)))
+                .addContainerGap())
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jButtonExit)
-                    .addComponent(jButtonBack))
-                .addGap(0, 326, Short.MAX_VALUE))
+                    .addComponent(exit)
+                    .addComponent(back))
+                .addGap(13, 13, 13)
+                .addComponent(tituloMenu)
+                .addGap(18, 18, 18)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(textNombre)
+                    .addComponent(nombre, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGap(18, 18, 18)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(direccion, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(textDireccion))
+                .addGap(18, 18, 18)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(textPisos)
+                    .addComponent(pisos, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGap(18, 18, 18)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(textPrecio)
+                    .addComponent(precio, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGap(18, 18, 18)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(textLocales)
+                    .addComponent(local, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 18, Short.MAX_VALUE)
+                .addComponent(confirmar)
+                .addGap(21, 21, 21))
         );
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
-    private void jButtonExitActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonExitActionPerformed
+    private void exitActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_exitActionPerformed
         // TODO add your handling code here:
         System.exit(0); //salimos en caso de que presionen exit
-    }//GEN-LAST:event_jButtonExitActionPerformed
+    }//GEN-LAST:event_exitActionPerformed
 
-    private void jButtonBackActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonBackActionPerformed
+    private void backActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_backActionPerformed
         // TODO add your handling code here:
         setVisible(false); //cerramos la ventana actual y volvemos a la anterior
         MenuEmpresa empresa = new MenuEmpresa(); //creamos un objeto
         empresa.setVisible(true); //ahora a ese objeto le cambiamos a true su atribito de visibilidad para que sea visible
-    }//GEN-LAST:event_jButtonBackActionPerformed
+    }//GEN-LAST:event_backActionPerformed
+
+    private void pisosActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_pisosActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_pisosActionPerformed
+
+    private void nombreActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_nombreActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_nombreActionPerformed
+
+    private void confirmarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_confirmarActionPerformed
+        // TODO add your handling code here:
+        //aca inicia la verdadera magia
+        
+        String direccionE = direccion.getText();
+        String auxPrecio = precio.getText();
+        String nombreE = nombre.getText();
+        String auxPiso = pisos.getText();
+        String localE = local.getText();
+        
+        //ahora convertimos los string a int o float en los casos donde es necesario, como en el precio
+        float precioE = Float.parseFloat(auxPrecio);
+        int pisoE = Integer.parseInt(auxPiso);
+        
+        //creamos el edificio dentro del array de 
+        GestionInmuebleUdc.listaInmuebles.add(new Edificio(direccionE, precioE)); //añadimos direccion y precio
+       
+        AgregarPiso pisoMenu = new AgregarPiso(); //creamos un objeto del JFrame
+        pisoMenu.setVisible(true); //hacemos visible el menu de piso
+        
+        Edificio.agregarPiso(new Piso(direccionE,precioE,AgregarPiso.numPiso,AgregarPiso.descripcion));//creamos el piso
+        
+        
+        
+     
+        //listaInmuebles.add(new Edificio(direccion, precioAlquiler));
+    }//GEN-LAST:event_confirmarActionPerformed
 
     /**
      * @param args the command line arguments
@@ -119,7 +258,19 @@ public class AgregarEdificio extends javax.swing.JFrame {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JButton jButtonBack;
-    private javax.swing.JButton jButtonExit;
+    private javax.swing.JButton back;
+    private javax.swing.JButton confirmar;
+    private javax.swing.JTextField direccion;
+    private javax.swing.JButton exit;
+    private javax.swing.JTextField local;
+    private javax.swing.JTextField nombre;
+    private javax.swing.JTextField pisos;
+    private javax.swing.JTextField precio;
+    private javax.swing.JLabel textDireccion;
+    private javax.swing.JLabel textLocales;
+    private javax.swing.JLabel textNombre;
+    private javax.swing.JLabel textPisos;
+    private javax.swing.JLabel textPrecio;
+    private javax.swing.JLabel tituloMenu;
     // End of variables declaration//GEN-END:variables
 }

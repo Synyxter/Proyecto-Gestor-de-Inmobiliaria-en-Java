@@ -68,6 +68,11 @@ public class MenuEmpresa extends javax.swing.JFrame {
         getContentPane().add(jButtonLocal, new org.netbeans.lib.awtextra.AbsoluteConstraints(230, 420, -1, -1));
 
         jButtonPiso.setText("Piso");
+        jButtonPiso.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButtonPisoActionPerformed(evt);
+            }
+        });
         getContentPane().add(jButtonPiso, new org.netbeans.lib.awtextra.AbsoluteConstraints(230, 450, -1, -1));
 
         jButtonFinca.setText("Finca");
@@ -122,7 +127,7 @@ public class MenuEmpresa extends javax.swing.JFrame {
         MenuIngreso sc = new MenuIngreso();
         sc.setVisible(true); //aca cambiamos un valor del JFrame que lo hace invisible, para hacerlo visible ponemos true
         //creamos otro objeto para abrir nuevamente el JFrame del Menu de ingreso como si estuvieramos volviendo
-        setVisible(false); //con esto ocultamos el JFrame del Menu Empresa
+        this.setVisible(false); //con esto ocultamos el JFrame del Menu Empresa
     }//GEN-LAST:event_BackActionPerformed
 
     private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
@@ -133,6 +138,14 @@ public class MenuEmpresa extends javax.swing.JFrame {
         
         this.setVisible(false); //ocultamos el anterior
     }//GEN-LAST:event_jButton1ActionPerformed
+
+    private void jButtonPisoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonPisoActionPerformed
+        // TODO add your handling code here:
+        
+        AgregarPiso pisoMenu = new AgregarPiso();
+        pisoMenu.setVisible(true); //mostramos la nueva interfaz
+        this.setVisible(false); //ocultamos esta
+    }//GEN-LAST:event_jButtonPisoActionPerformed
 
     /**
      * @param args the command line arguments

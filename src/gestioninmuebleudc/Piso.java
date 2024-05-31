@@ -1,8 +1,8 @@
 package gestioninmuebleudc;
 
 public class Piso extends Inmueble {
-    private int numeroPiso;
-    private String descripcion;
+    public static int numeroPiso;
+    public static String descripcion;
 
     public Piso(String direccion, float precioAlquiler, int numeroPiso, String descripcion) {
         super(direccion, precioAlquiler);

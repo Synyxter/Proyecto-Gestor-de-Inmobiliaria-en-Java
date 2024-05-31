@@ -3,8 +3,8 @@ import java.util.ArrayList;
 
 public class Edificio extends Inmueble {
     private String nombreEdificio; //el nombre del edificio sera usado como una ID
-    private ArrayList<Piso> listaPisos;
-    private ArrayList<Local> listaLocales;
+    public static ArrayList<Piso> listaPisos; //
+    public static ArrayList<Local> listaLocales; //
 
     public Edificio(String direccion, float precioAlquiler) {
         super(direccion, precioAlquiler);
@@ -12,7 +12,8 @@ public class Edificio extends Inmueble {
         listaLocales = new ArrayList<>();
     }
 
-    public void agregarPiso(Piso piso) {
+    //ponemos en static para poder utilizar este metodo desde otra clase
+    public static void agregarPiso(Piso piso) {
         listaPisos.add(piso);
     }
 

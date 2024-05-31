@@ -9,13 +9,14 @@ import java.io.BufferedWriter;
 import java.io.FileReader;
 import java.io.FileWriter;
 import java.io.IOException;
+import java.util.Map;
 
 
 public class GestionInmuebleUdc {
-    //atributos
-    private ArrayList<Inmueble> listaInmuebles;
-    private ArrayList<Usuario> listaUsuarios;
-    private ArrayList<MovimientoBancario> listaMovimientosBancarios;
+    //atributos publicos para que puedan ser utilizados en otras clases
+    public static ArrayList<Inmueble> listaInmuebles;
+    public static ArrayList<Usuario> listaUsuarios;
+    public static ArrayList<MovimientoBancario> listaMovimientosBancarios;
     
     public GestionInmuebleUdc() {
         listaInmuebles = new ArrayList<Inmueble>();
@@ -45,21 +46,14 @@ public class GestionInmuebleUdc {
         //esto esta en comentario porque esta siendo pasado al JFRAME en forma de interfaz grafica
         //NO BORRAR AUN
         /*
-        int seleccion = 0;
-        
-        do{ //do while del menu
-        String s = JOptionPane.showInputDialog(null,"Desea\n"
+
                 + "1. Agregar Inmueble\n"
                 + "2. Agregar Usuario\n"
                 + "3. Movimiento Bancario\n"
-                + "\n"
-                + "0. Exit","Cyberia",JOptionPane.QUESTION_MESSAGE);
-        seleccion = Integer.parseInt(s);
         
          switch(seleccion){
              
             case 1: //seleccion de opciones
-                s = JOptionPane.showInputDialog(null,"Desea\n"
                 + "1. Edificio\n"
                 + "2. Local\n"
                 + "3. Piso\n"
@@ -208,7 +202,7 @@ public class GestionInmuebleUdc {
         }
         return lista;
     }
-}
+
     
     public void modificarInmueble(String direccion, int numero, Map<String, Object> nuevosDatos) {
         
@@ -248,4 +242,33 @@ public class GestionInmuebleUdc {
       
         return null;
     }
+    
+    //se crearon los get
+
+    public ArrayList<Inmueble> getListaInmuebles() {
+        return listaInmuebles;
+    }
+
+    public ArrayList<Usuario> getListaUsuarios() {
+        return listaUsuarios;
+    }
+
+    public ArrayList<MovimientoBancario> getListaMovimientosBancarios() {
+        return listaMovimientosBancarios;
+    }
+
+    public static void setListaInmuebles(ArrayList<Inmueble> listaInmuebles) {
+        GestionInmuebleUdc.listaInmuebles = listaInmuebles;
+    }
+
+    public void setListaUsuarios(ArrayList<Usuario> listaUsuarios) {
+        this.listaUsuarios = listaUsuarios;
+    }
+
+    public void setListaMovimientosBancarios(ArrayList<MovimientoBancario> listaMovimientosBancarios) {
+        this.listaMovimientosBancarios = listaMovimientosBancarios;
+    }
+    
+    
+    
 }
