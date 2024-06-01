@@ -17,11 +17,14 @@ public class GestionInmuebleUdc {
     public static ArrayList<Inmueble> listaInmuebles;
     public static ArrayList<Usuario> listaUsuarios;
     public static ArrayList<MovimientoBancario> listaMovimientosBancarios;
-    
+    private static String RUTA_USUARIOS = "usuarios.txt";
+    private static String RUTA_INMUEBLES = "inmuebles.txt";
+    private static String RUTA_MOVIMIENTOS = "movimientos.txt";
+
     public GestionInmuebleUdc() {
-        listaInmuebles = new ArrayList<Inmueble>();
-        listaUsuarios = new ArrayList<Usuario>();
-        listaMovimientosBancarios = new ArrayList<MovimientoBancario>();
+        listaInmuebles = new ArrayList<>();
+        listaUsuarios = new ArrayList<>();
+        listaMovimientosBancarios = new ArrayList<>();
     }
      
     //main
@@ -33,13 +36,13 @@ public class GestionInmuebleUdc {
         inicio.setVisible(true); //hacemos visible la ventana del JFrame
         MenuEmpresa empresa = new MenuEmpresa();
         MenuIngreso mi = new MenuIngreso();
-        String rutaInmuebles = "inmuebles.txt";
-        String rutaUsuarios = "usuarios.txt";
-        String rutaMovimientos = "movimientos.txt";
+         RUTA_INMUEBLES = "inmuebles.txt";
+         RUTA_USUARIOS = "usuarios.txt";
+         RUTA_MOVIMIENTOS  = "movimientos.txt";
         
-        InmuebleUdc.listaInmuebles = leerTextoInmueble(rutaInmuebles);
-        InmuebleUdc.listaUsuarios = leerTextoUsuario(rutaUsuarios);
-        InmuebleUdc.listaMovimientosBancarios = leerTextoMovimientoBancario(rutaMovimientos);
+        InmuebleUdc.leerArchivoInmuebles();
+        InmuebleUdc.leerArchivoUsuarios();
+        InmuebleUdc.leerArchivoMovimientos();
 
         inicio.setVisible(true);
         
@@ -89,6 +92,14 @@ public class GestionInmuebleUdc {
                  break;
          }
         }while(seleccion != 0); */
+        
+        
+        
+        
+        
+        
+        
+        
         }
     
      
@@ -122,87 +133,121 @@ public class GestionInmuebleUdc {
     
    */ 
 
- // Método para escribir la lista de inmuebles a un archivo de texto
-    public static void escribirTextoInmueble(String ruta, ArrayList<Inmueble> lista) {
-        try (BufferedWriter writer = new BufferedWriter(new FileWriter(ruta))) {
-            for (Inmueble inmueble : lista) {
-                writer.write(inmueble.toString()); // Convertimos el objeto a una cadena
-                writer.newLine(); // Añadimos una nueva línea
+ // Método para escribir inmuebles a un archivo
+    private void escribirArchivoInmuebles() {
+        try (BufferedWriter writer = new BufferedWriter(new FileWriter(RUTA_INMUEBLES))) {
+            for (Inmueble inmueble : listaInmuebles) {
+                writer.write(inmueble.toString());
+                writer.newLine();
             }
-        } catch (IOException ex) {
-            System.out.println(ex); // Imprimimos cualquier error que ocurra
+        } catch (IOException e) {
+            e.printStackTrace();
         }
     }
 
-    // Método para leer la lista de inmuebles desde un archivo de texto
-    public static ArrayList<Inmueble> leerTextoInmueble(String ruta) {
-        ArrayList<Inmueble> lista = new ArrayList<>();
-        try (BufferedReader reader = new BufferedReader(new FileReader(ruta))) {
-            String line;
-            while ((line = reader.readLine()) != null) {
-                Inmueble inmueble = Inmueble.fromString(line); // Convertimos la cadena a un objeto
-                lista.add(inmueble); // Añadimos el objeto a la lista
+    private void leerArchivoInmuebles() {
+    try (BufferedReader reader = new BufferedReader(new FileReader(RUTA_INMUEBLES))) {
+        String linea;
+        while ((linea = reader.readLine()) != null) {
+            String[] datos = linea.split(",");
+            switch (datos[0]) { // datos[0] debe ser el tipo del inmueble, como "Edificio", "Piso", etc.
+                case "Edificio":
+                    // Asumiendo que el orden y tipos correctos son: String (direccion), float (area)
+                    Edificio edificio = new Edificio(datos[1], Float.parseFloat(datos[2]));
+                    listaInmuebles.add(edificio);
+                    break;
+                case "Piso":
+                    // Asumiendo que el orden y tipos correctos son: String (direccion), float (area), int (numero de habitaciones), String (propietario)
+                    Piso piso = new Piso(datos[1], Float.parseFloat(datos[4]), Integer.parseInt(datos[5]), datos[2]);
+                    listaInmuebles.add(piso);
+                    break;
+                case "Local":
+                    // Asumiendo que el orden y tipos correctos son: String (direccion), String (descripcion), float (area), String (propietario)
+                    Local local = new Local(datos[1], Float.parseFloat(datos[2]), datos[3]);
+                    listaInmuebles.add(local);
+                    break;
+                case "Finca":
+                  //Falta completar la clase finca
+                default:
+                    System.out.println("Tipo de inmueble desconocido: " + datos[0]);
+                    break;
             }
-        } catch (IOException ex) {
-            System.out.println(ex); // Imprimimos cualquier error que ocurra
         }
-        return lista;
+    } catch (IOException e) {
+        e.printStackTrace();
     }
+}
 
     // Método para escribir la lista de usuarios a un archivo de texto
-    public static void escribirTextoUsuario(String ruta, ArrayList<Usuario> lista) {
-        try (BufferedWriter writer = new BufferedWriter(new FileWriter(ruta))) {
-            for (Usuario usuario : lista) {
-                writer.write(usuario.toString()); // Convertimos el objeto a una cadena
-                writer.newLine(); // Añadimos una nueva línea
+    private void escribirArchivoUsuarios() {
+        try (BufferedWriter writer = new BufferedWriter(new FileWriter(RUTA_USUARIOS))) {
+            for (Usuario usuario : listaUsuarios) {
+                writer.write(usuario.toString());
+                writer.newLine();
             }
-        } catch (IOException ex) {
-            System.out.println(ex); // Imprimimos cualquier error que ocurra
+        } catch (IOException e) {
+            e.printStackTrace();
         }
     }
 
-    // Método para leer la lista de usuarios desde un archivo de texto
-    public static ArrayList<Usuario> leerTextoUsuario(String ruta) {
-        ArrayList<Usuario> lista = new ArrayList<>();
-        try (BufferedReader reader = new BufferedReader(new FileReader(ruta))) {
-            String line;
-            while ((line = reader.readLine()) != null) {
-                Usuario usuario = Usuario.fromString(line); // Convertimos la cadena a un objeto
-                lista.add(usuario); // Añadimos el objeto a la lista
+   // Método para leer usuarios de un archivo
+    private void leerArchivoUsuarios() {
+        try (BufferedReader reader = new BufferedReader(new FileReader(RUTA_USUARIOS))) {
+            String linea;
+            while ((linea = reader.readLine()) != null) {
+                String[] datos = linea.split(",");
+                Usuario usuario = new Usuario(datos[0], datos[1], Integer.parseInt(datos[2]), datos[3], datos[4]);
+                listaUsuarios.add(usuario);
             }
-        } catch (IOException ex) {
-            System.out.println(ex); // Imprimimos cualquier error que ocurra
-        }
-        return lista;
-    }
-
-    // Método para escribir la lista de movimientos bancarios a un archivo de texto
-    public static void escribirTextoMovimientoBancario(String ruta, ArrayList<MovimientoBancario> lista) {
-        try (BufferedWriter writer = new BufferedWriter(new FileWriter(ruta))) {
-            for (MovimientoBancario movimiento : lista) {
-                writer.write(movimiento.toString()); // Convertimos el objeto a una cadena
-                writer.newLine(); // Añadimos una nueva línea
-            }
-        } catch (IOException ex) {
-            System.out.println(ex); // Imprimimos cualquier error que ocurra
+        } catch (IOException e) {
+            e.printStackTrace();
         }
     }
 
-    // Método para leer la lista de movimientos bancarios desde un archivo de texto
-    public static ArrayList<MovimientoBancario> leerTextoMovimientoBancario(String ruta) {
-        ArrayList<MovimientoBancario> lista = new ArrayList<>();
-        try (BufferedReader reader = new BufferedReader(new FileReader(ruta))) {
-            String line;
-            while ((line = reader.readLine()) != null) {
-                MovimientoBancario movimiento = MovimientoBancario.fromString(line); // Convertimos la cadena a un objeto
-                lista.add(movimiento); // Añadimos el objeto a la lista
+    // Método para escribir movimientos a un archivo
+    private void escribirArchivoMovimientos() {
+        try (BufferedWriter writer = new BufferedWriter(new FileWriter(RUTA_MOVIMIENTOS))) {
+            for (MovimientoBancario movimiento : listaMovimientosBancarios) {
+                writer.write(movimiento.toString());
+                writer.newLine();
             }
-        } catch (IOException ex) {
-            System.out.println(ex); // Imprimimos cualquier error que ocurra
+        } catch (IOException e) {
+            e.printStackTrace();
         }
-        return lista;
     }
 
+    private void leerArchivoMovimientos() {
+    try (BufferedReader reader = new BufferedReader(new FileReader(RUTA_MOVIMIENTOS))) {
+        String linea;
+        while ((linea = reader.readLine()) != null) {
+            String[] datos = linea.split(",");
+            String tipoMovimiento = datos[0];
+            Date fecha = new Date(Long.parseLong(datos[1]));
+            float importe = Float.parseFloat(datos[2]); // Asegúrate que el tipo de dato coincida con el del constructor
+            String deudor = datos[3];
+            String acreedor = datos[4];
+            Inmueble inmueble = buscarInmueblePorDireccion(datos[5]);
+            if (inmueble != null) { // Asegurarse que el inmueble no es null antes de crear el objeto
+                MovimientoBancario movimiento = new MovimientoBancario(tipoMovimiento, fecha, importe, deudor, acreedor, inmueble);
+                listaMovimientosBancarios.add(movimiento);
+            } else {
+                System.out.println("No se encontró el inmueble con dirección: " + datos[5]);
+            }
+        }
+    } catch (IOException e) {
+        e.printStackTrace();
+    }
+}
+
+    //Metodo que busca inmuebles por direccion.
+     private Inmueble buscarInmueblePorDireccion(String direccion) {
+        for (Inmueble inmueble : listaInmuebles) {
+            if (inmueble.getDireccion().equals(direccion)) {
+                return inmueble;
+            }
+        }
+        return null; // o manejar de alguna manera que no se encontró el inmueble
+    }
     
     public void modificarInmueble(String direccion, int numero, Map<String, Object> nuevosDatos) {
         
