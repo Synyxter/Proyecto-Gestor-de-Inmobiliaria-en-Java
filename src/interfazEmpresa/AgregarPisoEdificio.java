@@ -1,38 +1,27 @@
 /*
  * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
- * Click nbfs://nbhost/SystemFileSystem/Templates/GUIForms/JFrame.java to edit this template
+ * Click nbfs://nbhost/SystemFileSystem/Templates/GUIForms/JDialog.java to edit this template
  */
 package interfazEmpresa;
 
 import gestioninmuebleudc.Piso;
-import javax.swing.JTextField;
+
+    //no confundir AgregarPisoEdificio con AgregarPiso, este ultimo es un JFrame mientras el primero es un JDialg
 
 
+public class AgregarPisoEdificio extends javax.swing.JDialog {
 
-/**
- *
- * @author Danyysk
- */
-public class AgregarPisoEdificio extends javax.swing.JFrame {
-
-    /**
-     * Creates new form AgregarPisoEdificio
-     */
-     
-   //AgregarPisoEdificio es diferente de AgregarEdificio puesto que aca no se pide el piso ya que el sistema lo hace automatico
-    //en el AgregarPiso si se pide el numero del piso
     
     public static float precioPiso;
     
-    public AgregarPisoEdificio() {
+    public AgregarPisoEdificio(java.awt.Frame parent, boolean modal) {
+        super(parent, modal);
         initComponents();
+        
         this.setLocationRelativeTo(null);
-
-        //tenemos que convertir nuestro pisoActual (atributo de otra clase de tipo int) a un String
-        //para eso utilizamos el String.valueOf
         pisoActualMenu.setText(String.valueOf(AgregarEdificio.pisoActual));
     }
-    
+
     /**
      * This method is called from within the constructor to initialize the form.
      * WARNING: Do NOT modify this code. The content of this method is always
@@ -53,8 +42,7 @@ public class AgregarPisoEdificio extends javax.swing.JFrame {
         textPrecioPiso = new javax.swing.JLabel();
         precioPisoMenu = new javax.swing.JTextField();
 
-        setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
-        setUndecorated(true);
+        setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
 
         exit.setFont(new java.awt.Font("Segoe UI", 1, 12)); // NOI18N
         exit.setText("Exit");
@@ -171,28 +159,27 @@ public class AgregarPisoEdificio extends javax.swing.JFrame {
     private void backActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_backActionPerformed
         // TODO add your handling code here:
         //para retroceder
-        
+
         this.setVisible(false); //ocultamos el menu actual
         MenuEmpresa is = new MenuEmpresa();
-        
+
         is.setVisible(true); //hacemos visible el menu anterior
     }//GEN-LAST:event_backActionPerformed
 
+    private void descripcionActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_descripcionActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_descripcionActionPerformed
+
     private void confirmarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_confirmarActionPerformed
         // TODO add your handling code here:
-        
+
         //aca llenamos los atributos de la clase piso
         Piso.descripcion = descripcion.getText();
         Piso.numeroPiso = Integer.parseInt(pisoActualMenu.getText());
         precioPiso = Float.parseFloat(precioPisoMenu.getText()); //convertimos a float el string que nos entrega el menu
         this.setVisible(false); //hacemos invisible este objeto
-        AgregarEdificio.siguiente = true;
-        
-    }//GEN-LAST:event_confirmarActionPerformed
 
-    private void descripcionActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_descripcionActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_descripcionActionPerformed
+    }//GEN-LAST:event_confirmarActionPerformed
 
     /**
      * @param args the command line arguments
@@ -222,10 +209,17 @@ public class AgregarPisoEdificio extends javax.swing.JFrame {
         //</editor-fold>
         //</editor-fold>
 
-        /* Create and display the form */
+        /* Create and display the dialog */
         java.awt.EventQueue.invokeLater(new Runnable() {
             public void run() {
-                new AgregarPisoEdificio().setVisible(true);
+                AgregarPisoEdificio dialog = new AgregarPisoEdificio(new javax.swing.JFrame(), true);
+                dialog.addWindowListener(new java.awt.event.WindowAdapter() {
+                    @Override
+                    public void windowClosing(java.awt.event.WindowEvent e) {
+                        System.exit(0);
+                    }
+                });
+                dialog.setVisible(true);
             }
         });
     }

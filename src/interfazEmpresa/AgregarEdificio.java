@@ -19,7 +19,6 @@ public class AgregarEdificio extends javax.swing.JFrame {
     //atributos 
     public static int pisoActual; //para imprimir por cual piso vamos al momento de llenar un edificio de n pisos    
     public static int localActual;
-    public static boolean siguiente;
     
     
     public AgregarEdificio() {
@@ -217,44 +216,46 @@ public class AgregarEdificio extends javax.swing.JFrame {
         GestionInmuebleUdc.listaInmuebles.add(new Edificio(direccionE, precioE)); //añadimos direccion y precio
         
         int aux = 0; //este auxiliar aumentara en 1 con cada iteraccion para asignarle un valor a pisoActual 
-        siguiente = true;
 
-        //ahora hacemos un for
-        for(int i = 0; i < pisoE && siguiente == true; i++){
+        //ahora hacemos un for para iterar la n cantidad de veces que se debe abrir el submenu para agregar piso
+        //si se coloco que se tenia 3 pisos se deben crear 3 objetos diferentes de la clase AgregarPisoEdificio
+        for(int i = 0; i < pisoE; i++){
             
             AgregarEdificio.pisoActual = aux + 1;
             
             this.setVisible(false); //hacemos invisible la interfaz actual
-            
-                siguiente = false;
-                AgregarPisoEdificio pisoMenu = new AgregarPisoEdificio(); //creamos un objeto 
-                pisoMenu.setVisible(true); //hacemos visible el menu de piso  
-                
-            
+
+                //utilizamos esta clase que es un JDialog en lugar de un JFrame
+                AgregarPisoEdificio localMenu = new AgregarPisoEdificio(this,true);
+                localMenu.setModal(true); //volvemos modal
+                localMenu.setVisible(true); //hacemos visible el menu de piso 
+
             Edificio.agregarPiso(new Piso(direccionE,AgregarPisoEdificio.precioPiso,Piso.numeroPiso,Piso.descripcion));//creamos el piso
             aux++;
         }
+        
+        JOptionPane.showMessageDialog(null,"Llenado de PISOS compleado","",JOptionPane.INFORMATION_MESSAGE);
+        aux = 0;
         
         for(int i = 0; i < localE; i++){
             
             AgregarEdificio.localActual = aux + 1;
             
             this.setVisible(false); //hacemos invisible la interfaz actual
-
-            AgregarLocalEdificio localMenu = new AgregarLocalEdificio(); //creamos un objeto 
+            
+            //utilizamos esta clase que es un JDialog en lugar de un JFrame
+            AgregarPisoEdificio localMenu = new AgregarPisoEdificio(this,true);
+            localMenu.setModal(true); //volvemos modal
             localMenu.setVisible(true); //hacemos visible el menu de piso  
 
             Edificio.agregarLocal(new Local(direccionE,AgregarPisoEdificio.precioPiso,Piso.descripcion));//creamos el piso
             aux++;
         }
+        JOptionPane.showMessageDialog(null,"Llenado de LOCALES compleado","",JOptionPane.INFORMATION_MESSAGE);
         
         //despues de la iteracion volvemos al menu de empresa  
-       // MenuEmpresa menu = new MenuEmpresa();
-       // menu.setVisible(true);
-        
-      //  JOptionPane.showMessageDialog(null, "datos guardados: " + direccionE + "\n" + precioE + "\n" + Piso.numeroPiso + "\n" + Piso.descripcion);
-        
-//listaInmuebles.add(new Edificio(direccion, precioAlquiler));
+        MenuEmpresa menu = new MenuEmpresa();
+        menu.setVisible(true);
     }//GEN-LAST:event_confirmarActionPerformed
 
     /**

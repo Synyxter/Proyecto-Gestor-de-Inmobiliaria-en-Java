@@ -4,24 +4,24 @@ package interfazEmpresa;
 import gestioninmuebleudc.Local;
 import javax.swing.JTextField;
 
-public class AgregarLocalEdificio extends javax.swing.JFrame {
+public class AgregarLocalEdificio extends javax.swing.JDialog {
 
-     
-   //AgregarPisoEdificio es diferente de AgregarEdificio puesto que aca no se pide el piso ya que el sistema lo hace automatico
-    //en el AgregarPiso si se pide el numero del piso
+    
+    //no confundir AgregarLocalEdificio con AgregarLocal, este ultimo es un JFrame mientras el primero es un JDialg
     
     public static float precioLocal;
     public static int numeroLocal;
     
-    public AgregarLocalEdificio() {
+    public AgregarLocalEdificio(java.awt.Frame parent, boolean modal) {
+        super(parent, modal);
         initComponents();
-        this.setLocationRelativeTo(null);
-
+        this.setLocationRelativeTo(null); //para centrar el menu
+        
         //tenemos que convertir nuestro pisoActual (atributo de otra clase de tipo int) a un String
         //para eso utilizamos el String.valueOf
         localActualMenu.setText(String.valueOf(AgregarEdificio.pisoActual));
     }
-    
+
     /**
      * This method is called from within the constructor to initialize the form.
      * WARNING: Do NOT modify this code. The content of this method is always
@@ -42,8 +42,7 @@ public class AgregarLocalEdificio extends javax.swing.JFrame {
         textPrecioLocal = new javax.swing.JLabel();
         precioLocalMenu = new javax.swing.JTextField();
 
-        setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
-        setUndecorated(true);
+        setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
 
         exit.setFont(new java.awt.Font("Segoe UI", 1, 12)); // NOI18N
         exit.setText("Exit");
@@ -159,26 +158,26 @@ public class AgregarLocalEdificio extends javax.swing.JFrame {
     private void backActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_backActionPerformed
         // TODO add your handling code here:
         //para retroceder
-        
+
         this.setVisible(false); //ocultamos el menu actual
         MenuEmpresa is = new MenuEmpresa();
-        
+
         is.setVisible(true); //hacemos visible el menu anterior
     }//GEN-LAST:event_backActionPerformed
 
+    private void descripcionActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_descripcionActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_descripcionActionPerformed
+
     private void confirmarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_confirmarActionPerformed
         // TODO add your handling code here:
-        
+
         //aca llenamos los atributos de la clase piso
         Local.descripcion = descripcion.getText();
         numeroLocal = Integer.parseInt(localActualMenu.getText());
         precioLocal = Float.parseFloat(precioLocalMenu.getText()); //convertimos a float el string que nos entrega el menu
         this.setVisible(false); //hacemos invisible este objeto
     }//GEN-LAST:event_confirmarActionPerformed
-
-    private void descripcionActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_descripcionActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_descripcionActionPerformed
 
     /**
      * @param args the command line arguments
@@ -207,13 +206,18 @@ public class AgregarLocalEdificio extends javax.swing.JFrame {
         }
         //</editor-fold>
         //</editor-fold>
-        //</editor-fold>
-        //</editor-fold>
 
-        /* Create and display the form */
+        /* Create and display the dialog */
         java.awt.EventQueue.invokeLater(new Runnable() {
             public void run() {
-                new AgregarLocalEdificio().setVisible(true);
+                AgregarLocalEdificio dialog = new AgregarLocalEdificio(new javax.swing.JFrame(), true);
+                dialog.addWindowListener(new java.awt.event.WindowAdapter() {
+                    @Override
+                    public void windowClosing(java.awt.event.WindowEvent e) {
+                        System.exit(0);
+                    }
+                });
+                dialog.setVisible(true);
             }
         });
     }
