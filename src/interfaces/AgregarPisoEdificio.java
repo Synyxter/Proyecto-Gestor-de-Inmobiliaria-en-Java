@@ -4,25 +4,33 @@
  */
 package interfaces;
 
-import gestioninmuebleudc.GestionInmuebleUdc;
 import gestioninmuebleudc.Piso;
 import javax.swing.JTextField;
+
+
 
 /**
  *
  * @author Danyysk
  */
-public class AgregarPiso extends javax.swing.JFrame {
+public class AgregarPisoEdificio extends javax.swing.JFrame {
 
     /**
      * Creates new form AgregarPisoEdificio
      */
-    
+     
    //AgregarPisoEdificio es diferente de AgregarEdificio puesto que aca no se pide el piso ya que el sistema lo hace automatico
     //en el AgregarPiso si se pide el numero del piso
-    public AgregarPiso() {
+    
+    public static float precioPiso;
+    
+    public AgregarPisoEdificio() {
         initComponents();
         this.setLocationRelativeTo(null);
+
+        //tenemos que convertir nuestro pisoActual (atributo de otra clase de tipo int) a un String
+        //para eso utilizamos el String.valueOf
+        pisoActualMenu.setText(String.valueOf(AgregarEdificio.pisoActual));
     }
     
     /**
@@ -42,11 +50,8 @@ public class AgregarPiso extends javax.swing.JFrame {
         descripcion = new javax.swing.JTextField();
         confirmar = new javax.swing.JButton();
         pisoActualMenu = new javax.swing.JLabel();
-        numPiso = new javax.swing.JTextField();
-        precio = new javax.swing.JTextField();
-        textPrecio = new javax.swing.JLabel();
-        textDireccion = new javax.swing.JLabel();
-        direccion = new javax.swing.JTextField();
+        textPrecioPiso = new javax.swing.JLabel();
+        precioPisoMenu = new javax.swing.JTextField();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setUndecorated(true);
@@ -90,20 +95,9 @@ public class AgregarPiso extends javax.swing.JFrame {
 
         pisoActualMenu.setText(" ");
 
-        numPiso.setText(" ");
-        numPiso.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                numPisoActionPerformed(evt);
-            }
-        });
+        textPrecioPiso.setText("Precio Alquiler Piso");
 
-        precio.setText(" ");
-
-        textPrecio.setText("Precio Alquiler");
-
-        textDireccion.setText("Direccion");
-
-        direccion.setText(" ");
+        precioPisoMenu.setText(" ");
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
@@ -120,25 +114,25 @@ public class AgregarPiso extends javax.swing.JFrame {
                         .addGap(65, 65, 65)
                         .addComponent(tituloMenu))
                     .addGroup(layout.createSequentialGroup()
+                        .addGap(65, 65, 65)
+                        .addComponent(textNumPiso)
+                        .addGap(30, 30, 30)
+                        .addComponent(pisoActualMenu))
+                    .addGroup(layout.createSequentialGroup()
                         .addGap(130, 130, 130)
                         .addComponent(confirmar))
                     .addGroup(layout.createSequentialGroup()
                         .addGap(65, 65, 65)
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(textDescripcion)
-                            .addComponent(textNumPiso)
-                            .addComponent(textPrecio)
-                            .addComponent(textDireccion))
-                        .addGap(27, 27, 27)
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                            .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
-                                .addComponent(descripcion, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, 110, Short.MAX_VALUE)
-                                .addComponent(direccion, javax.swing.GroupLayout.Alignment.LEADING)
-                                .addComponent(precio, javax.swing.GroupLayout.Alignment.LEADING))
-                            .addComponent(numPiso, javax.swing.GroupLayout.DEFAULT_SIZE, 110, Short.MAX_VALUE))
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(pisoActualMenu)))
-                .addContainerGap())
+                            .addGroup(layout.createSequentialGroup()
+                                .addComponent(textPrecioPiso)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                                .addComponent(precioPisoMenu))
+                            .addGroup(layout.createSequentialGroup()
+                                .addComponent(textDescripcion)
+                                .addGap(50, 50, 50)
+                                .addComponent(descripcion, javax.swing.GroupLayout.PREFERRED_SIZE, 115, javax.swing.GroupLayout.PREFERRED_SIZE)))))
+                .addGap(4, 4, 4))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -148,27 +142,22 @@ public class AgregarPiso extends javax.swing.JFrame {
                     .addComponent(exit))
                 .addGap(12, 12, 12)
                 .addComponent(tituloMenu)
-                .addGap(12, 12, 12)
+                .addGap(15, 15, 15)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addComponent(textNumPiso)
-                    .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                        .addComponent(pisoActualMenu)
-                        .addComponent(numPiso, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                .addGap(18, 18, 18)
+                    .addComponent(pisoActualMenu))
+                .addGap(21, 21, 21)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(layout.createSequentialGroup()
+                        .addGap(3, 3, 3)
+                        .addComponent(textDescripcion))
+                    .addComponent(descripcion, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGap(21, 21, 21)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(descripcion, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(textDescripcion))
-                .addGap(23, 23, 23)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(textPrecio)
-                    .addComponent(precio, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(18, 18, 18)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(textDireccion)
-                    .addComponent(direccion, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 17, Short.MAX_VALUE)
-                .addComponent(confirmar)
-                .addContainerGap())
+                    .addComponent(textPrecioPiso)
+                    .addComponent(precioPisoMenu, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGap(58, 58, 58)
+                .addComponent(confirmar))
         );
 
         pack();
@@ -192,25 +181,18 @@ public class AgregarPiso extends javax.swing.JFrame {
     private void confirmarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_confirmarActionPerformed
         // TODO add your handling code here:
         
-        //creamos un objeto de la clase Piso que tendra todos estos datos los cuales ya pedimos en la interfaz grafica
-        //añadimos al arraylist de inmuebles
-        GestionInmuebleUdc.listaInmuebles.add(new Piso(direccion.getText(), Float.parseFloat(precio.getText()),
-                Integer.parseInt(numPiso.getText()),descripcion.getText()));
-       
+        //aca llenamos los atributos de la clase piso
+        Piso.descripcion = descripcion.getText();
+        Piso.numeroPiso = Integer.parseInt(pisoActualMenu.getText());
+        precioPiso = Float.parseFloat(precioPisoMenu.getText()); //convertimos a float el string que nos entrega el menu
+        this.setVisible(false); //hacemos invisible este objeto
+        AgregarEdificio.siguiente = true;
         
-        this.setVisible(false); //ocultamos este menu 
-        
-        MenuEmpresa menu = new MenuEmpresa(); //volvemos al menu de empresa
-        menu.setVisible(true);
     }//GEN-LAST:event_confirmarActionPerformed
 
     private void descripcionActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_descripcionActionPerformed
         // TODO add your handling code here:
     }//GEN-LAST:event_descripcionActionPerformed
-
-    private void numPisoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_numPisoActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_numPisoActionPerformed
 
     /**
      * @param args the command line arguments
@@ -229,23 +211,21 @@ public class AgregarPiso extends javax.swing.JFrame {
                 }
             }
         } catch (ClassNotFoundException ex) {
-            java.util.logging.Logger.getLogger(AgregarPiso.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(AgregarPisoEdificio.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (InstantiationException ex) {
-            java.util.logging.Logger.getLogger(AgregarPiso.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(AgregarPisoEdificio.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (IllegalAccessException ex) {
-            java.util.logging.Logger.getLogger(AgregarPiso.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(AgregarPisoEdificio.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (javax.swing.UnsupportedLookAndFeelException ex) {
-            java.util.logging.Logger.getLogger(AgregarPiso.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(AgregarPisoEdificio.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         }
-        //</editor-fold>
-        //</editor-fold>
         //</editor-fold>
         //</editor-fold>
 
         /* Create and display the form */
         java.awt.EventQueue.invokeLater(new Runnable() {
             public void run() {
-                new AgregarPiso().setVisible(true);
+                new AgregarPisoEdificio().setVisible(true);
             }
         });
     }
@@ -254,15 +234,12 @@ public class AgregarPiso extends javax.swing.JFrame {
     private javax.swing.JButton back;
     private javax.swing.JButton confirmar;
     private javax.swing.JTextField descripcion;
-    private javax.swing.JTextField direccion;
     private javax.swing.JButton exit;
-    private javax.swing.JTextField numPiso;
     private javax.swing.JLabel pisoActualMenu;
-    private javax.swing.JTextField precio;
+    private javax.swing.JTextField precioPisoMenu;
     private javax.swing.JLabel textDescripcion;
-    private javax.swing.JLabel textDireccion;
     private javax.swing.JLabel textNumPiso;
-    private javax.swing.JLabel textPrecio;
+    private javax.swing.JLabel textPrecioPiso;
     private javax.swing.JLabel tituloMenu;
     // End of variables declaration//GEN-END:variables
 }

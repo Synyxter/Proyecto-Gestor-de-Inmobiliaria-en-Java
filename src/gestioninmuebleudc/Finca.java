@@ -4,10 +4,17 @@
  */
 package gestioninmuebleudc;
 
-/**
- *
- * @author Danyysk
- */
-public class Finca {
-    
+public class Finca extends Inmueble {
+    private String descripcion;
+
+    public Finca(String direccion, float precioAlquiler, String descripcion) {
+        super(direccion, precioAlquiler);
+        this.descripcion = descripcion;
+    }
+
+    @Override
+    public float consultarPrecioAlquiler() {
+        return precioAlquiler;
+    }
+
 }

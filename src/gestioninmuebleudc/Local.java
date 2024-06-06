@@ -3,7 +3,7 @@ package gestioninmuebleudc;
 
 
 public class Local extends Inmueble {
-    private String descripcion;
+    public static String descripcion;
 
     public Local(String direccion, float precioAlquiler, String descripcion) {
         super(direccion, precioAlquiler);

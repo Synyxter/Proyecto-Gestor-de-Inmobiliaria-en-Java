@@ -17,7 +17,7 @@ public class Edificio extends Inmueble {
         listaPisos.add(piso);
     }
 
-    public void agregarLocal(Local local) {
+    public static void agregarLocal(Local local) {
         listaLocales.add(local);
     }
 

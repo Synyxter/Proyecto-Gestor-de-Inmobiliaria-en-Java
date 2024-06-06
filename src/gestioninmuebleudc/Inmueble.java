@@ -2,6 +2,7 @@ package gestioninmuebleudc;
 
 // Inmueble.java
 public abstract class Inmueble {
+    //al tratarse de una herencia usamos protected en la clase madre
     protected String direccion;
     protected float precioAlquiler;
 

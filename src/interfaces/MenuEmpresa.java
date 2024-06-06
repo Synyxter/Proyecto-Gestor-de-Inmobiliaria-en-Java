@@ -22,17 +22,17 @@ public class MenuEmpresa extends javax.swing.JFrame {
 
         Back = new javax.swing.JButton();
         Exit = new javax.swing.JButton();
-        jButtonEdificio = new javax.swing.JButton();
-        jButtonLocal = new javax.swing.JButton();
-        jButtonPiso = new javax.swing.JButton();
-        jButtonFinca = new javax.swing.JButton();
-        jLabelTituloInmobiliaria = new javax.swing.JLabel();
-        jLabelDeseaAgregar = new javax.swing.JLabel();
-        jLabelGerenteMensaje1 = new javax.swing.JLabel();
-        jLabelGerenteMensaje2 = new javax.swing.JLabel();
-        jLabelImagen = new javax.swing.JLabel();
-        jLabel1 = new javax.swing.JLabel();
-        jButton1 = new javax.swing.JButton();
+        edificio = new javax.swing.JButton();
+        local = new javax.swing.JButton();
+        piso = new javax.swing.JButton();
+        finca = new javax.swing.JButton();
+        tituloInmobiliaria = new javax.swing.JLabel();
+        deseaAgregar = new javax.swing.JLabel();
+        gerenteMensaje1 = new javax.swing.JLabel();
+        gerenteMensaje2 = new javax.swing.JLabel();
+        imagen = new javax.swing.JLabel();
+        mas = new javax.swing.JLabel();
+        listaDispo = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setUndecorated(true);
@@ -56,55 +56,65 @@ public class MenuEmpresa extends javax.swing.JFrame {
         });
         getContentPane().add(Exit, new org.netbeans.lib.awtextra.AbsoluteConstraints(438, 0, -1, -1));
 
-        jButtonEdificio.setText("Edificio");
-        jButtonEdificio.addActionListener(new java.awt.event.ActionListener() {
+        edificio.setText("Edificio");
+        edificio.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jButtonEdificioActionPerformed(evt);
+                edificioActionPerformed(evt);
             }
         });
-        getContentPane().add(jButtonEdificio, new org.netbeans.lib.awtextra.AbsoluteConstraints(230, 390, -1, -1));
+        getContentPane().add(edificio, new org.netbeans.lib.awtextra.AbsoluteConstraints(230, 390, -1, -1));
 
-        jButtonLocal.setText("Local");
-        getContentPane().add(jButtonLocal, new org.netbeans.lib.awtextra.AbsoluteConstraints(230, 420, -1, -1));
-
-        jButtonPiso.setText("Piso");
-        jButtonPiso.addActionListener(new java.awt.event.ActionListener() {
+        local.setText("Local");
+        local.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jButtonPisoActionPerformed(evt);
+                localActionPerformed(evt);
             }
         });
-        getContentPane().add(jButtonPiso, new org.netbeans.lib.awtextra.AbsoluteConstraints(230, 450, -1, -1));
+        getContentPane().add(local, new org.netbeans.lib.awtextra.AbsoluteConstraints(230, 420, -1, -1));
 
-        jButtonFinca.setText("Finca");
-        getContentPane().add(jButtonFinca, new org.netbeans.lib.awtextra.AbsoluteConstraints(230, 480, -1, -1));
-
-        jLabelTituloInmobiliaria.setFont(new java.awt.Font("Segoe UI", 1, 18)); // NOI18N
-        jLabelTituloInmobiliaria.setText("¡Inmobiliaria UdC!");
-        getContentPane().add(jLabelTituloInmobiliaria, new org.netbeans.lib.awtextra.AbsoluteConstraints(192, 25, -1, -1));
-
-        jLabelDeseaAgregar.setText("Desea Agregar a Nuestra Empresa");
-        getContentPane().add(jLabelDeseaAgregar, new org.netbeans.lib.awtextra.AbsoluteConstraints(184, 368, -1, -1));
-
-        jLabelGerenteMensaje1.setText("Como nuestro gerente de confianza");
-        getContentPane().add(jLabelGerenteMensaje1, new org.netbeans.lib.awtextra.AbsoluteConstraints(169, 56, -1, -1));
-
-        jLabelGerenteMensaje2.setText(" le ofrecemos una calida bienvenida");
-        getContentPane().add(jLabelGerenteMensaje2, new org.netbeans.lib.awtextra.AbsoluteConstraints(169, 78, -1, -1));
-
-        jLabelImagen.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagenes/User.png"))); // NOI18N
-        jLabelImagen.setText(" ");
-        getContentPane().add(jLabelImagen, new org.netbeans.lib.awtextra.AbsoluteConstraints(138, 100, -1, -1));
-
-        jLabel1.setText("O quizas...");
-        getContentPane().add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(240, 510, -1, -1));
-
-        jButton1.setText("Ver lista de inmuebles disponibles");
-        jButton1.addActionListener(new java.awt.event.ActionListener() {
+        piso.setText("Piso");
+        piso.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jButton1ActionPerformed(evt);
+                pisoActionPerformed(evt);
             }
         });
-        getContentPane().add(jButton1, new org.netbeans.lib.awtextra.AbsoluteConstraints(160, 530, -1, -1));
+        getContentPane().add(piso, new org.netbeans.lib.awtextra.AbsoluteConstraints(230, 450, -1, -1));
+
+        finca.setText("Finca");
+        finca.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                fincaActionPerformed(evt);
+            }
+        });
+        getContentPane().add(finca, new org.netbeans.lib.awtextra.AbsoluteConstraints(230, 480, -1, -1));
+
+        tituloInmobiliaria.setFont(new java.awt.Font("Segoe UI", 1, 18)); // NOI18N
+        tituloInmobiliaria.setText("¡Inmobiliaria UdC!");
+        getContentPane().add(tituloInmobiliaria, new org.netbeans.lib.awtextra.AbsoluteConstraints(192, 25, -1, -1));
+
+        deseaAgregar.setText("Desea Agregar a Nuestra Empresa");
+        getContentPane().add(deseaAgregar, new org.netbeans.lib.awtextra.AbsoluteConstraints(184, 368, -1, -1));
+
+        gerenteMensaje1.setText("Como nuestro gerente de confianza");
+        getContentPane().add(gerenteMensaje1, new org.netbeans.lib.awtextra.AbsoluteConstraints(169, 56, -1, -1));
+
+        gerenteMensaje2.setText(" le ofrecemos una calida bienvenida");
+        getContentPane().add(gerenteMensaje2, new org.netbeans.lib.awtextra.AbsoluteConstraints(169, 78, -1, -1));
+
+        imagen.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagenes/User.png"))); // NOI18N
+        imagen.setText(" ");
+        getContentPane().add(imagen, new org.netbeans.lib.awtextra.AbsoluteConstraints(138, 100, -1, -1));
+
+        mas.setText("O quizas...");
+        getContentPane().add(mas, new org.netbeans.lib.awtextra.AbsoluteConstraints(240, 510, -1, -1));
+
+        listaDispo.setText("Ver lista de inmuebles disponibles");
+        listaDispo.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                listaDispoActionPerformed(evt);
+            }
+        });
+        getContentPane().add(listaDispo, new org.netbeans.lib.awtextra.AbsoluteConstraints(160, 530, -1, -1));
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
@@ -114,13 +124,13 @@ public class MenuEmpresa extends javax.swing.JFrame {
         System.exit(0); //con esta linea nos salimos del programa al pulsar exit
     }//GEN-LAST:event_ExitActionPerformed
 
-    private void jButtonEdificioActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonEdificioActionPerformed
+    private void edificioActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_edificioActionPerformed
         // TODO add your handling code here:
         AgregarEdificio edificio = new AgregarEdificio(); //creamos un objeto de edificio para el menu
         edificio.setVisible(true); //abrimos una ventana del JFrame 
         
-        setVisible(false); //cerramos la ventana anterior, es decir la de MenuEmpresa
-    }//GEN-LAST:event_jButtonEdificioActionPerformed
+        this.setVisible(false); //cerramos la ventana anterior, es decir la de MenuEmpresa, este mismo objeto
+    }//GEN-LAST:event_edificioActionPerformed
 
     private void BackActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_BackActionPerformed
         // TODO add your handling code here:
@@ -130,22 +140,30 @@ public class MenuEmpresa extends javax.swing.JFrame {
         this.setVisible(false); //con esto ocultamos el JFrame del Menu Empresa
     }//GEN-LAST:event_BackActionPerformed
 
-    private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
+    private void listaDispoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_listaDispoActionPerformed
       
         ListaDisponible is = new ListaDisponible();
         
         is.setVisible(true); //hacemos visible el nuevo menu
         
         this.setVisible(false); //ocultamos el anterior
-    }//GEN-LAST:event_jButton1ActionPerformed
+    }//GEN-LAST:event_listaDispoActionPerformed
 
-    private void jButtonPisoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonPisoActionPerformed
+    private void pisoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_pisoActionPerformed
         // TODO add your handling code here:
         
         AgregarPiso pisoMenu = new AgregarPiso();
         pisoMenu.setVisible(true); //mostramos la nueva interfaz
         this.setVisible(false); //ocultamos esta
-    }//GEN-LAST:event_jButtonPisoActionPerformed
+    }//GEN-LAST:event_pisoActionPerformed
+
+    private void localActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_localActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_localActionPerformed
+
+    private void fincaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_fincaActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_fincaActionPerformed
 
     /**
      * @param args the command line arguments
@@ -185,16 +203,16 @@ public class MenuEmpresa extends javax.swing.JFrame {
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton Back;
     private javax.swing.JButton Exit;
-    private javax.swing.JButton jButton1;
-    private javax.swing.JButton jButtonEdificio;
-    private javax.swing.JButton jButtonFinca;
-    private javax.swing.JButton jButtonLocal;
-    private javax.swing.JButton jButtonPiso;
-    private javax.swing.JLabel jLabel1;
-    private javax.swing.JLabel jLabelDeseaAgregar;
-    private javax.swing.JLabel jLabelGerenteMensaje1;
-    private javax.swing.JLabel jLabelGerenteMensaje2;
-    private javax.swing.JLabel jLabelImagen;
-    private javax.swing.JLabel jLabelTituloInmobiliaria;
+    private javax.swing.JLabel deseaAgregar;
+    private javax.swing.JButton edificio;
+    private javax.swing.JButton finca;
+    private javax.swing.JLabel gerenteMensaje1;
+    private javax.swing.JLabel gerenteMensaje2;
+    private javax.swing.JLabel imagen;
+    private javax.swing.JButton listaDispo;
+    private javax.swing.JButton local;
+    private javax.swing.JLabel mas;
+    private javax.swing.JButton piso;
+    private javax.swing.JLabel tituloInmobiliaria;
     // End of variables declaration//GEN-END:variables
 }

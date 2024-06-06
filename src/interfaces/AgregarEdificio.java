@@ -7,16 +7,21 @@ package interfaces;
 import gestioninmuebleudc.Edificio;
 import gestioninmuebleudc.GestionInmuebleUdc;
 import gestioninmuebleudc.Piso;
+import gestioninmuebleudc.Local;
+import javax.swing.JOptionPane;
 
 /**
  *
  * @author Danyysk
  */
 public class AgregarEdificio extends javax.swing.JFrame {
-
-    /**
-     * Creates new form AgregarEdificio
-     */
+    
+    //atributos 
+    public static int pisoActual; //para imprimir por cual piso vamos al momento de llenar un edificio de n pisos    
+    public static int localActual;
+    public static boolean siguiente;
+    
+    
     public AgregarEdificio() {
         initComponents();
         this.setLocationRelativeTo(null); //fijamos la ventana en la mitad de la pantalla
@@ -71,7 +76,7 @@ public class AgregarEdificio extends javax.swing.JFrame {
 
         textPisos.setText("Pisos Edificio:");
 
-        textPrecio.setText("Precio Alquiler:");
+        textPrecio.setText("Precio Alquiler del edificio:");
 
         nombre.setText(" ");
         nombre.addActionListener(new java.awt.event.ActionListener() {
@@ -139,7 +144,7 @@ public class AgregarEdificio extends javax.swing.JFrame {
                             .addGroup(layout.createSequentialGroup()
                                 .addGap(153, 153, 153)
                                 .addComponent(confirmar)))
-                        .addGap(0, 89, Short.MAX_VALUE)))
+                        .addGap(0, 43, Short.MAX_VALUE)))
                 .addContainerGap())
         );
         layout.setVerticalGroup(
@@ -203,27 +208,53 @@ public class AgregarEdificio extends javax.swing.JFrame {
         //aca inicia la verdadera magia
         
         String direccionE = direccion.getText();
-        String auxPrecio = precio.getText();
+        float precioE = Float.parseFloat(precio.getText());
         String nombreE = nombre.getText();
-        String auxPiso = pisos.getText();
-        String localE = local.getText();
-        
-        //ahora convertimos los string a int o float en los casos donde es necesario, como en el precio
-        float precioE = Float.parseFloat(auxPrecio);
-        int pisoE = Integer.parseInt(auxPiso);
-        
-        //creamos el edificio dentro del array de 
+        int pisoE = Integer.parseInt(pisos.getText());
+        int localE = Integer.parseInt(local.getText());
+                
+        //creamos el edificio dentro del array de inmuebles
         GestionInmuebleUdc.listaInmuebles.add(new Edificio(direccionE, precioE)); //añadimos direccion y precio
-       
-        AgregarPiso pisoMenu = new AgregarPiso(); //creamos un objeto del JFrame
-        pisoMenu.setVisible(true); //hacemos visible el menu de piso
         
-        Edificio.agregarPiso(new Piso(direccionE,precioE,AgregarPiso.numPiso,AgregarPiso.descripcion));//creamos el piso
+        int aux = 0; //este auxiliar aumentara en 1 con cada iteraccion para asignarle un valor a pisoActual 
+        siguiente = true;
+
+        //ahora hacemos un for
+        for(int i = 0; i < pisoE && siguiente == true; i++){
+            
+            AgregarEdificio.pisoActual = aux + 1;
+            
+            this.setVisible(false); //hacemos invisible la interfaz actual
+            
+                siguiente = false;
+                AgregarPisoEdificio pisoMenu = new AgregarPisoEdificio(); //creamos un objeto 
+                pisoMenu.setVisible(true); //hacemos visible el menu de piso  
+                
+            
+            Edificio.agregarPiso(new Piso(direccionE,AgregarPisoEdificio.precioPiso,Piso.numeroPiso,Piso.descripcion));//creamos el piso
+            aux++;
+        }
         
+        for(int i = 0; i < localE; i++){
+            
+            AgregarEdificio.localActual = aux + 1;
+            
+            this.setVisible(false); //hacemos invisible la interfaz actual
+
+            AgregarLocalEdificio localMenu = new AgregarLocalEdificio(); //creamos un objeto 
+            localMenu.setVisible(true); //hacemos visible el menu de piso  
+
+            Edificio.agregarLocal(new Local(direccionE,AgregarPisoEdificio.precioPiso,Piso.descripcion));//creamos el piso
+            aux++;
+        }
         
+        //despues de la iteracion volvemos al menu de empresa  
+       // MenuEmpresa menu = new MenuEmpresa();
+       // menu.setVisible(true);
         
-     
-        //listaInmuebles.add(new Edificio(direccion, precioAlquiler));
+      //  JOptionPane.showMessageDialog(null, "datos guardados: " + direccionE + "\n" + precioE + "\n" + Piso.numeroPiso + "\n" + Piso.descripcion);
+        
+//listaInmuebles.add(new Edificio(direccion, precioAlquiler));
     }//GEN-LAST:event_confirmarActionPerformed
 
     /**
