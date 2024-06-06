@@ -1,5 +1,5 @@
  
-package gestioninmuebleudc;
+package interfaces;
 
 import java.awt.Image; //esta biblioteca sirve para fines esteticos 
 import java.awt.Toolkit; // lo mismo

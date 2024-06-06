@@ -1,6 +1,6 @@
  
-package gestioninmuebleudc;
- 
+package interfaces;
+
 public class MenuEmpresa extends javax.swing.JFrame {
 
     /**

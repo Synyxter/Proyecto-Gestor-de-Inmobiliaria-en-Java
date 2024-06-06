@@ -1,5 +1,5 @@
  
-package gestioninmuebleudc;
+package interfaces;
  
 import java.awt.Image; //esta biblioteca sirve para fines esteticos 
 import java.awt.Toolkit; // lo mismo
@@ -43,7 +43,6 @@ public class MenuIngreso extends javax.swing.JFrame {
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setIconImage(getIconImage());
         setUndecorated(true);
-        setPreferredSize(new java.awt.Dimension(720, 410));
         getContentPane().setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
         exit.setFont(new java.awt.Font("Segoe UI", 1, 12)); // NOI18N
