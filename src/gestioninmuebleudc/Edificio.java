@@ -6,8 +6,8 @@ public class Edificio extends Inmueble {
     public static ArrayList<Piso> listaPisos; //
     public static ArrayList<Local> listaLocales; //
 
-    public Edificio(String direccion, float precioAlquiler) {
-        super(direccion, precioAlquiler);
+    public Edificio(String direccion, float precioAlquiler, boolean alquilado) {
+        super(direccion, precioAlquiler, alquilado);
         listaPisos = new ArrayList<>();
         listaLocales = new ArrayList<>();
     }

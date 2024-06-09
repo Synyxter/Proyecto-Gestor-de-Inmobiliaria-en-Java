@@ -112,6 +112,7 @@ public class MenuIngreso extends javax.swing.JFrame {
 
     private void personaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_personaActionPerformed
         //hacemos lo mismo que arriba pero ahora con el menu del usuario
+        this.setVisible(false);
         MenuUsuario usuario = new MenuUsuario();
         usuario.setVisible(true);
     }//GEN-LAST:event_personaActionPerformed

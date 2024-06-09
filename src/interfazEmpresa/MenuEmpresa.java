@@ -1,6 +1,8 @@
  
 package interfazEmpresa;
 
+import interfazMain.MenuIngreso;
+
 public class MenuEmpresa extends javax.swing.JFrame {
 
     /**
@@ -36,7 +38,6 @@ public class MenuEmpresa extends javax.swing.JFrame {
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setUndecorated(true);
-        getContentPane().setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
         Back.setFont(new java.awt.Font("Segoe UI", 1, 12)); // NOI18N
         Back.setText("Back");
@@ -45,7 +46,6 @@ public class MenuEmpresa extends javax.swing.JFrame {
                 BackActionPerformed(evt);
             }
         });
-        getContentPane().add(Back, new org.netbeans.lib.awtextra.AbsoluteConstraints(360, 0, -1, -1));
 
         Exit.setFont(new java.awt.Font("Segoe UI", 1, 12)); // NOI18N
         Exit.setText("Exit");
@@ -54,7 +54,6 @@ public class MenuEmpresa extends javax.swing.JFrame {
                 ExitActionPerformed(evt);
             }
         });
-        getContentPane().add(Exit, new org.netbeans.lib.awtextra.AbsoluteConstraints(438, 0, -1, -1));
 
         edificio.setText("Edificio");
         edificio.addActionListener(new java.awt.event.ActionListener() {
@@ -62,7 +61,6 @@ public class MenuEmpresa extends javax.swing.JFrame {
                 edificioActionPerformed(evt);
             }
         });
-        getContentPane().add(edificio, new org.netbeans.lib.awtextra.AbsoluteConstraints(230, 390, -1, -1));
 
         local.setText("Local");
         local.addActionListener(new java.awt.event.ActionListener() {
@@ -70,7 +68,6 @@ public class MenuEmpresa extends javax.swing.JFrame {
                 localActionPerformed(evt);
             }
         });
-        getContentPane().add(local, new org.netbeans.lib.awtextra.AbsoluteConstraints(230, 420, -1, -1));
 
         piso.setText("Piso");
         piso.addActionListener(new java.awt.event.ActionListener() {
@@ -78,7 +75,6 @@ public class MenuEmpresa extends javax.swing.JFrame {
                 pisoActionPerformed(evt);
             }
         });
-        getContentPane().add(piso, new org.netbeans.lib.awtextra.AbsoluteConstraints(230, 450, -1, -1));
 
         finca.setText("Finca");
         finca.addActionListener(new java.awt.event.ActionListener() {
@@ -86,27 +82,21 @@ public class MenuEmpresa extends javax.swing.JFrame {
                 fincaActionPerformed(evt);
             }
         });
-        getContentPane().add(finca, new org.netbeans.lib.awtextra.AbsoluteConstraints(230, 480, -1, -1));
 
         tituloInmobiliaria.setFont(new java.awt.Font("Segoe UI", 1, 18)); // NOI18N
         tituloInmobiliaria.setText("¡Inmobiliaria UdC!");
-        getContentPane().add(tituloInmobiliaria, new org.netbeans.lib.awtextra.AbsoluteConstraints(192, 25, -1, -1));
 
+        deseaAgregar.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
         deseaAgregar.setText("Desea Agregar a Nuestra Empresa");
-        getContentPane().add(deseaAgregar, new org.netbeans.lib.awtextra.AbsoluteConstraints(184, 368, -1, -1));
 
         gerenteMensaje1.setText("Como nuestro gerente de confianza");
-        getContentPane().add(gerenteMensaje1, new org.netbeans.lib.awtextra.AbsoluteConstraints(169, 56, -1, -1));
 
         gerenteMensaje2.setText(" le ofrecemos una calida bienvenida");
-        getContentPane().add(gerenteMensaje2, new org.netbeans.lib.awtextra.AbsoluteConstraints(169, 78, -1, -1));
 
-        imagen.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagenes/User.png"))); // NOI18N
+        imagen.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagenes/empresaIcon.png"))); // NOI18N
         imagen.setText(" ");
-        getContentPane().add(imagen, new org.netbeans.lib.awtextra.AbsoluteConstraints(138, 100, -1, -1));
 
         mas.setText("O quizas...");
-        getContentPane().add(mas, new org.netbeans.lib.awtextra.AbsoluteConstraints(240, 510, -1, -1));
 
         listaDispo.setText("Ver lista de inmuebles disponibles");
         listaDispo.addActionListener(new java.awt.event.ActionListener() {
@@ -114,7 +104,79 @@ public class MenuEmpresa extends javax.swing.JFrame {
                 listaDispoActionPerformed(evt);
             }
         });
-        getContentPane().add(listaDispo, new org.netbeans.lib.awtextra.AbsoluteConstraints(160, 530, -1, -1));
+
+        javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
+        getContentPane().setLayout(layout);
+        layout.setHorizontalGroup(
+            layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(layout.createSequentialGroup()
+                .addGap(360, 360, 360)
+                .addComponent(Back)
+                .addGap(6, 6, 6)
+                .addComponent(Exit))
+            .addGroup(layout.createSequentialGroup()
+                .addGap(192, 192, 192)
+                .addComponent(tituloInmobiliaria))
+            .addGroup(layout.createSequentialGroup()
+                .addGap(169, 169, 169)
+                .addComponent(gerenteMensaje1))
+            .addGroup(layout.createSequentialGroup()
+                .addGap(169, 169, 169)
+                .addComponent(gerenteMensaje2))
+            .addGroup(layout.createSequentialGroup()
+                .addGap(230, 230, 230)
+                .addComponent(edificio))
+            .addGroup(layout.createSequentialGroup()
+                .addGap(230, 230, 230)
+                .addComponent(local))
+            .addGroup(layout.createSequentialGroup()
+                .addGap(230, 230, 230)
+                .addComponent(piso))
+            .addGroup(layout.createSequentialGroup()
+                .addGap(230, 230, 230)
+                .addComponent(finca))
+            .addGroup(layout.createSequentialGroup()
+                .addGap(240, 240, 240)
+                .addComponent(mas))
+            .addGroup(layout.createSequentialGroup()
+                .addGap(160, 160, 160)
+                .addComponent(listaDispo))
+            .addGroup(layout.createSequentialGroup()
+                .addGap(140, 140, 140)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                    .addComponent(deseaAgregar)
+                    .addComponent(imagen, javax.swing.GroupLayout.PREFERRED_SIZE, 240, javax.swing.GroupLayout.PREFERRED_SIZE)))
+        );
+        layout.setVerticalGroup(
+            layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(layout.createSequentialGroup()
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(Back)
+                    .addComponent(Exit))
+                .addGap(2, 2, 2)
+                .addComponent(tituloInmobiliaria)
+                .addGap(6, 6, 6)
+                .addComponent(gerenteMensaje1)
+                .addGap(6, 6, 6)
+                .addComponent(gerenteMensaje2)
+                .addGap(16, 16, 16)
+                .addComponent(imagen, javax.swing.GroupLayout.PREFERRED_SIZE, 220, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(deseaAgregar)
+                .addGap(18, 18, 18)
+                .addComponent(edificio)
+                .addGap(7, 7, 7)
+                .addComponent(local)
+                .addGap(7, 7, 7)
+                .addComponent(piso)
+                .addGap(7, 7, 7)
+                .addComponent(finca)
+                .addGap(7, 7, 7)
+                .addComponent(mas)
+                .addGap(4, 4, 4)
+                .addComponent(listaDispo)
+                .addContainerGap())
+        );
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
@@ -150,19 +212,24 @@ public class MenuEmpresa extends javax.swing.JFrame {
     }//GEN-LAST:event_listaDispoActionPerformed
 
     private void pisoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_pisoActionPerformed
-        // TODO add your handling code here:
-        
+       //creamos un nuevo objeto 
         AgregarPiso pisoMenu = new AgregarPiso();
         pisoMenu.setVisible(true); //mostramos la nueva interfaz
         this.setVisible(false); //ocultamos esta
     }//GEN-LAST:event_pisoActionPerformed
 
     private void localActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_localActionPerformed
-        // TODO add your handling code here:
+        //hacmoes lo mismo de arriba pero con este nuevo menu que se abrira de Local
+        AgregarLocal local = new AgregarLocal();
+        local.setVisible(true);
+        this.setVisible(false);
     }//GEN-LAST:event_localActionPerformed
 
     private void fincaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_fincaActionPerformed
-        // TODO add your handling code here:
+        AgregarFinca finca = new AgregarFinca();
+        finca.setVisible(true);
+        this.setVisible(false);
+        
     }//GEN-LAST:event_fincaActionPerformed
 
     /**

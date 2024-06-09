@@ -5,8 +5,8 @@ package gestioninmuebleudc;
 public class Local extends Inmueble {
     public static String descripcion;
 
-    public Local(String direccion, float precioAlquiler, String descripcion) {
-        super(direccion, precioAlquiler);
+    public Local(String direccion, float precioAlquiler, String descripcion, boolean alquilado) {
+        super(direccion, precioAlquiler, alquilado);
         this.descripcion = descripcion;
     }
 
@@ -27,6 +27,12 @@ public class Local extends Inmueble {
         return precioAlquiler;
     }
 
+    public boolean isAlquilado() {
+        return alquilado;
+    }
+
+    
+    
     public void setDescripcion(String descripcion) {
         this.descripcion = descripcion;
     }
@@ -38,6 +44,11 @@ public class Local extends Inmueble {
     public void setPrecioAlquiler(float precioAlquiler) {
         this.precioAlquiler = precioAlquiler;
     }
+
+    public void setAlquilado(boolean alquilado) {
+        this.alquilado = alquilado;
+    }
+    
     
     
 }

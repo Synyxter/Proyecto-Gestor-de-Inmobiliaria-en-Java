@@ -67,6 +67,7 @@ public class AgregarLocal extends javax.swing.JFrame {
             }
         });
 
+        confirmar.setFont(new java.awt.Font("Segoe UI", 1, 12)); // NOI18N
         confirmar.setText("Confirmar");
         confirmar.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -162,13 +163,12 @@ public class AgregarLocal extends javax.swing.JFrame {
     }//GEN-LAST:event_backActionPerformed
 
     private void confirmarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_confirmarActionPerformed
-        // TODO add your handling code here:
-        
+
         //creamos un objeto de la clase Local que tendra todos estos datos los cuales ya pedimos en la interfaz grafica
         
         //añadimos al arraylist de inmuebles
         GestionInmuebleUdc.listaInmuebles.add(new Local(direccion.getText(), 
-                Float.parseFloat(precio.getText()),descripcion.getText()));
+                Float.parseFloat(precio.getText()),descripcion.getText(),false));
         
         this.setVisible(false); //ocultamos este menu 
         

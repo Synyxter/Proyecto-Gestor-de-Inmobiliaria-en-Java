@@ -213,7 +213,7 @@ public class AgregarEdificio extends javax.swing.JFrame {
         int localE = Integer.parseInt(local.getText());
                 
         //creamos el edificio dentro del array de inmuebles
-        GestionInmuebleUdc.listaInmuebles.add(new Edificio(direccionE, precioE)); //añadimos direccion y precio
+        GestionInmuebleUdc.listaInmuebles.add(new Edificio(direccionE, precioE, false)); //añadimos direccion y precio
         
         int aux = 0; //este auxiliar aumentara en 1 con cada iteraccion para asignarle un valor a pisoActual 
 
@@ -230,7 +230,7 @@ public class AgregarEdificio extends javax.swing.JFrame {
                 localMenu.setModal(true); //volvemos modal
                 localMenu.setVisible(true); //hacemos visible el menu de piso 
 
-            Edificio.agregarPiso(new Piso(direccionE,AgregarPisoEdificio.precioPiso,Piso.numeroPiso,Piso.descripcion));//creamos el piso
+            Edificio.agregarPiso(new Piso(direccionE,AgregarPisoEdificio.precioPiso,Piso.numeroPiso,Piso.descripcion,false));//creamos el piso
             aux++;
         }
         
@@ -248,7 +248,7 @@ public class AgregarEdificio extends javax.swing.JFrame {
             localMenu.setModal(true); //volvemos modal
             localMenu.setVisible(true); //hacemos visible el menu de piso  
 
-            Edificio.agregarLocal(new Local(direccionE,AgregarPisoEdificio.precioPiso,Piso.descripcion));//creamos el piso
+            Edificio.agregarLocal(new Local(direccionE,AgregarPisoEdificio.precioPiso,Piso.descripcion,false));//creamos el piso
             aux++;
         }
         JOptionPane.showMessageDialog(null,"Llenado de LOCALES compleado","",JOptionPane.INFORMATION_MESSAGE);

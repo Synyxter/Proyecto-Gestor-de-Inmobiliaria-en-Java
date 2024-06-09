@@ -1,17 +1,26 @@
 package gestioninmuebleudc;
+import java.time.LocalDate;
+
 public class Usuario {
     private String nombre;
     private String cedula;
     private int edad;
     private String sexo;
     private String foto;
+    private String contraseña;
+    
+    //este atributo static es para que haya un tiempo "global" y no que cada objeto tenga su propio tiempo
+    //para que no tengamos en una cuenta que estamos en el año x del mes x en el dia x, y al salir e iniciar con otra cuenta
+    //aparezca que estamos de nuevo en la fecha 0
+    public static LocalDate time;
 
-    public Usuario(String nombre, String cedula, int edad, String sexo, String foto) {
+    public Usuario(String nombre, String cedula, int edad, String sexo, String foto, String contraseña) {
         this.nombre = nombre;
         this.cedula = cedula;
         this.edad = edad;
         this.sexo = sexo;
         this.foto = foto;
+        this.contraseña = contraseña;
     }
 // GETTERS Y SETTERS
     public String getNombre() {
@@ -52,6 +61,14 @@ public class Usuario {
 
     public void setFoto(String foto) {
         this.foto = foto;
+    }
+
+    public String getContraseña() {
+        return contraseña;
+    }
+
+    public void setContraseña(String contraseña) {
+        this.contraseña = contraseña;
     }
     
     

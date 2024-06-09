@@ -78,6 +78,7 @@ public class AgregarFinca extends javax.swing.JFrame {
             }
         });
 
+        confirmar.setFont(new java.awt.Font("Segoe UI", 1, 12)); // NOI18N
         confirmar.setText("Confirmar");
         confirmar.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -179,7 +180,7 @@ public class AgregarFinca extends javax.swing.JFrame {
         
         //a este objeto lo ingresaremos al arraylist de inmuebles
         GestionInmuebleUdc.listaInmuebles.add(new Finca(direccion.getText(), 
-                Float.parseFloat(precio.getText()),descripcion.getText()));
+                Float.parseFloat(precio.getText()),descripcion.getText(), false));
         
         this.setVisible(false); //ocultamos este menu 
         

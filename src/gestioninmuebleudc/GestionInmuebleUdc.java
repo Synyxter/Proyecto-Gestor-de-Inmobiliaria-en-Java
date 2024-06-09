@@ -1,8 +1,8 @@
 package gestioninmuebleudc;
 
-import interfaces.Inicio;
-import interfaces.MenuIngreso;
-import interfaces.MenuEmpresa;
+import interfazMain.Inicio;
+import interfazMain.MenuIngreso;
+import interfazEmpresa.MenuEmpresa;
 import java.util.List;
 import java.util.Date;
 import java.util.ArrayList;
@@ -20,6 +20,7 @@ public class GestionInmuebleUdc {
     public static ArrayList<Inmueble> listaInmuebles;
     public static ArrayList<Usuario> listaUsuarios;
     public static ArrayList<MovimientoBancario> listaMovimientosBancarios;
+    
     private static String RUTA_USUARIOS = "usuarios.txt";
     private static String RUTA_INMUEBLES = "inmuebles.txt";
     private static String RUTA_MOVIMIENTOS = "movimientos.txt";
@@ -38,8 +39,10 @@ public class GestionInmuebleUdc {
         Inicio inicio = new Inicio(); //creamos un objeto
         inicio.setVisible(true); //hacemos visible la ventana del JFrame
         
+        //zz
         MenuEmpresa empresa = new MenuEmpresa();
         MenuIngreso mi = new MenuIngreso();
+        
          RUTA_INMUEBLES = "inmuebles.txt";
          RUTA_USUARIOS = "usuarios.txt";
          RUTA_MOVIMIENTOS  = "movimientos.txt";
@@ -69,17 +72,17 @@ public class GestionInmuebleUdc {
             switch (datos[0]) { // datos[0] debe ser el tipo del inmueble, como "Edificio", "Piso", etc.
                 case "Edificio":
                     // Asumiendo que el orden y tipos correctos son: String (direccion), float (area)
-                    Edificio edificio = new Edificio(datos[1], Float.parseFloat(datos[2]));
+                    Edificio edificio = new Edificio(datos[1], Float.parseFloat(datos[2]),Boolean.parseBoolean(datos[3]));
                     listaInmuebles.add(edificio);
                     break;
                 case "Piso":
                     // Asumiendo que el orden y tipos correctos son: String (direccion), float (area), int (numero de habitaciones), String (propietario)
-                    Piso piso = new Piso(datos[1], Float.parseFloat(datos[4]), Integer.parseInt(datos[5]), datos[2]);
+                    Piso piso = new Piso(datos[1], Float.parseFloat(datos[4]), Integer.parseInt(datos[5]), datos[2],Boolean.parseBoolean(datos[4]));
                     listaInmuebles.add(piso);
                     break;
                 case "Local":
                     // Asumiendo que el orden y tipos correctos son: String (direccion), String (descripcion), float (area), String (propietario)
-                    Local local = new Local(datos[1], Float.parseFloat(datos[2]), datos[3]);
+                    Local local = new Local(datos[1], Float.parseFloat(datos[2]), datos[3], Boolean.parseBoolean(datos[4]));
                     listaInmuebles.add(local);
                     break;
                 case "Finca":
@@ -112,7 +115,7 @@ public class GestionInmuebleUdc {
             String linea;
             while ((linea = reader.readLine()) != null) {
                 String[] datos = linea.split(",");
-                Usuario usuario = new Usuario(datos[0], datos[1], Integer.parseInt(datos[2]), datos[3], datos[4]);
+                Usuario usuario = new Usuario(datos[0], datos[1], Integer.parseInt(datos[2]), datos[3], datos[4], datos[5]);
                 listaUsuarios.add(usuario);
             }
         } catch (IOException e) {

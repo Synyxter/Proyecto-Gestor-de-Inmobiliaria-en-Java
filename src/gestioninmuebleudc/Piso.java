@@ -4,8 +4,8 @@ public class Piso extends Inmueble {
     public static int numeroPiso;
     public static String descripcion;
 
-    public Piso(String direccion, float precioAlquiler, int numeroPiso, String descripcion) {
-        super(direccion, precioAlquiler);
+    public Piso(String direccion, float precioAlquiler, int numeroPiso, String descripcion, boolean alquilado) {
+        super(direccion, precioAlquiler,alquilado);
         this.numeroPiso = numeroPiso;
         this.descripcion = descripcion;
     }
@@ -31,6 +31,7 @@ public class Piso extends Inmueble {
         this.descripcion = descripcion;
     }
  
+    
 }
 
 

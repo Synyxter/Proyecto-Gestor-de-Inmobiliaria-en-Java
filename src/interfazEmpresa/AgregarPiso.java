@@ -81,6 +81,7 @@ public class AgregarPiso extends javax.swing.JFrame {
             }
         });
 
+        confirmar.setFont(new java.awt.Font("Segoe UI", 1, 12)); // NOI18N
         confirmar.setText("Confirmar");
         confirmar.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -194,7 +195,7 @@ public class AgregarPiso extends javax.swing.JFrame {
         //creamos un objeto de la clase Piso que tendra todos estos datos los cuales ya pedimos en la interfaz grafica
         //añadimos al arraylist de inmuebles
         GestionInmuebleUdc.listaInmuebles.add(new Piso(direccion.getText(), Float.parseFloat(precio.getText()),
-                Integer.parseInt(numPiso.getText()),descripcion.getText()));
+                Integer.parseInt(numPiso.getText()),descripcion.getText(),false));
        
         
         this.setVisible(false); //ocultamos este menu 
