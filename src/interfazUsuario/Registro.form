@@ -24,41 +24,54 @@
   <Layout>
     <DimensionLayout dim="0">
       <Group type="103" groupAlignment="0" attributes="0">
-          <Group type="102" alignment="1" attributes="0">
-              <EmptySpace pref="96" max="32767" attributes="0"/>
-              <Group type="103" groupAlignment="0" attributes="0">
-                  <Component id="textUsser" alignment="0" min="-2" max="-2" attributes="0"/>
-                  <Component id="textCedula" alignment="0" min="-2" max="-2" attributes="0"/>
-                  <Component id="textEdad" alignment="0" min="-2" max="-2" attributes="0"/>
-                  <Component id="textSexo" alignment="0" min="-2" max="-2" attributes="0"/>
-                  <Component id="textFoto" alignment="0" min="-2" max="-2" attributes="0"/>
-                  <Component id="textContraseña" alignment="0" min="-2" max="-2" attributes="0"/>
-                  <Component id="textRegistro" min="-2" max="-2" attributes="0"/>
-                  <Component id="textContraseña2" min="-2" max="-2" attributes="0"/>
-              </Group>
-              <EmptySpace min="-2" pref="25" max="-2" attributes="0"/>
-              <Group type="103" groupAlignment="0" attributes="0">
-                  <Group type="102" attributes="0">
-                      <Component id="back" min="-2" max="-2" attributes="0"/>
-                      <EmptySpace type="unrelated" max="-2" attributes="0"/>
-                      <Component id="exit" min="-2" max="-2" attributes="0"/>
-                  </Group>
-                  <Group type="103" alignment="0" groupAlignment="1" max="-2" attributes="0">
-                      <Component id="contraseña2" alignment="0" max="32767" attributes="0"/>
-                      <Component id="contraseña" alignment="0" max="32767" attributes="0"/>
-                      <Component id="cedula" alignment="0" max="32767" attributes="0"/>
-                      <Component id="usser" alignment="0" pref="120" max="32767" attributes="0"/>
-                      <Component id="edad" alignment="0" max="32767" attributes="0"/>
-                      <Component id="sexo" alignment="0" max="32767" attributes="0"/>
-                      <Component id="foto" alignment="0" max="32767" attributes="0"/>
-                  </Group>
-              </Group>
-              <EmptySpace max="-2" attributes="0"/>
-          </Group>
           <Group type="102" alignment="0" attributes="0">
               <EmptySpace min="-2" pref="136" max="-2" attributes="0"/>
               <Component id="confirmar" min="-2" max="-2" attributes="0"/>
               <EmptySpace max="32767" attributes="0"/>
+          </Group>
+          <Group type="102" alignment="1" attributes="0">
+              <EmptySpace pref="96" max="32767" attributes="0"/>
+              <Group type="103" groupAlignment="0" attributes="0">
+                  <Group type="102" attributes="0">
+                      <Group type="103" groupAlignment="0" attributes="0">
+                          <Component id="textUsser" alignment="0" min="-2" max="-2" attributes="0"/>
+                          <Component id="textCedula" alignment="0" min="-2" max="-2" attributes="0"/>
+                          <Component id="textEdad" alignment="0" min="-2" max="-2" attributes="0"/>
+                          <Component id="textSexo" alignment="0" min="-2" max="-2" attributes="0"/>
+                          <Component id="textFoto" alignment="0" min="-2" max="-2" attributes="0"/>
+                          <Component id="textRegistro" min="-2" max="-2" attributes="0"/>
+                          <Component id="textEstrato" min="-2" max="-2" attributes="0"/>
+                      </Group>
+                      <EmptySpace min="-2" pref="39" max="-2" attributes="0"/>
+                      <Group type="103" groupAlignment="0" attributes="0">
+                          <Group type="102" attributes="0">
+                              <Component id="back" min="-2" max="-2" attributes="0"/>
+                              <EmptySpace type="unrelated" max="-2" attributes="0"/>
+                              <Component id="exit" min="-2" max="-2" attributes="0"/>
+                          </Group>
+                          <Group type="103" alignment="0" groupAlignment="1" max="-2" attributes="0">
+                              <Component id="cedula" alignment="0" max="32767" attributes="0"/>
+                              <Component id="usser" alignment="0" pref="120" max="32767" attributes="0"/>
+                              <Component id="edad" alignment="0" max="32767" attributes="0"/>
+                              <Component id="sexo" alignment="0" max="32767" attributes="0"/>
+                              <Component id="foto" alignment="0" max="32767" attributes="0"/>
+                          </Group>
+                          <Component id="estrato" alignment="0" min="-2" max="-2" attributes="0"/>
+                      </Group>
+                  </Group>
+                  <Group type="102" alignment="0" attributes="0">
+                      <Group type="103" groupAlignment="0" attributes="0">
+                          <Component id="textContraseña" alignment="0" min="-2" max="-2" attributes="0"/>
+                          <Component id="textContraseña2" min="-2" max="-2" attributes="0"/>
+                      </Group>
+                      <EmptySpace min="-2" pref="25" max="-2" attributes="0"/>
+                      <Group type="103" groupAlignment="0" max="-2" attributes="0">
+                          <Component id="contraseña" pref="120" max="32767" attributes="0"/>
+                          <Component id="contraseña2" max="32767" attributes="0"/>
+                      </Group>
+                  </Group>
+              </Group>
+              <EmptySpace max="-2" attributes="0"/>
           </Group>
       </Group>
     </DimensionLayout>
@@ -96,7 +109,12 @@
                       <Component id="textFoto" min="-2" max="-2" attributes="0"/>
                   </Group>
               </Group>
-              <EmptySpace type="unrelated" max="-2" attributes="0"/>
+              <EmptySpace max="-2" attributes="0"/>
+              <Group type="103" groupAlignment="3" attributes="0">
+                  <Component id="estrato" alignment="3" min="-2" max="-2" attributes="0"/>
+                  <Component id="textEstrato" alignment="3" min="-2" max="-2" attributes="0"/>
+              </Group>
+              <EmptySpace pref="18" max="32767" attributes="0"/>
               <Group type="103" groupAlignment="0" attributes="0">
                   <Component id="textContraseña" min="-2" max="-2" attributes="0"/>
                   <Component id="contraseña" min="-2" max="-2" attributes="0"/>
@@ -106,7 +124,7 @@
                   <Component id="textContraseña2" alignment="0" min="-2" max="-2" attributes="0"/>
                   <Component id="contraseña2" min="-2" max="-2" attributes="0"/>
               </Group>
-              <EmptySpace pref="46" max="32767" attributes="0"/>
+              <EmptySpace type="separate" max="-2" attributes="0"/>
               <Component id="confirmar" min="-2" max="-2" attributes="0"/>
               <EmptySpace max="-2" attributes="0"/>
           </Group>
@@ -238,6 +256,16 @@
     <Component class="javax.swing.JLabel" name="textContrase&#xf1;a2">
       <Properties>
         <Property name="text" type="java.lang.String" value="Confirmar Contrase&#xf1;a"/>
+      </Properties>
+    </Component>
+    <Component class="javax.swing.JLabel" name="textEstrato">
+      <Properties>
+        <Property name="text" type="java.lang.String" value="estrato"/>
+      </Properties>
+    </Component>
+    <Component class="javax.swing.JTextField" name="estrato">
+      <Properties>
+        <Property name="text" type="java.lang.String" value="1"/>
       </Properties>
     </Component>
   </SubComponents>

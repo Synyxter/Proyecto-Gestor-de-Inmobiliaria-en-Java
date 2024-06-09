@@ -115,7 +115,7 @@ public class GestionInmuebleUdc {
             String linea;
             while ((linea = reader.readLine()) != null) {
                 String[] datos = linea.split(",");
-                Usuario usuario = new Usuario(datos[0], datos[1], Integer.parseInt(datos[2]), datos[3], datos[4], datos[5]);
+                Usuario usuario = new Usuario(datos[0], datos[1], Integer.parseInt(datos[2]), datos[3], datos[4], datos[5], Integer.parseInt(datos[6]));
                 listaUsuarios.add(usuario);
             }
         } catch (IOException e) {

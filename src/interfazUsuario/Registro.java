@@ -47,6 +47,8 @@ public class Registro extends javax.swing.JFrame {
         contraseña = new javax.swing.JPasswordField();
         contraseña2 = new javax.swing.JPasswordField();
         textContraseña2 = new javax.swing.JLabel();
+        textEstrato = new javax.swing.JLabel();
+        estrato = new javax.swing.JTextField();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setUndecorated(true);
@@ -131,40 +133,52 @@ public class Registro extends javax.swing.JFrame {
 
         textContraseña2.setText("Confirmar Contraseña");
 
+        textEstrato.setText("estrato");
+
+        estrato.setText("1");
+
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                .addContainerGap(96, Short.MAX_VALUE)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(textUsser)
-                    .addComponent(textCedula)
-                    .addComponent(textEdad)
-                    .addComponent(textSexo)
-                    .addComponent(textFoto)
-                    .addComponent(textContraseña)
-                    .addComponent(textRegistro)
-                    .addComponent(textContraseña2))
-                .addGap(25, 25, 25)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(layout.createSequentialGroup()
-                        .addComponent(back)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                        .addComponent(exit))
-                    .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
-                        .addComponent(contraseña2, javax.swing.GroupLayout.Alignment.LEADING)
-                        .addComponent(contraseña, javax.swing.GroupLayout.Alignment.LEADING)
-                        .addComponent(cedula, javax.swing.GroupLayout.Alignment.LEADING)
-                        .addComponent(usser, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, 120, Short.MAX_VALUE)
-                        .addComponent(edad, javax.swing.GroupLayout.Alignment.LEADING)
-                        .addComponent(sexo, javax.swing.GroupLayout.Alignment.LEADING)
-                        .addComponent(foto, javax.swing.GroupLayout.Alignment.LEADING)))
-                .addContainerGap())
             .addGroup(layout.createSequentialGroup()
                 .addGap(136, 136, 136)
                 .addComponent(confirmar)
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
+                .addContainerGap(96, Short.MAX_VALUE)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(layout.createSequentialGroup()
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(textUsser)
+                            .addComponent(textCedula)
+                            .addComponent(textEdad)
+                            .addComponent(textSexo)
+                            .addComponent(textFoto)
+                            .addComponent(textRegistro)
+                            .addComponent(textEstrato))
+                        .addGap(39, 39, 39)
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addGroup(layout.createSequentialGroup()
+                                .addComponent(back)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                                .addComponent(exit))
+                            .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
+                                .addComponent(cedula, javax.swing.GroupLayout.Alignment.LEADING)
+                                .addComponent(usser, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, 120, Short.MAX_VALUE)
+                                .addComponent(edad, javax.swing.GroupLayout.Alignment.LEADING)
+                                .addComponent(sexo, javax.swing.GroupLayout.Alignment.LEADING)
+                                .addComponent(foto, javax.swing.GroupLayout.Alignment.LEADING))
+                            .addComponent(estrato, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                    .addGroup(layout.createSequentialGroup()
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(textContraseña)
+                            .addComponent(textContraseña2))
+                        .addGap(25, 25, 25)
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                            .addComponent(contraseña, javax.swing.GroupLayout.DEFAULT_SIZE, 120, Short.MAX_VALUE)
+                            .addComponent(contraseña2))))
+                .addContainerGap())
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -196,7 +210,11 @@ public class Registro extends javax.swing.JFrame {
                         .addComponent(textSexo)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                         .addComponent(textFoto)))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(estrato, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(textEstrato))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 18, Short.MAX_VALUE)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addComponent(textContraseña)
                     .addComponent(contraseña, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
@@ -204,7 +222,7 @@ public class Registro extends javax.swing.JFrame {
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addComponent(textContraseña2)
                     .addComponent(contraseña2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 46, Short.MAX_VALUE)
+                .addGap(18, 18, 18)
                 .addComponent(confirmar)
                 .addContainerGap())
         );
@@ -226,7 +244,7 @@ public class Registro extends javax.swing.JFrame {
         
         if(contraseña.getText().equals(contraseña2.getText())){
         //creamos un objeto Usuario con todos los datos que hemos obtenido en el JFrame y ese objeto lo añadimos a nuestro arraylist de objetos
-            GestionInmuebleUdc.listaUsuarios.add(new Usuario(usser.getText(),cedula.getText(), Integer.parseInt(edad.getText()), sexo.getText(), foto.getText(),contraseña.getText()));
+            GestionInmuebleUdc.listaUsuarios.add(new Usuario(usser.getText(),cedula.getText(), Integer.parseInt(edad.getText()), sexo.getText(), foto.getText(),contraseña.getText(),Integer.parseInt(estrato.getText())));
             this.setVisible(false);
             
             //informamos al usuario que su cuenta fue creada con exito
@@ -306,6 +324,7 @@ public class Registro extends javax.swing.JFrame {
     private javax.swing.JPasswordField contraseña;
     private javax.swing.JPasswordField contraseña2;
     private javax.swing.JTextField edad;
+    private javax.swing.JTextField estrato;
     private javax.swing.JButton exit;
     private javax.swing.JTextField foto;
     private javax.swing.JTextField sexo;
@@ -313,6 +332,7 @@ public class Registro extends javax.swing.JFrame {
     private javax.swing.JLabel textContraseña;
     private javax.swing.JLabel textContraseña2;
     private javax.swing.JLabel textEdad;
+    private javax.swing.JLabel textEstrato;
     private javax.swing.JLabel textFoto;
     private javax.swing.JLabel textRegistro;
     private javax.swing.JLabel textSexo;

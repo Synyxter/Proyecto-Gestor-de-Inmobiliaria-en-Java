@@ -34,7 +34,10 @@ public class InicioExitoso extends javax.swing.JFrame {
         mensaje = new javax.swing.JLabel();
         avanzarTime = new javax.swing.JButton();
         back = new javax.swing.JButton();
-        jButton1 = new javax.swing.JButton();
+        verDisponible = new javax.swing.JButton();
+        jTextField1 = new javax.swing.JTextField();
+        jLabel1 = new javax.swing.JLabel();
+        no = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setUndecorated(true);
@@ -75,7 +78,18 @@ public class InicioExitoso extends javax.swing.JFrame {
             }
         });
 
-        jButton1.setText("Ver lista de inmuebles Disponibles");
+        verDisponible.setText("Ver lista de inmuebles Disponibles");
+        verDisponible.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                verDisponibleActionPerformed(evt);
+            }
+        });
+
+        jTextField1.setText("Gestor de Pagos");
+
+        jLabel1.setText("Debe pagar ahora: ");
+
+        no.setText("no");
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
@@ -95,16 +109,23 @@ public class InicioExitoso extends javax.swing.JFrame {
                             .addGroup(layout.createSequentialGroup()
                                 .addComponent(textFecha)
                                 .addGap(18, 18, 18)
-                                .addComponent(fecha))))
-                    .addGroup(layout.createSequentialGroup()
-                        .addGap(122, 122, 122)
-                        .addComponent(alquilar))
+                                .addComponent(fecha))
+                            .addGroup(layout.createSequentialGroup()
+                                .addComponent(jLabel1)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                                .addComponent(no))))
                     .addGroup(layout.createSequentialGroup()
                         .addGap(124, 124, 124)
                         .addComponent(avanzarTime))
                     .addGroup(layout.createSequentialGroup()
-                        .addGap(86, 86, 86)
-                        .addComponent(jButton1)))
+                        .addGap(126, 126, 126)
+                        .addComponent(alquilar))
+                    .addGroup(layout.createSequentialGroup()
+                        .addGap(87, 87, 87)
+                        .addComponent(verDisponible))
+                    .addGroup(layout.createSequentialGroup()
+                        .addGap(132, 132, 132)
+                        .addComponent(jTextField1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
                 .addContainerGap(83, Short.MAX_VALUE))
         );
         layout.setVerticalGroup(
@@ -120,10 +141,16 @@ public class InicioExitoso extends javax.swing.JFrame {
                     .addComponent(fecha))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(mensaje)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 123, Short.MAX_VALUE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(jLabel1)
+                    .addComponent(no))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 82, Short.MAX_VALUE)
                 .addComponent(alquilar)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                .addComponent(jButton1)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(verDisponible)
+                .addGap(3, 3, 3)
+                .addComponent(jTextField1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(avanzarTime)
                 .addGap(17, 17, 17))
@@ -142,6 +169,14 @@ public class InicioExitoso extends javax.swing.JFrame {
         
         InicioExitoso next = new InicioExitoso();
         Usuario.time = Usuario.time.plusDays(15); //le sumamos 15 dias al atributo static que es un LocalDate
+        
+        //para evitar problemas con febrero y meses con mas dias o menos (si no hacemos esto se recorta 1 dia cada
+        // que le damos a avanzar 15, es decir, primero nos dejara un 29 de un mes, luego un 28, 27, 26, 25, 24...)
+        //la condicion > 25 es fundamental para evitar que cada vez que queramos pasar 15 dias se pase un mes completo
+        while(Usuario.time.getDayOfMonth() > 25 && Usuario.time.getDayOfMonth() < 29){
+            Usuario.time = Usuario.time.plusDays(1);
+        }
+        
         //ahora actualizamos la fecha del menu
         next.actualizarFecha(Usuario.time);  
         next.setVisible(true);
@@ -163,15 +198,17 @@ public class InicioExitoso extends javax.swing.JFrame {
             //aca descartamos para ver si se encontro o no el inmueble
             if(Integer.parseInt(s) == GestionInmuebleUdc.listaInmuebles.get(i).getId()){
                 //decimos que se encontro un inmueble con el mismo id, ahora verificamos que ese mismo id
+                //ahora comprobamos si esta o no ocupado
                 encontrado = true;
                 
-                //ahora comprobamos si esta o no ocupado
+                
                 //por defecto todo inmueble tiene en alquilado (atributo de inmueble) un -1
                 //en un caso normal (inmueble ocupado) deberia tener la cc de un usuario y nadie colocaria en su cc un negativo
                 // si el -1 sigue es porque nadie lo ha alquilado
                 if(GestionInmuebleUdc.listaInmuebles.get(i).getAlquilado() == -1){
                     //para esto necesitamos a la variable static ccStatic, la misma se explica que hace en InicioSesion en el apartado de confirmar
                     GestionInmuebleUdc.listaInmuebles.get(i).setAlquilado(Integer.parseInt(InicioSesion.ccStatic));
+                
                 } else {
                     JOptionPane.showMessageDialog(null,"Inmueble ocupado :/","Busqueda Fallida",JOptionPane.INFORMATION_MESSAGE);
                 }//end if else interno
@@ -185,6 +222,20 @@ public class InicioExitoso extends javax.swing.JFrame {
         }
         
     }//GEN-LAST:event_alquilarActionPerformed
+
+    private void verDisponibleActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_verDisponibleActionPerformed
+
+        this.setVisible(false);
+        MenuDisponible next = new MenuDisponible();
+        
+        //actualizamos todo para que aparezca informacion recopilada
+        next.actualirMenuEdificio();
+        next.actualirMenuFinca();
+        next.actualirMenuLocal();
+        next.actualirMenuPiso();
+        
+        next.setVisible(true);
+    }//GEN-LAST:event_verDisponibleActionPerformed
 
     /**
      * @param args the command line arguments
@@ -228,8 +279,11 @@ public class InicioExitoso extends javax.swing.JFrame {
     private javax.swing.JButton back;
     private javax.swing.JButton exit;
     private javax.swing.JLabel fecha;
-    private javax.swing.JButton jButton1;
+    private javax.swing.JLabel jLabel1;
+    private javax.swing.JTextField jTextField1;
     private javax.swing.JLabel mensaje;
+    private javax.swing.JLabel no;
     private javax.swing.JLabel textFecha;
+    private javax.swing.JButton verDisponible;
     // End of variables declaration//GEN-END:variables
 }

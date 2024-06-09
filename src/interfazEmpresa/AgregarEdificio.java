@@ -8,6 +8,7 @@ import gestioninmuebleudc.Edificio;
 import gestioninmuebleudc.GestionInmuebleUdc;
 import gestioninmuebleudc.Piso;
 import gestioninmuebleudc.Local;
+import interfazUsuario.MenuDisponible;
 import javax.swing.JOptionPane;
 
 /**
@@ -221,9 +222,16 @@ public class AgregarEdificio extends javax.swing.JFrame {
         }
         
         if(condicion){
+            //esto es para MenuDisponible
+            //una clase del package de interfazUsuario, en MenuDisponible se encuentra mas info sobre este proceso
+            MenuDisponible.precioStatic = precio.getText();
+            MenuDisponible.idStatic = id.getText();
+            
             //creamos el edificio dentro del array de inmuebles
             //colocamos como alquilado a -1 porque puede que el usuario introduzca como su cc a 0, en cambio seria raro que introduzca a -1 como su cc
             GestionInmuebleUdc.listaInmuebles.add(new Edificio(direccion.getText(), Float.parseFloat(precio.getText()), -1,Integer.parseInt(id.getText()))); //añadimos direccion y precio
+            
+            //esto es para MenuDisponible
 
             int aux = 0; //este auxiliar aumentara en 1 con cada iteraccion para asignarle un valor a pisoActual 
 
@@ -242,6 +250,12 @@ public class AgregarEdificio extends javax.swing.JFrame {
 
                 Edificio.agregarPiso(new Piso(direccion.getText(),AgregarPisoEdificio.precioPiso,Piso.numeroPiso,Piso.descripcion,-1,AgregarPisoEdificio.idStatic));//creamos el piso
                 aux++;
+                
+                //convertimos el float en string con String.valueOf
+                MenuDisponible.precio3Static = String.valueOf(AgregarPisoEdificio.precioPiso);
+                MenuDisponible.id3Static = String.valueOf(AgregarPisoEdificio.idStatic);
+                MenuDisponible.descripcion3Static = Piso.descripcion;
+                
             }//end for de piso
 
             JOptionPane.showMessageDialog(null,"Llenado de PISOS compleado","Agregar Edificio",JOptionPane.INFORMATION_MESSAGE);
@@ -261,6 +275,11 @@ public class AgregarEdificio extends javax.swing.JFrame {
 
                 Edificio.agregarLocal(new Local(direccion.getText(),AgregarLocalEdificio.precioLocal,Local.descripcion,-1,AgregarLocalEdificio.idStatic));//creamos el piso
                 aux++;
+                
+                //convertimos el float en string con String.valueOf
+                MenuDisponible.precio2Static = String.valueOf(AgregarLocalEdificio.precioLocal);
+                MenuDisponible.id2Static = String.valueOf(AgregarLocalEdificio.idStatic);
+                MenuDisponible.descripcion2Static = Local.descripcion;
             }
             JOptionPane.showMessageDialog(null,"Llenado de LOCALES compleado","Agregar Edificio",JOptionPane.INFORMATION_MESSAGE);
 

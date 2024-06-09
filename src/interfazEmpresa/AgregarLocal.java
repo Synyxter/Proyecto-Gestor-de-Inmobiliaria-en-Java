@@ -4,6 +4,7 @@ package interfazEmpresa;
 import gestioninmuebleudc.Edificio;
 import gestioninmuebleudc.GestionInmuebleUdc;
 import gestioninmuebleudc.Local;
+import interfazUsuario.MenuDisponible;
 import javax.swing.JOptionPane;
 import javax.swing.JTextField;
 
@@ -192,6 +193,12 @@ public class AgregarLocal extends javax.swing.JFrame {
             //añadimos al arraylist de inmuebles
             GestionInmuebleUdc.listaInmuebles.add(new Local(direccion.getText(), 
                     Float.parseFloat(precio.getText()),descripcion.getText(),-1,Integer.parseInt(id.getText())));
+        
+            //esto es para MenuDisponible
+            //una clase del package de interfazUsuario, en MenuDisponible se encuentra mas info sobre este proceso
+            MenuDisponible.precio3Static = precio.getText();
+            MenuDisponible.id3Static = id.getText();
+            MenuDisponible.descripcion3Static = descripcion.getText();
         } else {
             JOptionPane.showMessageDialog(null,"El ID que ingreso se encuentra\n" + "ocupado por otro inmueble","Agregar Local",JOptionPane.INFORMATION_MESSAGE);
         }

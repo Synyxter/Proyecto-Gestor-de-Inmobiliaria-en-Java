@@ -2,6 +2,7 @@
 package interfazEmpresa;
 
 import gestioninmuebleudc.Local;
+import interfazUsuario.MenuDisponible;
 import javax.swing.JTextField;
 
 public class AgregarLocalEdificio extends javax.swing.JDialog {

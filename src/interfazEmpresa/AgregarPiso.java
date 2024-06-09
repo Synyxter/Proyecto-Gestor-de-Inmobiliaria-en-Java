@@ -6,6 +6,7 @@ package interfazEmpresa;
 
 import gestioninmuebleudc.GestionInmuebleUdc;
 import gestioninmuebleudc.Piso;
+import interfazUsuario.MenuDisponible;
 import javax.swing.JOptionPane;
 import javax.swing.JTextField;
 
@@ -219,7 +220,13 @@ public class AgregarPiso extends javax.swing.JFrame {
             //añadimos al arraylist de inmuebles
             GestionInmuebleUdc.listaInmuebles.add(new Piso(direccion.getText(), Float.parseFloat(precio.getText()),
                     Integer.parseInt(numPiso.getText()),descripcion.getText(),-1,Integer.parseInt(id.getText())));
-
+            
+            //esto es para MenuDisponible
+            //una clase del package de interfazUsuario, en MenuDisponible se encuentra mas info sobre este proceso
+            MenuDisponible.precio2Static = precio.getText();
+            MenuDisponible.id2Static = id.getText();
+            MenuDisponible.descripcion2Static = descripcion.getText();
+            
         }else {
             JOptionPane.showMessageDialog(null,"El ID que ingreso se encuentra\n" + "ocupado por otro inmueble","Agregar Piso",JOptionPane.INFORMATION_MESSAGE);
         }

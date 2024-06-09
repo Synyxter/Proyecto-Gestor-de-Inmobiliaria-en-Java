@@ -33,8 +33,6 @@ public class MenuEmpresa extends javax.swing.JFrame {
         gerenteMensaje1 = new javax.swing.JLabel();
         gerenteMensaje2 = new javax.swing.JLabel();
         imagen = new javax.swing.JLabel();
-        mas = new javax.swing.JLabel();
-        listaDispo = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setUndecorated(true);
@@ -96,15 +94,6 @@ public class MenuEmpresa extends javax.swing.JFrame {
         imagen.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagenes/empresaIcon.png"))); // NOI18N
         imagen.setText(" ");
 
-        mas.setText("O quizas...");
-
-        listaDispo.setText("Ver lista de inmuebles disponibles");
-        listaDispo.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                listaDispoActionPerformed(evt);
-            }
-        });
-
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
@@ -136,12 +125,6 @@ public class MenuEmpresa extends javax.swing.JFrame {
                 .addGap(230, 230, 230)
                 .addComponent(finca))
             .addGroup(layout.createSequentialGroup()
-                .addGap(240, 240, 240)
-                .addComponent(mas))
-            .addGroup(layout.createSequentialGroup()
-                .addGap(160, 160, 160)
-                .addComponent(listaDispo))
-            .addGroup(layout.createSequentialGroup()
                 .addGap(140, 140, 140)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
                     .addComponent(deseaAgregar)
@@ -171,11 +154,7 @@ public class MenuEmpresa extends javax.swing.JFrame {
                 .addComponent(piso)
                 .addGap(7, 7, 7)
                 .addComponent(finca)
-                .addGap(7, 7, 7)
-                .addComponent(mas)
-                .addGap(4, 4, 4)
-                .addComponent(listaDispo)
-                .addContainerGap())
+                .addContainerGap(25, Short.MAX_VALUE))
         );
 
         pack();
@@ -201,15 +180,6 @@ public class MenuEmpresa extends javax.swing.JFrame {
         //creamos otro objeto para abrir nuevamente el JFrame del Menu de ingreso como si estuvieramos volviendo
         this.setVisible(false); //con esto ocultamos el JFrame del Menu Empresa
     }//GEN-LAST:event_BackActionPerformed
-
-    private void listaDispoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_listaDispoActionPerformed
-      
-        ListaDisponible is = new ListaDisponible();
-        
-        is.setVisible(true); //hacemos visible el nuevo menu
-        
-        this.setVisible(false); //ocultamos el anterior
-    }//GEN-LAST:event_listaDispoActionPerformed
 
     private void pisoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_pisoActionPerformed
        //creamos un nuevo objeto 
@@ -276,9 +246,7 @@ public class MenuEmpresa extends javax.swing.JFrame {
     private javax.swing.JLabel gerenteMensaje1;
     private javax.swing.JLabel gerenteMensaje2;
     private javax.swing.JLabel imagen;
-    private javax.swing.JButton listaDispo;
     private javax.swing.JButton local;
-    private javax.swing.JLabel mas;
     private javax.swing.JButton piso;
     private javax.swing.JLabel tituloInmobiliaria;
     // End of variables declaration//GEN-END:variables
