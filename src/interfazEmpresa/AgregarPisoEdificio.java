@@ -5,6 +5,7 @@
 package interfazEmpresa;
 
 import gestioninmuebleudc.Piso;
+import java.util.Random;
 
     //no confundir AgregarPisoEdificio con AgregarPiso, este ultimo es un JFrame mientras el primero es un JDialg
 
@@ -42,8 +43,6 @@ public class AgregarPisoEdificio extends javax.swing.JDialog {
         pisoActualMenu = new javax.swing.JLabel();
         textPrecioPiso = new javax.swing.JLabel();
         precioPisoMenu = new javax.swing.JTextField();
-        id = new javax.swing.JTextField();
-        textId = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
 
@@ -90,8 +89,6 @@ public class AgregarPisoEdificio extends javax.swing.JDialog {
 
         precioPisoMenu.setText(" ");
 
-        textId.setText("ID inmueble");
-
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
@@ -122,13 +119,9 @@ public class AgregarPisoEdificio extends javax.swing.JDialog {
                                 .addGap(50, 50, 50)
                                 .addComponent(descripcion, javax.swing.GroupLayout.PREFERRED_SIZE, 115, javax.swing.GroupLayout.PREFERRED_SIZE))
                             .addGroup(layout.createSequentialGroup()
-                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                    .addComponent(textPrecioPiso)
-                                    .addComponent(textId))
+                                .addComponent(textPrecioPiso)
                                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                    .addComponent(id)
-                                    .addComponent(precioPisoMenu))))))
+                                .addComponent(precioPisoMenu)))))
                 .addGap(4, 4, 4))
         );
         layout.setVerticalGroup(
@@ -153,12 +146,9 @@ public class AgregarPisoEdificio extends javax.swing.JDialog {
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(textPrecioPiso)
                     .addComponent(precioPisoMenu, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(18, 18, 18)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(textId)
-                    .addComponent(id, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(18, 18, 18)
-                .addComponent(confirmar))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 30, Short.MAX_VALUE)
+                .addComponent(confirmar)
+                .addGap(28, 28, 28))
         );
 
         pack();
@@ -185,11 +175,19 @@ public class AgregarPisoEdificio extends javax.swing.JDialog {
 
     private void confirmarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_confirmarActionPerformed
         // TODO add your handling code here:
-
+        
+        //generamos un codigo random para el id
+        Random idRandom = new Random();
+        
+        //con ayuda del auxiliar le asignamos a este random al auxiliar
+        //establecemos que queremos que sea entre 0 y 99 y a eso le sumamos 300
+        //es decir, nuestro intervalo sera de 300 a 399
+        int auxId = 300 + idRandom.nextInt(99);
+        
         //aca llenamos los atributos de la clase piso
         Piso.descripcion = descripcion.getText();
         Piso.numeroPiso = Integer.parseInt(pisoActualMenu.getText());
-        idStatic = Integer.parseInt(id.getText()); //como no podemos pasar el atributo id directamente a AgregarEdificio
+        idStatic = auxId; //como no podemos pasar el atributo id directamente a AgregarEdificio
         //nos toca crear un atributo static y a ese atributo se le asignara el valor del atributo privado id, de tal forma que idStatic ira
         //variando su valor de forma constante 
         precioPiso = Float.parseFloat(precioPisoMenu.getText()); //convertimos a float el string que nos entrega el menu
@@ -245,11 +243,9 @@ public class AgregarPisoEdificio extends javax.swing.JDialog {
     private javax.swing.JButton confirmar;
     private javax.swing.JTextField descripcion;
     private javax.swing.JButton exit;
-    private javax.swing.JTextField id;
     private javax.swing.JLabel pisoActualMenu;
     private javax.swing.JTextField precioPisoMenu;
     private javax.swing.JLabel textDescripcion;
-    private javax.swing.JLabel textId;
     private javax.swing.JLabel textNumPiso;
     private javax.swing.JLabel textPrecioPiso;
     private javax.swing.JLabel tituloMenu;

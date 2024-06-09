@@ -15,7 +15,7 @@ public abstract class Inmueble {
         this.id = id;
     }
     
-    public abstract float consultarPrecioAlquiler();
+    public abstract float consultarPrecioAlquiler(int i);
 
     public String getDireccion() {
         return direccion; 

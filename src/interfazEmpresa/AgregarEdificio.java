@@ -4,6 +4,7 @@
  */
 package interfazEmpresa;
 
+import java.util.Random;
 import gestioninmuebleudc.Edificio;
 import gestioninmuebleudc.GestionInmuebleUdc;
 import gestioninmuebleudc.Piso;
@@ -50,8 +51,6 @@ public class AgregarEdificio extends javax.swing.JFrame {
         confirmar = new javax.swing.JButton();
         textLocales = new javax.swing.JLabel();
         local = new javax.swing.JTextField();
-        textId = new javax.swing.JLabel();
-        id = new javax.swing.JTextField();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setUndecorated(true);
@@ -105,8 +104,6 @@ public class AgregarEdificio extends javax.swing.JFrame {
 
         textLocales.setText("Locales:");
 
-        textId.setText("ID de este inmueble");
-
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
@@ -119,32 +116,29 @@ public class AgregarEdificio extends javax.swing.JFrame {
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                         .addComponent(exit))
                     .addGroup(layout.createSequentialGroup()
+                        .addGap(72, 72, 72)
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(tituloMenu)
                             .addGroup(layout.createSequentialGroup()
-                                .addGap(72, 72, 72)
-                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                    .addComponent(tituloMenu)
-                                    .addGroup(layout.createSequentialGroup()
-                                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                                            .addComponent(textDireccion, javax.swing.GroupLayout.Alignment.LEADING)
-                                            .addComponent(textPisos, javax.swing.GroupLayout.Alignment.LEADING)
-                                            .addComponent(textPrecio, javax.swing.GroupLayout.Alignment.LEADING)
-                                            .addComponent(textNombre, javax.swing.GroupLayout.Alignment.LEADING)
-                                            .addComponent(textId, javax.swing.GroupLayout.Alignment.LEADING)
-                                            .addComponent(textLocales, javax.swing.GroupLayout.Alignment.LEADING))
-                                        .addGap(32, 32, 32)
-                                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                                            .addComponent(nombre)
-                                            .addComponent(direccion)
-                                            .addComponent(pisos)
-                                            .addComponent(precio)
-                                            .addComponent(local, javax.swing.GroupLayout.DEFAULT_SIZE, 115, Short.MAX_VALUE)
-                                            .addComponent(id)))))
-                            .addGroup(layout.createSequentialGroup()
-                                .addGap(153, 153, 153)
-                                .addComponent(confirmar)))
-                        .addGap(0, 43, Short.MAX_VALUE)))
+                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                                    .addComponent(textDireccion, javax.swing.GroupLayout.Alignment.LEADING)
+                                    .addComponent(textPisos, javax.swing.GroupLayout.Alignment.LEADING)
+                                    .addComponent(textPrecio, javax.swing.GroupLayout.Alignment.LEADING)
+                                    .addComponent(textNombre, javax.swing.GroupLayout.Alignment.LEADING)
+                                    .addComponent(textLocales, javax.swing.GroupLayout.Alignment.LEADING))
+                                .addGap(35, 35, 35)
+                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                                    .addComponent(nombre)
+                                    .addComponent(direccion)
+                                    .addComponent(pisos)
+                                    .addComponent(precio)
+                                    .addComponent(local, javax.swing.GroupLayout.DEFAULT_SIZE, 115, Short.MAX_VALUE))))
+                        .addGap(0, 40, Short.MAX_VALUE)))
                 .addContainerGap())
+            .addGroup(layout.createSequentialGroup()
+                .addGap(154, 154, 154)
+                .addComponent(confirmar)
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -174,13 +168,9 @@ public class AgregarEdificio extends javax.swing.JFrame {
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(textLocales)
                     .addComponent(local, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(18, 18, 18)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(textId)
-                    .addComponent(id, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 27, Short.MAX_VALUE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 77, Short.MAX_VALUE)
                 .addComponent(confirmar)
-                .addGap(26, 26, 26))
+                .addGap(19, 19, 19))
         );
 
         pack();
@@ -210,13 +200,21 @@ public class AgregarEdificio extends javax.swing.JFrame {
         // TODO add your handling code here:
         //aca inicia la verdadera magia
         
+        //generamos un codigo random para el id
+        Random idRandom = new Random();
+        
+        //con ayuda del auxiliar le asignamos a este random al auxiliar
+        //establecemos que queremos que sea entre 0 y 99 y a eso le sumamos 100
+        //es decir, nuestro intervalo sera de 100 a 199
+        int auxId = 100 + idRandom.nextInt(99);
+        
         String nombreE = nombre.getText();
         
         //tenemos que verificar que el ID del edificio sea unico
         boolean condicion = true;
         for(int i = 0; i < GestionInmuebleUdc.listaInmuebles.size(); i++){
             //comparamos si el id ingresado se encuentra en nuestro arraylist 
-            if(Integer.parseInt(id.getText()) == GestionInmuebleUdc.listaInmuebles.get(i).getId()){
+            if(auxId == GestionInmuebleUdc.listaInmuebles.get(i).getId()){
                 condicion = false; //si se encuentra entonces marcamos como false
             }
         }
@@ -225,11 +223,11 @@ public class AgregarEdificio extends javax.swing.JFrame {
             //esto es para MenuDisponible
             //una clase del package de interfazUsuario, en MenuDisponible se encuentra mas info sobre este proceso
             MenuDisponible.precioStatic = precio.getText();
-            MenuDisponible.idStatic = id.getText();
+            MenuDisponible.idStatic = String.valueOf(auxId); //convertimos en String
             
             //creamos el edificio dentro del array de inmuebles
             //colocamos como alquilado a -1 porque puede que el usuario introduzca como su cc a 0, en cambio seria raro que introduzca a -1 como su cc
-            GestionInmuebleUdc.listaInmuebles.add(new Edificio(direccion.getText(), Float.parseFloat(precio.getText()), -1,Integer.parseInt(id.getText()))); //añadimos direccion y precio
+            GestionInmuebleUdc.listaInmuebles.add(new Edificio(direccion.getText(), Float.parseFloat(precio.getText()), -1,auxId)); //añadimos direccion y precio
             
             //esto es para MenuDisponible
 
@@ -284,7 +282,7 @@ public class AgregarEdificio extends javax.swing.JFrame {
             JOptionPane.showMessageDialog(null,"Llenado de LOCALES compleado","Agregar Edificio",JOptionPane.INFORMATION_MESSAGE);
 
         } else {
-            JOptionPane.showMessageDialog(null,"El ID que ingreso se encuentra\n" + "ocupado por otro inmueble","Agregar Edificio",JOptionPane.INFORMATION_MESSAGE);
+            JOptionPane.showMessageDialog(null,"El ID se encuentra\n" + "ocupado por otro inmueble\nIntente de nuevo","Agregar Edificio",JOptionPane.INFORMATION_MESSAGE);
         }   
         
         //esto es un caso especial para ocultar este menu aunque el usuario no abra otros
@@ -338,13 +336,11 @@ public class AgregarEdificio extends javax.swing.JFrame {
     private javax.swing.JButton confirmar;
     private javax.swing.JTextField direccion;
     private javax.swing.JButton exit;
-    private javax.swing.JTextField id;
     private javax.swing.JTextField local;
     private javax.swing.JTextField nombre;
     private javax.swing.JTextField pisos;
     private javax.swing.JTextField precio;
     private javax.swing.JLabel textDireccion;
-    private javax.swing.JLabel textId;
     private javax.swing.JLabel textLocales;
     private javax.swing.JLabel textNombre;
     private javax.swing.JLabel textPisos;

@@ -133,9 +133,14 @@ public class Registro extends javax.swing.JFrame {
 
         textContraseña2.setText("Confirmar Contraseña");
 
-        textEstrato.setText("estrato");
+        textEstrato.setText("estrato (1-6)");
 
         estrato.setText("1");
+        estrato.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                estratoActionPerformed(evt);
+            }
+        });
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
@@ -164,12 +169,12 @@ public class Registro extends javax.swing.JFrame {
                                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                                 .addComponent(exit))
                             .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
+                                .addComponent(estrato, javax.swing.GroupLayout.Alignment.LEADING)
                                 .addComponent(cedula, javax.swing.GroupLayout.Alignment.LEADING)
                                 .addComponent(usser, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, 120, Short.MAX_VALUE)
                                 .addComponent(edad, javax.swing.GroupLayout.Alignment.LEADING)
                                 .addComponent(sexo, javax.swing.GroupLayout.Alignment.LEADING)
-                                .addComponent(foto, javax.swing.GroupLayout.Alignment.LEADING))
-                            .addComponent(estrato, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                                .addComponent(foto, javax.swing.GroupLayout.Alignment.LEADING))))
                     .addGroup(layout.createSequentialGroup()
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addComponent(textContraseña)
@@ -244,7 +249,7 @@ public class Registro extends javax.swing.JFrame {
         
         if(contraseña.getText().equals(contraseña2.getText())){
         //creamos un objeto Usuario con todos los datos que hemos obtenido en el JFrame y ese objeto lo añadimos a nuestro arraylist de objetos
-            GestionInmuebleUdc.listaUsuarios.add(new Usuario(usser.getText(),cedula.getText(), Integer.parseInt(edad.getText()), sexo.getText(), foto.getText(),contraseña.getText(),Integer.parseInt(estrato.getText())));
+            GestionInmuebleUdc.listaUsuarios.add(new Usuario(usser.getText(),cedula.getText(), Integer.parseInt(edad.getText()), sexo.getText(), foto.getText(),contraseña.getText(),Integer.parseInt(estrato.getText()),0));
             this.setVisible(false);
             
             //informamos al usuario que su cuenta fue creada con exito
@@ -281,6 +286,10 @@ public class Registro extends javax.swing.JFrame {
     private void contraseña2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_contraseña2ActionPerformed
         // TODO add your handling code here:
     }//GEN-LAST:event_contraseña2ActionPerformed
+
+    private void estratoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_estratoActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_estratoActionPerformed
 
     /**
      * @param args the command line arguments

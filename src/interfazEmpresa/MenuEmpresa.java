@@ -33,6 +33,8 @@ public class MenuEmpresa extends javax.swing.JFrame {
         gerenteMensaje1 = new javax.swing.JLabel();
         gerenteMensaje2 = new javax.swing.JLabel();
         imagen = new javax.swing.JLabel();
+        jLabel1 = new javax.swing.JLabel();
+        negocioEmpresa = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setUndecorated(true);
@@ -94,6 +96,10 @@ public class MenuEmpresa extends javax.swing.JFrame {
         imagen.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagenes/empresaIcon.png"))); // NOI18N
         imagen.setText(" ");
 
+        jLabel1.setText("o quizás...");
+
+        negocioEmpresa.setText("Ver dinero disponible y ventas");
+
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
@@ -119,16 +125,22 @@ public class MenuEmpresa extends javax.swing.JFrame {
                 .addGap(230, 230, 230)
                 .addComponent(local))
             .addGroup(layout.createSequentialGroup()
-                .addGap(230, 230, 230)
-                .addComponent(piso))
-            .addGroup(layout.createSequentialGroup()
-                .addGap(230, 230, 230)
-                .addComponent(finca))
-            .addGroup(layout.createSequentialGroup()
                 .addGap(140, 140, 140)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
                     .addComponent(deseaAgregar)
                     .addComponent(imagen, javax.swing.GroupLayout.PREFERRED_SIZE, 240, javax.swing.GroupLayout.PREFERRED_SIZE)))
+            .addGroup(layout.createSequentialGroup()
+                .addGap(230, 230, 230)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                    .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                        .addGroup(layout.createSequentialGroup()
+                            .addGap(6, 6, 6)
+                            .addComponent(jLabel1))
+                        .addComponent(finca))
+                    .addComponent(piso)))
+            .addGroup(layout.createSequentialGroup()
+                .addGap(159, 159, 159)
+                .addComponent(negocioEmpresa))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -152,9 +164,13 @@ public class MenuEmpresa extends javax.swing.JFrame {
                 .addComponent(local)
                 .addGap(7, 7, 7)
                 .addComponent(piso)
-                .addGap(7, 7, 7)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(finca)
-                .addContainerGap(25, Short.MAX_VALUE))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addComponent(jLabel1)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(negocioEmpresa)
+                .addContainerGap(14, Short.MAX_VALUE))
         );
 
         pack();
@@ -246,7 +262,9 @@ public class MenuEmpresa extends javax.swing.JFrame {
     private javax.swing.JLabel gerenteMensaje1;
     private javax.swing.JLabel gerenteMensaje2;
     private javax.swing.JLabel imagen;
+    private javax.swing.JLabel jLabel1;
     private javax.swing.JButton local;
+    private javax.swing.JButton negocioEmpresa;
     private javax.swing.JButton piso;
     private javax.swing.JLabel tituloInmobiliaria;
     // End of variables declaration//GEN-END:variables

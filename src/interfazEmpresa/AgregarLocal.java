@@ -5,6 +5,7 @@ import gestioninmuebleudc.Edificio;
 import gestioninmuebleudc.GestionInmuebleUdc;
 import gestioninmuebleudc.Local;
 import interfazUsuario.MenuDisponible;
+import java.util.Random;
 import javax.swing.JOptionPane;
 import javax.swing.JTextField;
 
@@ -37,8 +38,6 @@ public class AgregarLocal extends javax.swing.JFrame {
         textPrecio = new javax.swing.JLabel();
         textDireccion = new javax.swing.JLabel();
         direccion = new javax.swing.JTextField();
-        id = new javax.swing.JTextField();
-        textId = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setUndecorated(true);
@@ -89,8 +88,6 @@ public class AgregarLocal extends javax.swing.JFrame {
 
         direccion.setText(" ");
 
-        textId.setText("ID inmueble");
-
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
@@ -103,11 +100,8 @@ public class AgregarLocal extends javax.swing.JFrame {
                         .addGap(8, 8, 8)
                         .addComponent(exit))
                     .addGroup(layout.createSequentialGroup()
-                        .addGap(130, 130, 130)
-                        .addComponent(confirmar))
-                    .addGroup(layout.createSequentialGroup()
                         .addGap(65, 65, 65)
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addGroup(layout.createSequentialGroup()
                                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                                     .addComponent(textDescripcion)
@@ -118,14 +112,14 @@ public class AgregarLocal extends javax.swing.JFrame {
                                     .addComponent(descripcion, javax.swing.GroupLayout.DEFAULT_SIZE, 110, Short.MAX_VALUE)
                                     .addComponent(direccion)
                                     .addComponent(precio)))
-                            .addComponent(tituloMenu)
-                            .addGroup(layout.createSequentialGroup()
-                                .addComponent(textId)
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 48, Short.MAX_VALUE)
-                                .addComponent(id, javax.swing.GroupLayout.PREFERRED_SIZE, 110, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                            .addComponent(tituloMenu))
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                         .addComponent(pisoActualMenu)))
                 .addContainerGap())
+            .addGroup(layout.createSequentialGroup()
+                .addGap(129, 129, 129)
+                .addComponent(confirmar)
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -149,13 +143,9 @@ public class AgregarLocal extends javax.swing.JFrame {
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(textDireccion)
                     .addComponent(direccion, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(18, 18, 18)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(textId)
-                    .addComponent(id, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 24, Short.MAX_VALUE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 37, Short.MAX_VALUE)
                 .addComponent(confirmar)
-                .addContainerGap())
+                .addGap(26, 26, 26))
         );
 
         pack();
@@ -179,11 +169,19 @@ public class AgregarLocal extends javax.swing.JFrame {
     private void confirmarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_confirmarActionPerformed
         //creamos un objeto de la clase Local que tendra todos estos datos los cuales ya pedimos en la interfaz grafica
         
-         //tenemos que verificar que el ID del edificio sea unico
+         //generamos un codigo random para el id
+        Random idRandom = new Random();
+        
+        //con ayuda del auxiliar le asignamos a este random al auxiliar
+        //establecemos que queremos que sea entre 0 y 99 y a eso le sumamos 300
+        //es decir, nuestro intervalo sera de 300 a 399
+        int auxId = 300 + idRandom.nextInt(99);
+                
+         //tenemos que verificar que el ID del local sea unico
         boolean condicion = true;
         for(int i = 0; i < GestionInmuebleUdc.listaInmuebles.size(); i++){
             //comparamos si el id ingresado se encuentra en nuestro arraylist 
-            if(Integer.parseInt(id.getText()) == GestionInmuebleUdc.listaInmuebles.get(i).getId()){
+            if( auxId == GestionInmuebleUdc.listaInmuebles.get(i).getId()){
                 condicion = false; //si se encuentra entonces marcamos como false
             }
         }
@@ -192,15 +190,15 @@ public class AgregarLocal extends javax.swing.JFrame {
         if(condicion){
             //añadimos al arraylist de inmuebles
             GestionInmuebleUdc.listaInmuebles.add(new Local(direccion.getText(), 
-                    Float.parseFloat(precio.getText()),descripcion.getText(),-1,Integer.parseInt(id.getText())));
+                    Float.parseFloat(precio.getText()),descripcion.getText(),-1,auxId));
         
             //esto es para MenuDisponible
             //una clase del package de interfazUsuario, en MenuDisponible se encuentra mas info sobre este proceso
             MenuDisponible.precio3Static = precio.getText();
-            MenuDisponible.id3Static = id.getText();
+            MenuDisponible.id3Static = String.valueOf(auxId);
             MenuDisponible.descripcion3Static = descripcion.getText();
         } else {
-            JOptionPane.showMessageDialog(null,"El ID que ingreso se encuentra\n" + "ocupado por otro inmueble","Agregar Local",JOptionPane.INFORMATION_MESSAGE);
+            JOptionPane.showMessageDialog(null,"El ID que ingreso se encuentra\n" + "ocupado por otro inmueble\nIntente de nuevo","Agregar Local",JOptionPane.INFORMATION_MESSAGE);
         }
         
         this.setVisible(false); //ocultamos este menu 
@@ -260,12 +258,10 @@ public class AgregarLocal extends javax.swing.JFrame {
     private javax.swing.JTextField descripcion;
     private javax.swing.JTextField direccion;
     private javax.swing.JButton exit;
-    private javax.swing.JTextField id;
     private javax.swing.JLabel pisoActualMenu;
     private javax.swing.JTextField precio;
     private javax.swing.JLabel textDescripcion;
     private javax.swing.JLabel textDireccion;
-    private javax.swing.JLabel textId;
     private javax.swing.JLabel textPrecio;
     private javax.swing.JLabel tituloMenu;
     // End of variables declaration//GEN-END:variables

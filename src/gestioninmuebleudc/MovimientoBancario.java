@@ -1,18 +1,19 @@
 package gestioninmuebleudc;
 
-import java.util.Date;
+import java.time.LocalDate;
 
 public class MovimientoBancario {
+
     private String tipoMovimiento;
-    private Date fecha;
-    private float importe;
+    private LocalDate fechaEmision;
+    private float costo;
     private String deudor;
     private String acreedor;
 
-    public MovimientoBancario(String tipoMovimiento, Date fecha, float importe, String deudor, String acreedor) {
+    public MovimientoBancario(String tipoMovimiento, LocalDate fechaEmision, float costo, String deudor, String acreedor) {
         this.tipoMovimiento = tipoMovimiento;
-        this.fecha = fecha;
-        this.importe = importe;
+        this.fechaEmision = fechaEmision;
+        this.costo = costo;
         this.deudor = deudor;
         this.acreedor = acreedor;
     }
@@ -22,12 +23,12 @@ public class MovimientoBancario {
         return tipoMovimiento;
     }
 
-    public Date getFecha() {
-        return fecha;
+    public LocalDate getFechaEmision() {
+        return fechaEmision;
     }
 
-    public float getImporte() {
-        return importe;
+    public float getCosto() {
+        return costo;
     }
 
     public String getDeudor() {
@@ -42,12 +43,12 @@ public class MovimientoBancario {
         this.tipoMovimiento = tipoMovimiento;
     }
 
-    public void setFecha(Date fecha) {
-        this.fecha = fecha;
+    public void setFecha(LocalDate fechaEmision) {
+        this.fechaEmision = fechaEmision;
     }
 
-    public void setImporte(float importe) {
-        this.importe = importe;
+    public void setImporte(float costo) {
+        this.costo = costo;
     }
 
     public void setDeudor(String deudor) {

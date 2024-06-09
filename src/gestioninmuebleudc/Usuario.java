@@ -9,13 +9,14 @@ public class Usuario {
     private String foto;
     private String contraseña;
     private int estrato;
+    private float dinero;
     
     //este atributo static es para que haya un tiempo "global" y no que cada objeto tenga su propio tiempo
     //para que no tengamos en una cuenta que estamos en el año x del mes x en el dia x, y al salir e iniciar con otra cuenta
     //aparezca que estamos de nuevo en la fecha 0
-    public static LocalDate time;
+    public static LocalDate time = LocalDate.parse("2000-01-01");
 
-    public Usuario(String nombre, String cedula, int edad, String sexo, String foto, String contraseña, int estrato) {
+    public Usuario(String nombre, String cedula, int edad, String sexo, String foto, String contraseña, int estrato,float dinero) {
         this.nombre = nombre;
         this.cedula = cedula;
         this.edad = edad;
@@ -23,6 +24,7 @@ public class Usuario {
         this.foto = foto;
         this.contraseña = contraseña;
         this.estrato = estrato;
+        this.dinero = dinero;
     }
 // GETTERS Y SETTERS
     public String getNombre() {
@@ -71,6 +73,18 @@ public class Usuario {
 
     public void setContraseña(String contraseña) {
         this.contraseña = contraseña;
+    }
+
+    public int getEstrato() {
+        return estrato;
+    }
+
+    public float getDinero() {
+        return dinero;
+    }
+
+    public void setDinero(float dinero) {
+        this.dinero += dinero;
     }
     
     

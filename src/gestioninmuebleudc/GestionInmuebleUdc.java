@@ -12,6 +12,8 @@ import java.io.BufferedWriter;
 import java.io.FileReader;
 import java.io.FileWriter;
 import java.io.IOException;
+import java.time.LocalDate;
+import java.time.format.DateTimeFormatter;
 import java.util.Map;
 
 
@@ -115,7 +117,7 @@ public class GestionInmuebleUdc {
             String linea;
             while ((linea = reader.readLine()) != null) {
                 String[] datos = linea.split(",");
-                Usuario usuario = new Usuario(datos[0], datos[1], Integer.parseInt(datos[2]), datos[3], datos[4], datos[5], Integer.parseInt(datos[6]));
+                Usuario usuario = new Usuario(datos[0], datos[1], Integer.parseInt(datos[2]), datos[3], datos[4], datos[5], Integer.parseInt(datos[6]),Float.parseFloat(datos[7]));
                 listaUsuarios.add(usuario);
             }
         } catch (IOException e) {
@@ -141,8 +143,7 @@ public class GestionInmuebleUdc {
         while ((linea = reader.readLine()) != null) {
             String[] datos = linea.split(",");
             String tipoMovimiento = datos[0];
-            Date fecha = new Date(Long.parseLong(datos[1]));
-            float importe = Float.parseFloat(datos[2]); // Asegúrate que el tipo de dato coincida con el del constructor
+            LocalDate fecha = LocalDate.parse(datos[1], DateTimeFormatter.ISO_LOCAL_DATE);            float importe = Float.parseFloat(datos[2]); // Asegúrate que el tipo de dato coincida con el del constructor
             String deudor = datos[3];
             String acreedor = datos[4];
             Inmueble inmueble = buscarInmueblePorDireccion(datos[5]);
@@ -183,22 +184,6 @@ public class GestionInmuebleUdc {
 
     public void registrarUsuario(Usuario usuario) {
         listaUsuarios.add(usuario);
-    }
-
-    public void registrarAlquiler(String identificadorUsuario, Inmueble inmueble) {
-       
-    }
-
-    public void registrarDesalquiler(String identificadorUsuario, Inmueble inmueble) {
-        
-    }
-
-    public void recibirFactura(Factura factura) {
-       
-    }
-
-    public void pagarProveedor(Cheque cheque) {
-       
     }
 
     public List<MovimientoBancario> consultarMovimientosBancarios(Inmueble inmueble, Date periodo) {

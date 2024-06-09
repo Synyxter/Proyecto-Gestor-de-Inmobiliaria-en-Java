@@ -32,18 +32,9 @@
                       <EmptySpace min="8" pref="8" max="-2" attributes="0"/>
                       <Component id="exit" min="-2" max="-2" attributes="0"/>
                   </Group>
-                  <Group type="102" attributes="0">
-                      <EmptySpace min="130" pref="130" max="-2" attributes="0"/>
-                      <Component id="confirmar" min="-2" max="-2" attributes="0"/>
-                  </Group>
                   <Group type="102" alignment="0" attributes="0">
                       <EmptySpace min="65" pref="65" max="-2" attributes="0"/>
-                      <Group type="103" groupAlignment="0" max="-2" attributes="0">
-                          <Group type="102" attributes="0">
-                              <Component id="textId" min="-2" max="-2" attributes="0"/>
-                              <EmptySpace pref="48" max="32767" attributes="0"/>
-                              <Component id="id" min="-2" pref="110" max="-2" attributes="0"/>
-                          </Group>
+                      <Group type="103" groupAlignment="0" attributes="0">
                           <Group type="102" attributes="0">
                               <Group type="103" groupAlignment="0" attributes="0">
                                   <Component id="textDescripcion" min="-2" max="-2" attributes="0"/>
@@ -61,6 +52,10 @@
                       </Group>
                       <EmptySpace max="-2" attributes="0"/>
                       <Component id="pisoActualMenu" min="-2" max="-2" attributes="0"/>
+                  </Group>
+                  <Group type="102" alignment="0" attributes="0">
+                      <EmptySpace min="-2" pref="124" max="-2" attributes="0"/>
+                      <Component id="confirmar" min="-2" max="-2" attributes="0"/>
                   </Group>
               </Group>
               <EmptySpace max="32767" attributes="0"/>
@@ -94,14 +89,9 @@
                   <Component id="textDireccion" alignment="3" min="-2" max="-2" attributes="0"/>
                   <Component id="direccion" alignment="3" min="-2" max="-2" attributes="0"/>
               </Group>
-              <EmptySpace type="unrelated" max="-2" attributes="0"/>
-              <Group type="103" groupAlignment="3" attributes="0">
-                  <Component id="textId" alignment="3" min="-2" max="-2" attributes="0"/>
-                  <Component id="id" alignment="3" min="-2" max="-2" attributes="0"/>
-              </Group>
-              <EmptySpace pref="28" max="32767" attributes="0"/>
+              <EmptySpace type="separate" max="-2" attributes="0"/>
               <Component id="confirmar" min="-2" max="-2" attributes="0"/>
-              <EmptySpace max="-2" attributes="0"/>
+              <EmptySpace pref="24" max="32767" attributes="0"/>
           </Group>
       </Group>
     </DimensionLayout>
@@ -143,6 +133,9 @@
       </Properties>
     </Component>
     <Component class="javax.swing.JTextField" name="descripcion">
+      <Properties>
+        <Property name="text" type="java.lang.String" value="Bonita y grande"/>
+      </Properties>
       <Events>
         <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="descripcionActionPerformed"/>
       </Events>
@@ -164,6 +157,12 @@
       </Properties>
     </Component>
     <Component class="javax.swing.JTextField" name="precio">
+      <Properties>
+        <Property name="text" type="java.lang.String" value="500000"/>
+      </Properties>
+      <Events>
+        <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="precioActionPerformed"/>
+      </Events>
     </Component>
     <Component class="javax.swing.JLabel" name="textPrecio">
       <Properties>
@@ -176,12 +175,8 @@
       </Properties>
     </Component>
     <Component class="javax.swing.JTextField" name="direccion">
-    </Component>
-    <Component class="javax.swing.JTextField" name="id">
-    </Component>
-    <Component class="javax.swing.JLabel" name="textId">
       <Properties>
-        <Property name="text" type="java.lang.String" value="ID inmueble"/>
+        <Property name="text" type="java.lang.String" value="salida del pueblo"/>
       </Properties>
     </Component>
   </SubComponents>

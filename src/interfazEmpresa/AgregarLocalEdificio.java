@@ -3,6 +3,7 @@ package interfazEmpresa;
 
 import gestioninmuebleudc.Local;
 import interfazUsuario.MenuDisponible;
+import java.util.Random;
 import javax.swing.JTextField;
 
 public class AgregarLocalEdificio extends javax.swing.JDialog {
@@ -43,8 +44,6 @@ public class AgregarLocalEdificio extends javax.swing.JDialog {
         localActualMenu = new javax.swing.JLabel();
         textPrecioLocal = new javax.swing.JLabel();
         precioLocalMenu = new javax.swing.JTextField();
-        id = new javax.swing.JTextField();
-        textId = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
 
@@ -91,8 +90,6 @@ public class AgregarLocalEdificio extends javax.swing.JDialog {
 
         precioLocalMenu.setText(" ");
 
-        textId.setText("ID inmueble");
-
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
@@ -113,26 +110,20 @@ public class AgregarLocalEdificio extends javax.swing.JDialog {
                         .addGap(30, 30, 30)
                         .addComponent(localActualMenu))
                     .addGroup(layout.createSequentialGroup()
-                        .addGap(130, 130, 130)
-                        .addComponent(confirmar))
-                    .addGroup(layout.createSequentialGroup()
                         .addGap(65, 65, 65)
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(textPrecioLocal)
+                            .addComponent(textDescripcion))
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addGroup(layout.createSequentialGroup()
-                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                    .addComponent(textPrecioLocal)
-                                    .addComponent(textDescripcion))
-                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                    .addGroup(layout.createSequentialGroup()
-                                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                                        .addComponent(precioLocalMenu, javax.swing.GroupLayout.PREFERRED_SIZE, 107, javax.swing.GroupLayout.PREFERRED_SIZE))
-                                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                                        .addGap(13, 13, 13)
-                                        .addComponent(descripcion, javax.swing.GroupLayout.PREFERRED_SIZE, 106, javax.swing.GroupLayout.PREFERRED_SIZE))))
-                            .addGroup(layout.createSequentialGroup()
-                                .addComponent(textId)
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                                .addComponent(id, javax.swing.GroupLayout.PREFERRED_SIZE, 110, javax.swing.GroupLayout.PREFERRED_SIZE)))))
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                                .addComponent(precioLocalMenu, javax.swing.GroupLayout.PREFERRED_SIZE, 107, javax.swing.GroupLayout.PREFERRED_SIZE))
+                            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
+                                .addGap(13, 13, 13)
+                                .addComponent(descripcion, javax.swing.GroupLayout.PREFERRED_SIZE, 106, javax.swing.GroupLayout.PREFERRED_SIZE))))
+                    .addGroup(layout.createSequentialGroup()
+                        .addGap(134, 134, 134)
+                        .addComponent(confirmar)))
                 .addGap(4, 4, 4))
         );
         layout.setVerticalGroup(
@@ -155,12 +146,9 @@ public class AgregarLocalEdificio extends javax.swing.JDialog {
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(textPrecioLocal)
                     .addComponent(precioLocalMenu, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(textId)
-                    .addComponent(id, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(24, 24, 24)
-                .addComponent(confirmar))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 32, Short.MAX_VALUE)
+                .addComponent(confirmar)
+                .addGap(26, 26, 26))
         );
 
         pack();
@@ -187,10 +175,18 @@ public class AgregarLocalEdificio extends javax.swing.JDialog {
 
     private void confirmarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_confirmarActionPerformed
         // TODO add your handling code here:
-
+        
+         //generamos un codigo random para el id
+        Random idRandom = new Random();
+        
+        //con ayuda del auxiliar le asignamos a este random al auxiliar
+        //establecemos que queremos que sea entre 0 y 99 y a eso le sumamos 300
+        //es decir, nuestro intervalo sera de 300 a 399
+        int auxId = 300 + idRandom.nextInt(99);
+        
         //aca llenamos los atributos de la clase piso
         Local.descripcion = descripcion.getText();
-        idStatic = Integer.parseInt(id.getText()); //como no podemos pasar el atributo id directamente a AgregarEdificio
+        idStatic = auxId; //como no podemos pasar el atributo id directamente a AgregarEdificio
         //nos toca crear un atributo static y a ese atributo se le asignara el valor del atributo privado id, de tal forma que idStatic ira
         //variando su valor de forma constante 
         numeroLocal = Integer.parseInt(localActualMenu.getText());
@@ -241,20 +237,15 @@ public class AgregarLocalEdificio extends javax.swing.JDialog {
         });
     }
 
-    public int returnId() {
-        return Integer.parseInt(id.getText());
-    }
-    
+
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton back;
     private javax.swing.JButton confirmar;
     private javax.swing.JTextField descripcion;
     private javax.swing.JButton exit;
-    private javax.swing.JTextField id;
     private javax.swing.JLabel localActualMenu;
     private javax.swing.JTextField precioLocalMenu;
     private javax.swing.JLabel textDescripcion;
-    private javax.swing.JLabel textId;
     private javax.swing.JLabel textNumPiso;
     private javax.swing.JLabel textPrecioLocal;
     private javax.swing.JLabel tituloMenu;

@@ -16,6 +16,7 @@ import javax.swing.JOptionPane;
 public class InicioSesion extends javax.swing.JFrame {
 
     public static String ccStatic;
+    public static int sesionActivaUbic;
     
     public InicioSesion() {
         initComponents();
@@ -140,9 +141,7 @@ public class InicioSesion extends javax.swing.JFrame {
     private void confirmarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_confirmarActionPerformed
         
         boolean inicioExitoso = false;
-        
-        
-        
+
         //colocamos esto como ayuda para saber que ingresamos 
         System.out.println("--------------");
         System.out.println("USTED INGRESO: ");
@@ -197,19 +196,26 @@ public class InicioSesion extends javax.swing.JFrame {
                     iniciar sesion
                     */
                     ccStatic = GestionInmuebleUdc.listaUsuarios.get(i).getCedula();
+                    sesionActivaUbic = i;
                     break;
-                }
-            }
+                } 
+            } //end for
 
-                    
-            Usuario.time = LocalDate.parse("2024-06-15"); //aca asignamos un valor al atributo static "time" para que inicie con algo 
-            
+            //esto es para evitar que se le asigne siempre el LocalDate.parse("2024-"06-"15") cada vez
+            //que se inicia sesion
+            LocalDate aux = LocalDate.parse("2000-01-01");
+            if(Usuario.time.equals(aux)){
+                Usuario.time = LocalDate.parse("2024-06-15"); //aca asignamos un valor al atributo static "time" para que inicie con algo 
+            } 
+   
             InicioExitoso next = new InicioExitoso();
+            //next.actualizarFecha(Usuario.time);
+            next.actualizarDinero();
             next.setVisible(true);
             
             //le mandamos al metodo actualizarFecha de este nuevo objeto un LocalDate 
             next.actualizarFecha(Usuario.time);
-        }
+        } //end inicio exitoso
         
     }//GEN-LAST:event_confirmarActionPerformed
 

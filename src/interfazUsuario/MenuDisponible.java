@@ -1,7 +1,3 @@
-/*
- * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
- * Click nbfs://nbhost/SystemFileSystem/Templates/GUIForms/JFrame.java to edit this template
- */
 package interfazUsuario;
 
 public class MenuDisponible extends javax.swing.JFrame {
@@ -208,65 +204,62 @@ public class MenuDisponible extends javax.swing.JFrame {
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
+                .addGap(63, 63, 63)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(layout.createSequentialGroup()
-                        .addGap(63, 63, 63)
+                        .addComponent(textDescripcion3)
+                        .addGap(49, 49, 49)
+                        .addComponent(descripcion3))
+                    .addGroup(layout.createSequentialGroup()
+                        .addComponent(textDescripcion4)
+                        .addGap(49, 49, 49)
+                        .addComponent(descripcion4))
+                    .addGroup(layout.createSequentialGroup()
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addGroup(layout.createSequentialGroup()
-                                .addComponent(textDescripcion3)
-                                .addGap(49, 49, 49)
-                                .addComponent(descripcion3))
-                            .addGroup(layout.createSequentialGroup()
-                                .addComponent(textDescripcion4)
-                                .addGap(49, 49, 49)
-                                .addComponent(descripcion4))
-                            .addGroup(layout.createSequentialGroup()
-                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                    .addComponent(textTipo)
-                                    .addComponent(texttipo3)
-                                    .addComponent(texttipo2)
-                                    .addComponent(textprecio2)
-                                    .addComponent(textid2)
-                                    .addComponent(textprecio3)
-                                    .addComponent(textid3)
-                                    .addComponent(textPrecio)
-                                    .addComponent(textid)
-                                    .addComponent(textDescripcion)
-                                    .addComponent(textDescripcion2)
-                                    .addComponent(texttipo1)
-                                    .addComponent(textprecio1)
-                                    .addComponent(textid1))
-                                .addGap(49, 49, 49)
-                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                    .addComponent(id2)
-                                    .addComponent(precio2)
-                                    .addComponent(tipo2)
-                                    .addComponent(id)
-                                    .addComponent(precio)
-                                    .addComponent(id3)
-                                    .addComponent(precio3)
-                                    .addComponent(id4)
-                                    .addComponent(precio4)
-                                    .addComponent(tipo4)
-                                    .addComponent(tipo3)
-                                    .addComponent(tipo)
-                                    .addComponent(descripcion)
-                                    .addComponent(descripcion2)))))
-                    .addGroup(layout.createSequentialGroup()
-                        .addGap(52, 52, 52)
-                        .addComponent(jLabel13)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                        .addComponent(jButton3))
-                    .addGroup(layout.createSequentialGroup()
-                        .addGap(111, 111, 111)
-                        .addComponent(jButton1)))
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                            .addComponent(textTipo)
+                            .addComponent(texttipo3)
+                            .addComponent(texttipo2)
+                            .addComponent(textprecio2)
+                            .addComponent(textid2)
+                            .addComponent(textprecio3)
+                            .addComponent(textid3)
+                            .addComponent(textPrecio)
+                            .addComponent(textid)
+                            .addComponent(textDescripcion)
+                            .addComponent(textDescripcion2)
+                            .addComponent(texttipo1)
+                            .addComponent(textprecio1)
+                            .addComponent(textid1))
+                        .addGap(49, 49, 49)
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(id2)
+                            .addComponent(precio2)
+                            .addComponent(tipo2)
+                            .addComponent(id)
+                            .addComponent(precio)
+                            .addComponent(id3)
+                            .addComponent(precio3)
+                            .addComponent(id4)
+                            .addComponent(precio4)
+                            .addComponent(tipo4)
+                            .addComponent(tipo3)
+                            .addComponent(tipo)
+                            .addComponent(descripcion)
+                            .addComponent(descripcion2)))))
+            .addGroup(layout.createSequentialGroup()
+                .addGap(52, 52, 52)
+                .addComponent(jLabel13)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addComponent(jButton3))
+            .addGroup(layout.createSequentialGroup()
+                .addGap(111, 111, 111)
+                .addComponent(jButton1))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
                 .addComponent(jButton3)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 23, Short.MAX_VALUE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                 .addComponent(jLabel13)
                 .addGap(18, 18, 18)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -348,17 +341,16 @@ public class MenuDisponible extends javax.swing.JFrame {
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
+    private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
+        this.setVisible(false);
+
+        InicioExitoso back = new InicioExitoso();
+        back.setVisible(true);
+    }//GEN-LAST:event_jButton1ActionPerformed
+
     private void jButton3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton3ActionPerformed
         System.exit(0);
     }//GEN-LAST:event_jButton3ActionPerformed
-
-    private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
-        this.setVisible(false);
-        
-        InicioExitoso back = new InicioExitoso();
-        back.setVisible(true);
-        
-    }//GEN-LAST:event_jButton1ActionPerformed
 
     /**
      * @param args the command line arguments
@@ -385,6 +377,9 @@ public class MenuDisponible extends javax.swing.JFrame {
         } catch (javax.swing.UnsupportedLookAndFeelException ex) {
             java.util.logging.Logger.getLogger(MenuDisponible.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         }
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
         //</editor-fold>
 
         /* Create and display the form */
