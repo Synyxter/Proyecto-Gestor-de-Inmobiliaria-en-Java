@@ -15,9 +15,8 @@ import javax.swing.JOptionPane;
  */
 public class InicioSesion extends javax.swing.JFrame {
 
-    /**
-     * Creates new form InicioSesion
-     */
+    public static String ccStatic;
+    
     public InicioSesion() {
         initComponents();
         this.setLocationRelativeTo(null); //centramos el menu
@@ -182,6 +181,27 @@ public class InicioSesion extends javax.swing.JFrame {
             back.setVisible(true);
             
         } else { //si el inicio fue exitoso entonces creamos un nuevo objeto
+            
+            //si se pudo iniciar sesion es porque esta registrado
+            //asi que confiamos en que ya hay al menos alguien registrado y en el arraylist de listaUsuarios
+            for(int i = 0; i < GestionInmuebleUdc.listaUsuarios.size(); i++){
+                //buscamos un usuario registrado con el mismo nombre, y entonces diremos que la posicion i
+                //donde se encuentra la cc, sera igual a ccStatic, esto lo hacemos porque ya sabemos que el inicio
+                //de sesion fue exitoso
+                if(usser.getText().equals(GestionInmuebleUdc.listaUsuarios.get(i).getNombre())){
+                    /*
+                    ccStatic obtiene el valor de la cedula de la ultima persona en iniciar sesion, esta persona pasa al menu
+                    de la clase InicioExitoso, alli le asignaremos una cc al inmueble que alquile como forma de  identificador
+                    para no tener que iterar en un for o preguntar la cc, el programa automaticamente sabe que la ultima persona
+                    en iniciar sesion (su cc) sera la de la persona que quiere alquilar, ya que para alquilar primero necesitas
+                    iniciar sesion
+                    */
+                    ccStatic = GestionInmuebleUdc.listaUsuarios.get(i).getCedula();
+                    break;
+                }
+            }
+
+                    
             Usuario.time = LocalDate.parse("2024-06-15"); //aca asignamos un valor al atributo static "time" para que inicie con algo 
             
             InicioExitoso next = new InicioExitoso();

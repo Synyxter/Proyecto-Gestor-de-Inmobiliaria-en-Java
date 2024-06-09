@@ -6,6 +6,7 @@ package interfazEmpresa;
 
 import gestioninmuebleudc.GestionInmuebleUdc;
 import gestioninmuebleudc.Piso;
+import javax.swing.JOptionPane;
 import javax.swing.JTextField;
 
 /**
@@ -47,6 +48,8 @@ public class AgregarPiso extends javax.swing.JFrame {
         textPrecio = new javax.swing.JLabel();
         textDireccion = new javax.swing.JLabel();
         direccion = new javax.swing.JTextField();
+        id = new javax.swing.JTextField();
+        textId = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setUndecorated(true);
@@ -106,6 +109,8 @@ public class AgregarPiso extends javax.swing.JFrame {
 
         direccion.setText(" ");
 
+        textId.setText("ID inmueble");
+
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
@@ -129,15 +134,19 @@ public class AgregarPiso extends javax.swing.JFrame {
                             .addComponent(textDescripcion)
                             .addComponent(textNumPiso)
                             .addComponent(textPrecio)
-                            .addComponent(textDireccion))
+                            .addComponent(textDireccion)
+                            .addComponent(textId))
                         .addGap(27, 27, 27)
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                            .addComponent(descripcion, javax.swing.GroupLayout.DEFAULT_SIZE, 110, Short.MAX_VALUE)
-                            .addComponent(direccion)
-                            .addComponent(precio)
-                            .addComponent(numPiso, javax.swing.GroupLayout.DEFAULT_SIZE, 110, Short.MAX_VALUE))
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(pisoActualMenu)))
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addGroup(layout.createSequentialGroup()
+                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                                    .addComponent(descripcion, javax.swing.GroupLayout.DEFAULT_SIZE, 110, Short.MAX_VALUE)
+                                    .addComponent(direccion)
+                                    .addComponent(precio)
+                                    .addComponent(numPiso, javax.swing.GroupLayout.DEFAULT_SIZE, 110, Short.MAX_VALUE))
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                .addComponent(pisoActualMenu))
+                            .addComponent(id, javax.swing.GroupLayout.PREFERRED_SIZE, 110, javax.swing.GroupLayout.PREFERRED_SIZE))))
                 .addContainerGap())
         );
         layout.setVerticalGroup(
@@ -166,7 +175,11 @@ public class AgregarPiso extends javax.swing.JFrame {
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(textDireccion)
                     .addComponent(direccion, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 17, Short.MAX_VALUE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(textId)
+                    .addComponent(id, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 25, Short.MAX_VALUE)
                 .addComponent(confirmar)
                 .addContainerGap())
         );
@@ -190,14 +203,26 @@ public class AgregarPiso extends javax.swing.JFrame {
     }//GEN-LAST:event_backActionPerformed
 
     private void confirmarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_confirmarActionPerformed
-        // TODO add your handling code here:
         
-        //creamos un objeto de la clase Piso que tendra todos estos datos los cuales ya pedimos en la interfaz grafica
-        //añadimos al arraylist de inmuebles
-        GestionInmuebleUdc.listaInmuebles.add(new Piso(direccion.getText(), Float.parseFloat(precio.getText()),
-                Integer.parseInt(numPiso.getText()),descripcion.getText(),false));
-       
+        //tenemos que verificar que el ID del edificio sea unico
+        boolean condicion = true;
+        for(int i = 0; i < GestionInmuebleUdc.listaInmuebles.size(); i++){
+            //comparamos si el id ingresado se encuentra en nuestro arraylist 
+            if(Integer.parseInt(id.getText()) == GestionInmuebleUdc.listaInmuebles.get(i).getId()){
+                condicion = false; //si se encuentra entonces marcamos como false
+            }
+        }
         
+        //si la condicion no se hizo false, entonces
+        if(condicion){
+            //creamos un objeto de la clase Piso que tendra todos estos datos los cuales ya pedimos en la interfaz grafica
+            //añadimos al arraylist de inmuebles
+            GestionInmuebleUdc.listaInmuebles.add(new Piso(direccion.getText(), Float.parseFloat(precio.getText()),
+                    Integer.parseInt(numPiso.getText()),descripcion.getText(),-1,Integer.parseInt(id.getText())));
+
+        }else {
+            JOptionPane.showMessageDialog(null,"El ID que ingreso se encuentra\n" + "ocupado por otro inmueble","Agregar Piso",JOptionPane.INFORMATION_MESSAGE);
+        }
         this.setVisible(false); //ocultamos este menu 
         
         MenuEmpresa menu = new MenuEmpresa(); //volvemos al menu de empresa
@@ -256,11 +281,13 @@ public class AgregarPiso extends javax.swing.JFrame {
     private javax.swing.JTextField descripcion;
     private javax.swing.JTextField direccion;
     private javax.swing.JButton exit;
+    private javax.swing.JTextField id;
     private javax.swing.JTextField numPiso;
     private javax.swing.JLabel pisoActualMenu;
     private javax.swing.JTextField precio;
     private javax.swing.JLabel textDescripcion;
     private javax.swing.JLabel textDireccion;
+    private javax.swing.JLabel textId;
     private javax.swing.JLabel textNumPiso;
     private javax.swing.JLabel textPrecio;
     private javax.swing.JLabel tituloMenu;

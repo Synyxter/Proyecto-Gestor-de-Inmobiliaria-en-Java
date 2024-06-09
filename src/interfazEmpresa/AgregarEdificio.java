@@ -49,6 +49,8 @@ public class AgregarEdificio extends javax.swing.JFrame {
         confirmar = new javax.swing.JButton();
         textLocales = new javax.swing.JLabel();
         local = new javax.swing.JTextField();
+        textId = new javax.swing.JLabel();
+        id = new javax.swing.JTextField();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setUndecorated(true);
@@ -77,27 +79,22 @@ public class AgregarEdificio extends javax.swing.JFrame {
 
         textPrecio.setText("Precio Alquiler del edificio:");
 
-        nombre.setText(" ");
         nombre.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 nombreActionPerformed(evt);
             }
         });
 
-        direccion.setText(" ");
-
-        pisos.setText(" ");
         pisos.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 pisosActionPerformed(evt);
             }
         });
 
-        precio.setText(" ");
-
         tituloMenu.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
         tituloMenu.setText("AGREGAR EDIFICIO");
 
+        confirmar.setFont(new java.awt.Font("Segoe UI", 1, 12)); // NOI18N
         confirmar.setText("Confirmar");
         confirmar.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -107,7 +104,7 @@ public class AgregarEdificio extends javax.swing.JFrame {
 
         textLocales.setText("Locales:");
 
-        local.setText(" ");
+        textId.setText("ID de este inmueble");
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
@@ -132,6 +129,7 @@ public class AgregarEdificio extends javax.swing.JFrame {
                                             .addComponent(textPisos, javax.swing.GroupLayout.Alignment.LEADING)
                                             .addComponent(textPrecio, javax.swing.GroupLayout.Alignment.LEADING)
                                             .addComponent(textNombre, javax.swing.GroupLayout.Alignment.LEADING)
+                                            .addComponent(textId, javax.swing.GroupLayout.Alignment.LEADING)
                                             .addComponent(textLocales, javax.swing.GroupLayout.Alignment.LEADING))
                                         .addGap(32, 32, 32)
                                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
@@ -139,7 +137,8 @@ public class AgregarEdificio extends javax.swing.JFrame {
                                             .addComponent(direccion)
                                             .addComponent(pisos)
                                             .addComponent(precio)
-                                            .addComponent(local, javax.swing.GroupLayout.DEFAULT_SIZE, 115, Short.MAX_VALUE)))))
+                                            .addComponent(local, javax.swing.GroupLayout.DEFAULT_SIZE, 115, Short.MAX_VALUE)
+                                            .addComponent(id)))))
                             .addGroup(layout.createSequentialGroup()
                                 .addGap(153, 153, 153)
                                 .addComponent(confirmar)))
@@ -174,9 +173,13 @@ public class AgregarEdificio extends javax.swing.JFrame {
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(textLocales)
                     .addComponent(local, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 18, Short.MAX_VALUE)
+                .addGap(18, 18, 18)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(textId)
+                    .addComponent(id, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 27, Short.MAX_VALUE)
                 .addComponent(confirmar)
-                .addGap(21, 21, 21))
+                .addGap(26, 26, 26))
         );
 
         pack();
@@ -206,56 +209,74 @@ public class AgregarEdificio extends javax.swing.JFrame {
         // TODO add your handling code here:
         //aca inicia la verdadera magia
         
-        String direccionE = direccion.getText();
-        float precioE = Float.parseFloat(precio.getText());
         String nombreE = nombre.getText();
-        int pisoE = Integer.parseInt(pisos.getText());
-        int localE = Integer.parseInt(local.getText());
-                
-        //creamos el edificio dentro del array de inmuebles
-        GestionInmuebleUdc.listaInmuebles.add(new Edificio(direccionE, precioE, false)); //añadimos direccion y precio
         
-        int aux = 0; //este auxiliar aumentara en 1 con cada iteraccion para asignarle un valor a pisoActual 
+        //tenemos que verificar que el ID del edificio sea unico
+        boolean condicion = true;
+        for(int i = 0; i < GestionInmuebleUdc.listaInmuebles.size(); i++){
+            //comparamos si el id ingresado se encuentra en nuestro arraylist 
+            if(Integer.parseInt(id.getText()) == GestionInmuebleUdc.listaInmuebles.get(i).getId()){
+                condicion = false; //si se encuentra entonces marcamos como false
+            }
+        }
+        
+        if(condicion){
+            //creamos el edificio dentro del array de inmuebles
+            //colocamos como alquilado a -1 porque puede que el usuario introduzca como su cc a 0, en cambio seria raro que introduzca a -1 como su cc
+            GestionInmuebleUdc.listaInmuebles.add(new Edificio(direccion.getText(), Float.parseFloat(precio.getText()), -1,Integer.parseInt(id.getText()))); //añadimos direccion y precio
 
-        //ahora hacemos un for para iterar la n cantidad de veces que se debe abrir el submenu para agregar piso
-        //si se coloco que se tenia 3 pisos se deben crear 3 objetos diferentes de la clase AgregarPisoEdificio
-        for(int i = 0; i < pisoE; i++){
+            int aux = 0; //este auxiliar aumentara en 1 con cada iteraccion para asignarle un valor a pisoActual 
+
+            //ahora hacemos un for para iterar la n cantidad de veces que se debe abrir el submenu para agregar piso
+            //si se coloco que se tenia 3 pisos se deben crear 3 objetos diferentes de la clase AgregarPisoEdificio
+            for(int i = 0; i < Integer.parseInt(pisos.getText()); i++){
+
+                AgregarEdificio.pisoActual = aux + 1;
+
+                this.setVisible(false); //hacemos invisible la interfaz actual
+
+                    //utilizamos esta clase que es un JDialog en lugar de un JFrame
+                    AgregarPisoEdificio localMenu = new AgregarPisoEdificio(this,true);
+                    localMenu.setModal(true); //volvemos modal
+                    localMenu.setVisible(true); //hacemos visible el menu de piso 
+
+                Edificio.agregarPiso(new Piso(direccion.getText(),AgregarPisoEdificio.precioPiso,Piso.numeroPiso,Piso.descripcion,-1,AgregarPisoEdificio.idStatic));//creamos el piso
+                aux++;
+            }//end for de piso
+
+            JOptionPane.showMessageDialog(null,"Llenado de PISOS compleado","Agregar Edificio",JOptionPane.INFORMATION_MESSAGE);
+            aux = 0;
             
-            AgregarEdificio.pisoActual = aux + 1;
-            
-            this.setVisible(false); //hacemos invisible la interfaz actual
+            //for de local
+            for(int i = 0; i < Integer.parseInt(local.getText()); i++){
+
+                AgregarEdificio.localActual = aux + 1;
+
+                this.setVisible(false); //hacemos invisible la interfaz actual
 
                 //utilizamos esta clase que es un JDialog en lugar de un JFrame
-                AgregarPisoEdificio localMenu = new AgregarPisoEdificio(this,true);
+                AgregarLocalEdificio localMenu = new AgregarLocalEdificio(this,true);
                 localMenu.setModal(true); //volvemos modal
-                localMenu.setVisible(true); //hacemos visible el menu de piso 
+                localMenu.setVisible(true); //hacemos visible el menu de piso  
 
-            Edificio.agregarPiso(new Piso(direccionE,AgregarPisoEdificio.precioPiso,Piso.numeroPiso,Piso.descripcion,false));//creamos el piso
-            aux++;
-        }
-        
-        JOptionPane.showMessageDialog(null,"Llenado de PISOS compleado","",JOptionPane.INFORMATION_MESSAGE);
-        aux = 0;
-        
-        for(int i = 0; i < localE; i++){
-            
-            AgregarEdificio.localActual = aux + 1;
-            
-            this.setVisible(false); //hacemos invisible la interfaz actual
-            
-            //utilizamos esta clase que es un JDialog en lugar de un JFrame
-            AgregarPisoEdificio localMenu = new AgregarPisoEdificio(this,true);
-            localMenu.setModal(true); //volvemos modal
-            localMenu.setVisible(true); //hacemos visible el menu de piso  
+                Edificio.agregarLocal(new Local(direccion.getText(),AgregarLocalEdificio.precioLocal,Local.descripcion,-1,AgregarLocalEdificio.idStatic));//creamos el piso
+                aux++;
+            }
+            JOptionPane.showMessageDialog(null,"Llenado de LOCALES compleado","Agregar Edificio",JOptionPane.INFORMATION_MESSAGE);
 
-            Edificio.agregarLocal(new Local(direccionE,AgregarPisoEdificio.precioPiso,Piso.descripcion,false));//creamos el piso
-            aux++;
+        } else {
+            JOptionPane.showMessageDialog(null,"El ID que ingreso se encuentra\n" + "ocupado por otro inmueble","Agregar Edificio",JOptionPane.INFORMATION_MESSAGE);
+        }   
+        
+        //esto es un caso especial para ocultar este menu aunque el usuario no abra otros
+        //este menu solo se oculta desde otros menus, entonces si no se abren este permanece visible
+        if(Integer.parseInt(pisos.getText()) == 0 || Integer.parseInt(local.getText()) == 0){
+            this.setVisible(false);
         }
-        JOptionPane.showMessageDialog(null,"Llenado de LOCALES compleado","",JOptionPane.INFORMATION_MESSAGE);
         
         //despues de la iteracion volvemos al menu de empresa  
         MenuEmpresa menu = new MenuEmpresa();
-        menu.setVisible(true);
+        menu.setVisible(true);   
     }//GEN-LAST:event_confirmarActionPerformed
 
     /**
@@ -298,11 +319,13 @@ public class AgregarEdificio extends javax.swing.JFrame {
     private javax.swing.JButton confirmar;
     private javax.swing.JTextField direccion;
     private javax.swing.JButton exit;
+    private javax.swing.JTextField id;
     private javax.swing.JTextField local;
     private javax.swing.JTextField nombre;
     private javax.swing.JTextField pisos;
     private javax.swing.JTextField precio;
     private javax.swing.JLabel textDireccion;
+    private javax.swing.JLabel textId;
     private javax.swing.JLabel textLocales;
     private javax.swing.JLabel textNombre;
     private javax.swing.JLabel textPisos;

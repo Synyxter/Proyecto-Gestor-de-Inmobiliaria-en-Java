@@ -7,6 +7,7 @@ package interfazEmpresa;
 import gestioninmuebleudc.Edificio;
 import gestioninmuebleudc.Finca;
 import gestioninmuebleudc.GestionInmuebleUdc;
+import javax.swing.JOptionPane;
 import javax.swing.JTextField;
 
 /**
@@ -46,6 +47,8 @@ public class AgregarFinca extends javax.swing.JFrame {
         textPrecio = new javax.swing.JLabel();
         textDireccion = new javax.swing.JLabel();
         direccion = new javax.swing.JTextField();
+        id = new javax.swing.JTextField();
+        textId = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setUndecorated(true);
@@ -71,7 +74,6 @@ public class AgregarFinca extends javax.swing.JFrame {
 
         textDescripcion.setText("Descripcion");
 
-        descripcion.setText(" ");
         descripcion.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 descripcionActionPerformed(evt);
@@ -88,13 +90,11 @@ public class AgregarFinca extends javax.swing.JFrame {
 
         pisoActualMenu.setText(" ");
 
-        precio.setText(" ");
-
         textPrecio.setText("Precio Alquiler");
 
         textDireccion.setText("Direccion");
 
-        direccion.setText(" ");
+        textId.setText("ID inmueble");
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
@@ -112,7 +112,11 @@ public class AgregarFinca extends javax.swing.JFrame {
                         .addComponent(confirmar))
                     .addGroup(layout.createSequentialGroup()
                         .addGap(65, 65, 65)
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                            .addGroup(layout.createSequentialGroup()
+                                .addComponent(textId)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 48, Short.MAX_VALUE)
+                                .addComponent(id, javax.swing.GroupLayout.PREFERRED_SIZE, 110, javax.swing.GroupLayout.PREFERRED_SIZE))
                             .addGroup(layout.createSequentialGroup()
                                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                                     .addComponent(textDescripcion)
@@ -126,7 +130,7 @@ public class AgregarFinca extends javax.swing.JFrame {
                             .addComponent(tituloMenu))
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                         .addComponent(pisoActualMenu)))
-                .addContainerGap())
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -150,7 +154,11 @@ public class AgregarFinca extends javax.swing.JFrame {
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(textDireccion)
                     .addComponent(direccion, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 20, Short.MAX_VALUE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(textId)
+                    .addComponent(id, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 28, Short.MAX_VALUE)
                 .addComponent(confirmar)
                 .addContainerGap())
         );
@@ -174,16 +182,27 @@ public class AgregarFinca extends javax.swing.JFrame {
     }//GEN-LAST:event_backActionPerformed
 
     private void confirmarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_confirmarActionPerformed
-        // TODO add your handling code here:
-        
         //creamos un objeto de la clase Finca que tendra todos estos datos los cuales ya pedimos en la interfaz grafica
         
-        //a este objeto lo ingresaremos al arraylist de inmuebles
-        GestionInmuebleUdc.listaInmuebles.add(new Finca(direccion.getText(), 
-                Float.parseFloat(precio.getText()),descripcion.getText(), false));
+         //tenemos que verificar que el ID del edificio sea unico
+        boolean condicion = true;
+        for(int i = 0; i < GestionInmuebleUdc.listaInmuebles.size(); i++){
+            //comparamos si el id ingresado se encuentra en nuestro arraylist 
+            if(Integer.parseInt(id.getText()) == GestionInmuebleUdc.listaInmuebles.get(i).getId()){
+                condicion = false; //si se encuentra entonces marcamos como false
+            }
+        }
+        
+        //si la condicion no se hizo false, entonces
+        if(condicion){
+            //a este objeto lo ingresaremos al arraylist de inmuebles
+            GestionInmuebleUdc.listaInmuebles.add(new Finca(direccion.getText(), 
+                    Float.parseFloat(precio.getText()),descripcion.getText(), -1, Integer.parseInt(id.getText())));
+        } else {
+            JOptionPane.showMessageDialog(null,"El ID que ingreso se encuentra\n" + "ocupado por otro inmueble","Agregar Finca",JOptionPane.INFORMATION_MESSAGE);
+        }
         
         this.setVisible(false); //ocultamos este menu 
-        
         MenuEmpresa menu = new MenuEmpresa(); //volvemos al menu de empresa
         menu.setVisible(true);
     }//GEN-LAST:event_confirmarActionPerformed
@@ -248,10 +267,12 @@ public class AgregarFinca extends javax.swing.JFrame {
     private javax.swing.JTextField descripcion;
     private javax.swing.JTextField direccion;
     private javax.swing.JButton exit;
+    private javax.swing.JTextField id;
     private javax.swing.JLabel pisoActualMenu;
     private javax.swing.JTextField precio;
     private javax.swing.JLabel textDescripcion;
     private javax.swing.JLabel textDireccion;
+    private javax.swing.JLabel textId;
     private javax.swing.JLabel textPrecio;
     private javax.swing.JLabel tituloMenu;
     // End of variables declaration//GEN-END:variables

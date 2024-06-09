@@ -72,17 +72,17 @@ public class GestionInmuebleUdc {
             switch (datos[0]) { // datos[0] debe ser el tipo del inmueble, como "Edificio", "Piso", etc.
                 case "Edificio":
                     // Asumiendo que el orden y tipos correctos son: String (direccion), float (area)
-                    Edificio edificio = new Edificio(datos[1], Float.parseFloat(datos[2]),Boolean.parseBoolean(datos[3]));
+                    Edificio edificio = new Edificio(datos[1], Float.parseFloat(datos[2]),Integer.parseInt(datos[3]),Integer.parseInt(datos[6]));
                     listaInmuebles.add(edificio);
                     break;
                 case "Piso":
                     // Asumiendo que el orden y tipos correctos son: String (direccion), float (area), int (numero de habitaciones), String (propietario)
-                    Piso piso = new Piso(datos[1], Float.parseFloat(datos[4]), Integer.parseInt(datos[5]), datos[2],Boolean.parseBoolean(datos[4]));
+                    Piso piso = new Piso(datos[1], Float.parseFloat(datos[4]), Integer.parseInt(datos[5]), datos[2],Integer.parseInt(datos[4]),Integer.parseInt(datos[6]));
                     listaInmuebles.add(piso);
                     break;
                 case "Local":
                     // Asumiendo que el orden y tipos correctos son: String (direccion), String (descripcion), float (area), String (propietario)
-                    Local local = new Local(datos[1], Float.parseFloat(datos[2]), datos[3], Boolean.parseBoolean(datos[4]));
+                    Local local = new Local(datos[1], Float.parseFloat(datos[2]), datos[3], Integer.parseInt(datos[4]),Integer.parseInt(datos[6]));
                     listaInmuebles.add(local);
                     break;
                 case "Finca":

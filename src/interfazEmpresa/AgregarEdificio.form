@@ -44,6 +44,7 @@
                                           <Component id="textPisos" alignment="0" min="-2" max="-2" attributes="0"/>
                                           <Component id="textPrecio" alignment="0" min="-2" max="-2" attributes="0"/>
                                           <Component id="textNombre" alignment="0" min="-2" max="-2" attributes="0"/>
+                                          <Component id="textId" alignment="0" min="-2" max="-2" attributes="0"/>
                                           <Component id="textLocales" alignment="0" min="-2" max="-2" attributes="0"/>
                                       </Group>
                                       <EmptySpace min="-2" pref="32" max="-2" attributes="0"/>
@@ -53,6 +54,7 @@
                                           <Component id="pisos" alignment="0" max="32767" attributes="0"/>
                                           <Component id="precio" alignment="0" max="32767" attributes="0"/>
                                           <Component id="local" alignment="0" pref="115" max="32767" attributes="0"/>
+                                          <Component id="id" alignment="0" max="32767" attributes="0"/>
                                       </Group>
                                   </Group>
                               </Group>
@@ -103,9 +105,14 @@
                   <Component id="textLocales" alignment="3" min="-2" max="-2" attributes="0"/>
                   <Component id="local" alignment="3" min="-2" max="-2" attributes="0"/>
               </Group>
-              <EmptySpace pref="18" max="32767" attributes="0"/>
+              <EmptySpace type="separate" max="-2" attributes="0"/>
+              <Group type="103" groupAlignment="3" attributes="0">
+                  <Component id="textId" alignment="3" min="-2" max="-2" attributes="0"/>
+                  <Component id="id" alignment="3" min="-2" max="-2" attributes="0"/>
+              </Group>
+              <EmptySpace pref="27" max="32767" attributes="0"/>
               <Component id="confirmar" min="-2" max="-2" attributes="0"/>
-              <EmptySpace min="-2" pref="21" max="-2" attributes="0"/>
+              <EmptySpace min="-2" pref="26" max="-2" attributes="0"/>
           </Group>
       </Group>
     </DimensionLayout>
@@ -154,30 +161,18 @@
       </Properties>
     </Component>
     <Component class="javax.swing.JTextField" name="nombre">
-      <Properties>
-        <Property name="text" type="java.lang.String" value=" "/>
-      </Properties>
       <Events>
         <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="nombreActionPerformed"/>
       </Events>
     </Component>
     <Component class="javax.swing.JTextField" name="direccion">
-      <Properties>
-        <Property name="text" type="java.lang.String" value=" "/>
-      </Properties>
     </Component>
     <Component class="javax.swing.JTextField" name="pisos">
-      <Properties>
-        <Property name="text" type="java.lang.String" value=" "/>
-      </Properties>
       <Events>
         <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="pisosActionPerformed"/>
       </Events>
     </Component>
     <Component class="javax.swing.JTextField" name="precio">
-      <Properties>
-        <Property name="text" type="java.lang.String" value=" "/>
-      </Properties>
     </Component>
     <Component class="javax.swing.JLabel" name="tituloMenu">
       <Properties>
@@ -189,6 +184,9 @@
     </Component>
     <Component class="javax.swing.JButton" name="confirmar">
       <Properties>
+        <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
+          <Font name="Segoe UI" size="12" style="1"/>
+        </Property>
         <Property name="text" type="java.lang.String" value="Confirmar"/>
       </Properties>
       <Events>
@@ -201,9 +199,13 @@
       </Properties>
     </Component>
     <Component class="javax.swing.JTextField" name="local">
+    </Component>
+    <Component class="javax.swing.JLabel" name="textId">
       <Properties>
-        <Property name="text" type="java.lang.String" value=" "/>
+        <Property name="text" type="java.lang.String" value="ID de este inmueble"/>
       </Properties>
+    </Component>
+    <Component class="javax.swing.JTextField" name="id">
     </Component>
   </SubComponents>
 </Form>

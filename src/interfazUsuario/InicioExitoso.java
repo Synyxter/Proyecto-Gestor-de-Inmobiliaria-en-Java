@@ -2,6 +2,7 @@
 
 package interfazUsuario;
 
+import gestioninmuebleudc.GestionInmuebleUdc;
 import java.time.LocalDate;
 import gestioninmuebleudc.Usuario;
 import java.time.format.DateTimeFormatter;
@@ -33,6 +34,7 @@ public class InicioExitoso extends javax.swing.JFrame {
         mensaje = new javax.swing.JLabel();
         avanzarTime = new javax.swing.JButton();
         back = new javax.swing.JButton();
+        jButton1 = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setUndecorated(true);
@@ -46,6 +48,11 @@ public class InicioExitoso extends javax.swing.JFrame {
         });
 
         alquilar.setText("Alquilar Inmueble");
+        alquilar.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                alquilarActionPerformed(evt);
+            }
+        });
 
         textFecha.setText("Fecha Actual:");
 
@@ -68,6 +75,8 @@ public class InicioExitoso extends javax.swing.JFrame {
             }
         });
 
+        jButton1.setText("Ver lista de inmuebles Disponibles");
+
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
@@ -89,9 +98,13 @@ public class InicioExitoso extends javax.swing.JFrame {
                                 .addComponent(fecha))))
                     .addGroup(layout.createSequentialGroup()
                         .addGap(122, 122, 122)
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(avanzarTime)
-                            .addComponent(alquilar))))
+                        .addComponent(alquilar))
+                    .addGroup(layout.createSequentialGroup()
+                        .addGap(124, 124, 124)
+                        .addComponent(avanzarTime))
+                    .addGroup(layout.createSequentialGroup()
+                        .addGap(86, 86, 86)
+                        .addComponent(jButton1)))
                 .addContainerGap(83, Short.MAX_VALUE))
         );
         layout.setVerticalGroup(
@@ -107,11 +120,13 @@ public class InicioExitoso extends javax.swing.JFrame {
                     .addComponent(fecha))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(mensaje)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 93, Short.MAX_VALUE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 123, Short.MAX_VALUE)
                 .addComponent(alquilar)
-                .addGap(57, 57, 57)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addComponent(jButton1)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(avanzarTime)
-                .addGap(31, 31, 31))
+                .addGap(17, 17, 17))
         );
 
         pack();
@@ -126,12 +141,11 @@ public class InicioExitoso extends javax.swing.JFrame {
         this.setVisible(false);
         
         InicioExitoso next = new InicioExitoso();
-        Usuario.time.plusDays(3); //le sumamos 15 dias al atributo static
+        Usuario.time = Usuario.time.plusDays(15); //le sumamos 15 dias al atributo static que es un LocalDate
         //ahora actualizamos la fecha del menu
         next.actualizarFecha(Usuario.time);  
         next.setVisible(true);
-        
-        JOptionPane.showMessageDialog(null, "variable time: " + Usuario.time);
+  
     }//GEN-LAST:event_avanzarTimeActionPerformed
 
     private void backActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_backActionPerformed
@@ -139,6 +153,38 @@ public class InicioExitoso extends javax.swing.JFrame {
             MenuUsuario back = new MenuUsuario();
             back.setVisible(true);
     }//GEN-LAST:event_backActionPerformed
+
+    private void alquilarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_alquilarActionPerformed
+        String s = JOptionPane.showInputDialog(null,"Introduzca el ID del inmueble\n" + "que desea alquilar","Alquilar Inmueble",JOptionPane.QUESTION_MESSAGE);
+        
+        boolean encontrado = false;
+        
+        for(int i = 0; i < GestionInmuebleUdc.listaInmuebles.size(); i++){
+            //aca descartamos para ver si se encontro o no el inmueble
+            if(Integer.parseInt(s) == GestionInmuebleUdc.listaInmuebles.get(i).getId()){
+                //decimos que se encontro un inmueble con el mismo id, ahora verificamos que ese mismo id
+                encontrado = true;
+                
+                //ahora comprobamos si esta o no ocupado
+                //por defecto todo inmueble tiene en alquilado (atributo de inmueble) un -1
+                //en un caso normal (inmueble ocupado) deberia tener la cc de un usuario y nadie colocaria en su cc un negativo
+                // si el -1 sigue es porque nadie lo ha alquilado
+                if(GestionInmuebleUdc.listaInmuebles.get(i).getAlquilado() == -1){
+                    //para esto necesitamos a la variable static ccStatic, la misma se explica que hace en InicioSesion en el apartado de confirmar
+                    GestionInmuebleUdc.listaInmuebles.get(i).setAlquilado(Integer.parseInt(InicioSesion.ccStatic));
+                } else {
+                    JOptionPane.showMessageDialog(null,"Inmueble ocupado :/","Busqueda Fallida",JOptionPane.INFORMATION_MESSAGE);
+                }//end if else interno
+                
+            } //end if externo 
+        } //end for
+        
+        //si encontrado es false significa que no se encontro ningun inmueble con ese ID
+        if(!encontrado){
+            JOptionPane.showMessageDialog(null,"ID del inmueble no encontrado :/","Busqueda Fallida",JOptionPane.INFORMATION_MESSAGE);
+        }
+        
+    }//GEN-LAST:event_alquilarActionPerformed
 
     /**
      * @param args the command line arguments
@@ -182,6 +228,7 @@ public class InicioExitoso extends javax.swing.JFrame {
     private javax.swing.JButton back;
     private javax.swing.JButton exit;
     private javax.swing.JLabel fecha;
+    private javax.swing.JButton jButton1;
     private javax.swing.JLabel mensaje;
     private javax.swing.JLabel textFecha;
     // End of variables declaration//GEN-END:variables

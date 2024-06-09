@@ -11,6 +11,7 @@ public class AgregarLocalEdificio extends javax.swing.JDialog {
     
     public static float precioLocal;
     public static int numeroLocal;
+    public static int idStatic;
     
     public AgregarLocalEdificio(java.awt.Frame parent, boolean modal) {
         super(parent, modal);
@@ -41,6 +42,8 @@ public class AgregarLocalEdificio extends javax.swing.JDialog {
         localActualMenu = new javax.swing.JLabel();
         textPrecioLocal = new javax.swing.JLabel();
         precioLocalMenu = new javax.swing.JTextField();
+        id = new javax.swing.JTextField();
+        textId = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
 
@@ -87,6 +90,8 @@ public class AgregarLocalEdificio extends javax.swing.JDialog {
 
         precioLocalMenu.setText(" ");
 
+        textId.setText("ID inmueble");
+
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
@@ -111,16 +116,22 @@ public class AgregarLocalEdificio extends javax.swing.JDialog {
                         .addComponent(confirmar))
                     .addGroup(layout.createSequentialGroup()
                         .addGap(65, 65, 65)
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(textPrecioLocal)
-                            .addComponent(textDescripcion))
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
                             .addGroup(layout.createSequentialGroup()
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                                .addComponent(precioLocalMenu, javax.swing.GroupLayout.PREFERRED_SIZE, 107, javax.swing.GroupLayout.PREFERRED_SIZE))
-                            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                                .addGap(13, 13, 13)
-                                .addComponent(descripcion, javax.swing.GroupLayout.PREFERRED_SIZE, 106, javax.swing.GroupLayout.PREFERRED_SIZE)))))
+                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                    .addComponent(textPrecioLocal)
+                                    .addComponent(textDescripcion))
+                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                    .addGroup(layout.createSequentialGroup()
+                                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                                        .addComponent(precioLocalMenu, javax.swing.GroupLayout.PREFERRED_SIZE, 107, javax.swing.GroupLayout.PREFERRED_SIZE))
+                                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
+                                        .addGap(13, 13, 13)
+                                        .addComponent(descripcion, javax.swing.GroupLayout.PREFERRED_SIZE, 106, javax.swing.GroupLayout.PREFERRED_SIZE))))
+                            .addGroup(layout.createSequentialGroup()
+                                .addComponent(textId)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                                .addComponent(id, javax.swing.GroupLayout.PREFERRED_SIZE, 110, javax.swing.GroupLayout.PREFERRED_SIZE)))))
                 .addGap(4, 4, 4))
         );
         layout.setVerticalGroup(
@@ -143,7 +154,11 @@ public class AgregarLocalEdificio extends javax.swing.JDialog {
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(textPrecioLocal)
                     .addComponent(precioLocalMenu, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(58, 58, 58)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(textId)
+                    .addComponent(id, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGap(24, 24, 24)
                 .addComponent(confirmar))
         );
 
@@ -174,6 +189,9 @@ public class AgregarLocalEdificio extends javax.swing.JDialog {
 
         //aca llenamos los atributos de la clase piso
         Local.descripcion = descripcion.getText();
+        idStatic = Integer.parseInt(id.getText()); //como no podemos pasar el atributo id directamente a AgregarEdificio
+        //nos toca crear un atributo static y a ese atributo se le asignara el valor del atributo privado id, de tal forma que idStatic ira
+        //variando su valor de forma constante 
         numeroLocal = Integer.parseInt(localActualMenu.getText());
         precioLocal = Float.parseFloat(precioLocalMenu.getText()); //convertimos a float el string que nos entrega el menu
         this.setVisible(false); //hacemos invisible este objeto
@@ -222,14 +240,20 @@ public class AgregarLocalEdificio extends javax.swing.JDialog {
         });
     }
 
+    public int returnId() {
+        return Integer.parseInt(id.getText());
+    }
+    
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton back;
     private javax.swing.JButton confirmar;
     private javax.swing.JTextField descripcion;
     private javax.swing.JButton exit;
+    private javax.swing.JTextField id;
     private javax.swing.JLabel localActualMenu;
     private javax.swing.JTextField precioLocalMenu;
     private javax.swing.JLabel textDescripcion;
+    private javax.swing.JLabel textId;
     private javax.swing.JLabel textNumPiso;
     private javax.swing.JLabel textPrecioLocal;
     private javax.swing.JLabel tituloMenu;
