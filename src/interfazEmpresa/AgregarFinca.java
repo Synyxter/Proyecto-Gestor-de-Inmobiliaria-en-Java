@@ -9,6 +9,7 @@ import gestioninmuebleudc.Finca;
 import gestioninmuebleudc.GestionInmuebleUdc;
 import interfazUsuario.MenuDisponible;
 import java.util.Random;
+import javax.swing.ImageIcon;
 import javax.swing.JOptionPane;
 import javax.swing.JTextField;
 
@@ -26,6 +27,7 @@ public class AgregarFinca extends javax.swing.JFrame {
     //en el AgregarPiso si se pide el numero del piso
     public AgregarFinca() {
         initComponents();
+        setIconImage(new ImageIcon(getClass().getResource("/Imagenes/empresaIcon.png")).getImage());
         this.setLocationRelativeTo(null);
     }
     
@@ -44,14 +46,15 @@ public class AgregarFinca extends javax.swing.JFrame {
         textDescripcion = new javax.swing.JLabel();
         descripcion = new javax.swing.JTextField();
         confirmar = new javax.swing.JButton();
-        pisoActualMenu = new javax.swing.JLabel();
         precio = new javax.swing.JTextField();
         textPrecio = new javax.swing.JLabel();
         textDireccion = new javax.swing.JLabel();
         direccion = new javax.swing.JTextField();
+        imagenLateral = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setUndecorated(true);
+        getContentPane().setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
         exit.setFont(new java.awt.Font("Segoe UI", 1, 12)); // NOI18N
         exit.setText("Exit");
@@ -60,6 +63,7 @@ public class AgregarFinca extends javax.swing.JFrame {
                 exitActionPerformed(evt);
             }
         });
+        getContentPane().add(exit, new org.netbeans.lib.awtextra.AbsoluteConstraints(610, 10, -1, -1));
 
         back.setFont(new java.awt.Font("Segoe UI", 1, 12)); // NOI18N
         back.setText("Back");
@@ -68,11 +72,14 @@ public class AgregarFinca extends javax.swing.JFrame {
                 backActionPerformed(evt);
             }
         });
+        getContentPane().add(back, new org.netbeans.lib.awtextra.AbsoluteConstraints(530, 10, -1, -1));
 
         tituloMenu.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
         tituloMenu.setText("AGREGAR FINCA");
+        getContentPane().add(tituloMenu, new org.netbeans.lib.awtextra.AbsoluteConstraints(400, 130, -1, -1));
 
         textDescripcion.setText("Descripcion");
+        getContentPane().add(textDescripcion, new org.netbeans.lib.awtextra.AbsoluteConstraints(400, 170, -1, -1));
 
         descripcion.setText("Bonita y grande");
         descripcion.addActionListener(new java.awt.event.ActionListener() {
@@ -80,6 +87,7 @@ public class AgregarFinca extends javax.swing.JFrame {
                 descripcionActionPerformed(evt);
             }
         });
+        getContentPane().add(descripcion, new org.netbeans.lib.awtextra.AbsoluteConstraints(510, 170, 110, -1));
 
         confirmar.setFont(new java.awt.Font("Segoe UI", 1, 12)); // NOI18N
         confirmar.setText("Confirmar");
@@ -88,8 +96,7 @@ public class AgregarFinca extends javax.swing.JFrame {
                 confirmarActionPerformed(evt);
             }
         });
-
-        pisoActualMenu.setText(" ");
+        getContentPane().add(confirmar, new org.netbeans.lib.awtextra.AbsoluteConstraints(460, 290, -1, -1));
 
         precio.setText("500000");
         precio.addActionListener(new java.awt.event.ActionListener() {
@@ -97,71 +104,20 @@ public class AgregarFinca extends javax.swing.JFrame {
                 precioActionPerformed(evt);
             }
         });
+        getContentPane().add(precio, new org.netbeans.lib.awtextra.AbsoluteConstraints(510, 210, 110, -1));
 
         textPrecio.setText("Precio Alquiler");
+        getContentPane().add(textPrecio, new org.netbeans.lib.awtextra.AbsoluteConstraints(400, 210, -1, -1));
 
         textDireccion.setText("Direccion");
+        getContentPane().add(textDireccion, new org.netbeans.lib.awtextra.AbsoluteConstraints(400, 250, -1, -1));
 
         direccion.setText("salida del pueblo");
+        getContentPane().add(direccion, new org.netbeans.lib.awtextra.AbsoluteConstraints(510, 250, 110, -1));
 
-        javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
-        getContentPane().setLayout(layout);
-        layout.setHorizontalGroup(
-            layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(layout.createSequentialGroup()
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(layout.createSequentialGroup()
-                        .addGap(200, 200, 200)
-                        .addComponent(back)
-                        .addGap(8, 8, 8)
-                        .addComponent(exit))
-                    .addGroup(layout.createSequentialGroup()
-                        .addGap(65, 65, 65)
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addGroup(layout.createSequentialGroup()
-                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                    .addComponent(textDescripcion)
-                                    .addComponent(textPrecio)
-                                    .addComponent(textDireccion))
-                                .addGap(35, 35, 35)
-                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                                    .addComponent(descripcion, javax.swing.GroupLayout.DEFAULT_SIZE, 110, Short.MAX_VALUE)
-                                    .addComponent(direccion)
-                                    .addComponent(precio)))
-                            .addComponent(tituloMenu))
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(pisoActualMenu))
-                    .addGroup(layout.createSequentialGroup()
-                        .addGap(124, 124, 124)
-                        .addComponent(confirmar)))
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-        );
-        layout.setVerticalGroup(
-            layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(layout.createSequentialGroup()
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(back)
-                    .addComponent(exit))
-                .addGap(41, 41, 41)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(pisoActualMenu)
-                    .addComponent(tituloMenu))
-                .addGap(20, 20, 20)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(descripcion, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(textDescripcion))
-                .addGap(23, 23, 23)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(textPrecio)
-                    .addComponent(precio, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(18, 18, 18)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(textDireccion)
-                    .addComponent(direccion, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(18, 18, 18)
-                .addComponent(confirmar)
-                .addContainerGap(24, Short.MAX_VALUE))
-        );
+        imagenLateral.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagenes/edificioColorFondo.png"))); // NOI18N
+        imagenLateral.setText("jLabel2");
+        getContentPane().add(imagenLateral, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 330, 510));
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
@@ -285,7 +241,7 @@ public class AgregarFinca extends javax.swing.JFrame {
     private javax.swing.JTextField descripcion;
     private javax.swing.JTextField direccion;
     private javax.swing.JButton exit;
-    private javax.swing.JLabel pisoActualMenu;
+    private javax.swing.JLabel imagenLateral;
     private javax.swing.JTextField precio;
     private javax.swing.JLabel textDescripcion;
     private javax.swing.JLabel textDireccion;

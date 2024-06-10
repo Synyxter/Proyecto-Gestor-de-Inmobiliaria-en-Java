@@ -1,5 +1,8 @@
 package interfazUsuario;
 
+import gestioninmuebleudc.Usuario;
+import javax.swing.ImageIcon;
+
 public class MenuDisponible extends javax.swing.JFrame {
    
     
@@ -31,6 +34,7 @@ public class MenuDisponible extends javax.swing.JFrame {
     
     public MenuDisponible() {
         initComponents();
+        setIconImage(new ImageIcon(getClass().getResource("/Imagenes/empresaIcon.png")).getImage());
         this.setLocationRelativeTo(null); //centramos
     }
     
@@ -95,262 +99,167 @@ public class MenuDisponible extends javax.swing.JFrame {
         textDescripcion3 = new javax.swing.JLabel();
         textDescripcion4 = new javax.swing.JLabel();
         descripcion4 = new javax.swing.JLabel();
-        jButton1 = new javax.swing.JButton();
-        jButton3 = new javax.swing.JButton();
+        back = new javax.swing.JButton();
+        exit = new javax.swing.JButton();
+        imagenLateral = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
+        setUndecorated(true);
+        getContentPane().setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
         textPrecio.setFont(new java.awt.Font("Segoe UI", 1, 12)); // NOI18N
         textPrecio.setText("Precio:");
+        getContentPane().add(textPrecio, new org.netbeans.lib.awtextra.AbsoluteConstraints(370, 180, -1, -1));
 
         textTipo.setFont(new java.awt.Font("Segoe UI", 1, 12)); // NOI18N
         textTipo.setText("Tipo:");
+        getContentPane().add(textTipo, new org.netbeans.lib.awtextra.AbsoluteConstraints(370, 160, -1, -1));
 
         textid.setFont(new java.awt.Font("Segoe UI", 1, 12)); // NOI18N
         textid.setText("Id");
+        getContentPane().add(textid, new org.netbeans.lib.awtextra.AbsoluteConstraints(370, 200, -1, -1));
 
         textprecio1.setFont(new java.awt.Font("Segoe UI", 1, 12)); // NOI18N
         textprecio1.setText("Precio");
+        getContentPane().add(textprecio1, new org.netbeans.lib.awtextra.AbsoluteConstraints(370, 300, -1, -1));
 
         texttipo1.setFont(new java.awt.Font("Segoe UI", 1, 12)); // NOI18N
         texttipo1.setText("Tipo");
+        getContentPane().add(texttipo1, new org.netbeans.lib.awtextra.AbsoluteConstraints(370, 280, -1, -1));
 
         textid1.setFont(new java.awt.Font("Segoe UI", 1, 12)); // NOI18N
         textid1.setText("Id");
+        getContentPane().add(textid1, new org.netbeans.lib.awtextra.AbsoluteConstraints(370, 320, -1, -1));
 
         texttipo2.setFont(new java.awt.Font("Segoe UI", 1, 12)); // NOI18N
         texttipo2.setText("Tipo");
+        getContentPane().add(texttipo2, new org.netbeans.lib.awtextra.AbsoluteConstraints(580, 280, -1, -1));
 
         textprecio2.setFont(new java.awt.Font("Segoe UI", 1, 12)); // NOI18N
         textprecio2.setText("Precio");
+        getContentPane().add(textprecio2, new org.netbeans.lib.awtextra.AbsoluteConstraints(580, 300, -1, -1));
 
         textid2.setFont(new java.awt.Font("Segoe UI", 1, 12)); // NOI18N
         textid2.setText("Id");
+        getContentPane().add(textid2, new org.netbeans.lib.awtextra.AbsoluteConstraints(580, 320, -1, -1));
 
         textid3.setFont(new java.awt.Font("Segoe UI", 1, 12)); // NOI18N
         textid3.setText("Id");
+        getContentPane().add(textid3, new org.netbeans.lib.awtextra.AbsoluteConstraints(580, 200, -1, -1));
 
         textprecio3.setFont(new java.awt.Font("Segoe UI", 1, 12)); // NOI18N
         textprecio3.setText("Precio");
+        getContentPane().add(textprecio3, new org.netbeans.lib.awtextra.AbsoluteConstraints(580, 180, -1, -1));
 
         texttipo3.setFont(new java.awt.Font("Segoe UI", 1, 12)); // NOI18N
         texttipo3.setText("tipo");
+        getContentPane().add(texttipo3, new org.netbeans.lib.awtextra.AbsoluteConstraints(580, 160, -1, -1));
 
         tipo.setText("Edificio");
+        getContentPane().add(tipo, new org.netbeans.lib.awtextra.AbsoluteConstraints(490, 160, -1, -1));
 
         tipo2.setText("Piso");
+        getContentPane().add(tipo2, new org.netbeans.lib.awtextra.AbsoluteConstraints(490, 280, -1, -1));
 
         tipo3.setText("Local");
+        getContentPane().add(tipo3, new org.netbeans.lib.awtextra.AbsoluteConstraints(700, 160, -1, -1));
 
         tipo4.setText("Finca");
+        getContentPane().add(tipo4, new org.netbeans.lib.awtextra.AbsoluteConstraints(700, 280, -1, -1));
 
         precio4.setText("null");
+        getContentPane().add(precio4, new org.netbeans.lib.awtextra.AbsoluteConstraints(700, 300, -1, -1));
 
         id4.setText("null");
+        getContentPane().add(id4, new org.netbeans.lib.awtextra.AbsoluteConstraints(700, 320, -1, -1));
 
         precio3.setText("null");
+        getContentPane().add(precio3, new org.netbeans.lib.awtextra.AbsoluteConstraints(700, 180, -1, -1));
 
         id3.setText("null");
+        getContentPane().add(id3, new org.netbeans.lib.awtextra.AbsoluteConstraints(700, 200, -1, -1));
 
         precio.setText("null");
+        getContentPane().add(precio, new org.netbeans.lib.awtextra.AbsoluteConstraints(490, 180, -1, -1));
 
         id.setText("null");
+        getContentPane().add(id, new org.netbeans.lib.awtextra.AbsoluteConstraints(490, 200, -1, -1));
 
         precio2.setText("null");
+        getContentPane().add(precio2, new org.netbeans.lib.awtextra.AbsoluteConstraints(490, 300, -1, -1));
 
         id2.setText("null");
+        getContentPane().add(id2, new org.netbeans.lib.awtextra.AbsoluteConstraints(490, 320, -1, -1));
 
         jLabel13.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
         jLabel13.setText("Lista Inmuebles Disponibles");
+        getContentPane().add(jLabel13, new org.netbeans.lib.awtextra.AbsoluteConstraints(360, 120, -1, -1));
 
         textDescripcion.setFont(new java.awt.Font("Segoe UI", 1, 12)); // NOI18N
         textDescripcion.setText("Descripcion:");
+        getContentPane().add(textDescripcion, new org.netbeans.lib.awtextra.AbsoluteConstraints(370, 220, -1, -1));
 
         descripcion.setText("NO APLICA");
+        getContentPane().add(descripcion, new org.netbeans.lib.awtextra.AbsoluteConstraints(470, 220, -1, -1));
 
         textDescripcion2.setFont(new java.awt.Font("Segoe UI", 1, 12)); // NOI18N
         textDescripcion2.setText("Descripcion:");
+        getContentPane().add(textDescripcion2, new org.netbeans.lib.awtextra.AbsoluteConstraints(370, 340, -1, -1));
 
         descripcion2.setText("null");
+        getContentPane().add(descripcion2, new org.netbeans.lib.awtextra.AbsoluteConstraints(490, 340, -1, -1));
 
         descripcion3.setText("null");
+        getContentPane().add(descripcion3, new org.netbeans.lib.awtextra.AbsoluteConstraints(700, 220, -1, -1));
 
         textDescripcion3.setFont(new java.awt.Font("Segoe UI", 1, 12)); // NOI18N
         textDescripcion3.setText("Descripcion:");
+        getContentPane().add(textDescripcion3, new org.netbeans.lib.awtextra.AbsoluteConstraints(580, 220, -1, -1));
 
         textDescripcion4.setFont(new java.awt.Font("Segoe UI", 1, 12)); // NOI18N
         textDescripcion4.setText("Descripcion:");
+        getContentPane().add(textDescripcion4, new org.netbeans.lib.awtextra.AbsoluteConstraints(580, 340, -1, -1));
 
         descripcion4.setText("null");
+        getContentPane().add(descripcion4, new org.netbeans.lib.awtextra.AbsoluteConstraints(700, 340, -1, -1));
 
-        jButton1.setFont(new java.awt.Font("Segoe UI", 1, 12)); // NOI18N
-        jButton1.setText("Back");
-        jButton1.addActionListener(new java.awt.event.ActionListener() {
+        back.setFont(new java.awt.Font("Segoe UI", 1, 12)); // NOI18N
+        back.setText("Back");
+        back.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jButton1ActionPerformed(evt);
+                backActionPerformed(evt);
             }
         });
+        getContentPane().add(back, new org.netbeans.lib.awtextra.AbsoluteConstraints(600, 0, -1, -1));
 
-        jButton3.setFont(new java.awt.Font("Segoe UI", 1, 12)); // NOI18N
-        jButton3.setText("Exit");
-        jButton3.addActionListener(new java.awt.event.ActionListener() {
+        exit.setFont(new java.awt.Font("Segoe UI", 1, 12)); // NOI18N
+        exit.setText("Exit");
+        exit.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jButton3ActionPerformed(evt);
+                exitActionPerformed(evt);
             }
         });
+        getContentPane().add(exit, new org.netbeans.lib.awtextra.AbsoluteConstraints(680, 0, -1, -1));
 
-        javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
-        getContentPane().setLayout(layout);
-        layout.setHorizontalGroup(
-            layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(layout.createSequentialGroup()
-                .addGap(63, 63, 63)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(layout.createSequentialGroup()
-                        .addComponent(textDescripcion3)
-                        .addGap(49, 49, 49)
-                        .addComponent(descripcion3))
-                    .addGroup(layout.createSequentialGroup()
-                        .addComponent(textDescripcion4)
-                        .addGap(49, 49, 49)
-                        .addComponent(descripcion4))
-                    .addGroup(layout.createSequentialGroup()
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(textTipo)
-                            .addComponent(texttipo3)
-                            .addComponent(texttipo2)
-                            .addComponent(textprecio2)
-                            .addComponent(textid2)
-                            .addComponent(textprecio3)
-                            .addComponent(textid3)
-                            .addComponent(textPrecio)
-                            .addComponent(textid)
-                            .addComponent(textDescripcion)
-                            .addComponent(textDescripcion2)
-                            .addComponent(texttipo1)
-                            .addComponent(textprecio1)
-                            .addComponent(textid1))
-                        .addGap(49, 49, 49)
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(id2)
-                            .addComponent(precio2)
-                            .addComponent(tipo2)
-                            .addComponent(id)
-                            .addComponent(precio)
-                            .addComponent(id3)
-                            .addComponent(precio3)
-                            .addComponent(id4)
-                            .addComponent(precio4)
-                            .addComponent(tipo4)
-                            .addComponent(tipo3)
-                            .addComponent(tipo)
-                            .addComponent(descripcion)
-                            .addComponent(descripcion2)))))
-            .addGroup(layout.createSequentialGroup()
-                .addGap(52, 52, 52)
-                .addComponent(jLabel13)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                .addComponent(jButton3))
-            .addGroup(layout.createSequentialGroup()
-                .addGap(111, 111, 111)
-                .addComponent(jButton1))
-        );
-        layout.setVerticalGroup(
-            layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(layout.createSequentialGroup()
-                .addComponent(jButton3)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                .addComponent(jLabel13)
-                .addGap(18, 18, 18)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(layout.createSequentialGroup()
-                        .addComponent(textTipo)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(textPrecio)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(textid))
-                    .addGroup(layout.createSequentialGroup()
-                        .addComponent(tipo)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(precio)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(id)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                            .addComponent(descripcion)
-                            .addComponent(textDescripcion))))
-                .addGap(40, 40, 40)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(layout.createSequentialGroup()
-                        .addComponent(texttipo1)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(textprecio1)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(textid1))
-                    .addGroup(layout.createSequentialGroup()
-                        .addComponent(tipo2)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(precio2)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(id2)))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(descripcion2)
-                    .addComponent(textDescripcion2))
-                .addGap(43, 43, 43)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(layout.createSequentialGroup()
-                        .addComponent(texttipo3)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(textprecio3)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(textid3))
-                    .addGroup(layout.createSequentialGroup()
-                        .addComponent(tipo3)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(precio3)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(id3)))
-                .addGap(2, 2, 2)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(descripcion3)
-                    .addComponent(textDescripcion3))
-                .addGap(42, 42, 42)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                    .addGroup(layout.createSequentialGroup()
-                        .addComponent(tipo4)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(precio4)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(id4))
-                    .addGroup(layout.createSequentialGroup()
-                        .addComponent(texttipo2)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(textprecio2)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(textid2)))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(descripcion4)
-                    .addComponent(textDescripcion4))
-                .addGap(18, 18, 18)
-                .addComponent(jButton1)
-                .addGap(17, 17, 17))
-        );
+        imagenLateral.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagenes/edificioColorFondo.png"))); // NOI18N
+        imagenLateral.setText("jLabel2");
+        getContentPane().add(imagenLateral, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 330, 510));
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
-    private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
+    private void backActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_backActionPerformed
         this.setVisible(false);
-
+        
         InicioExitoso back = new InicioExitoso();
+        back.actualizarFecha(Usuario.time);
+        back.actualizarDinero();
         back.setVisible(true);
-    }//GEN-LAST:event_jButton1ActionPerformed
+    }//GEN-LAST:event_backActionPerformed
 
-    private void jButton3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton3ActionPerformed
+    private void exitActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_exitActionPerformed
         System.exit(0);
-    }//GEN-LAST:event_jButton3ActionPerformed
+    }//GEN-LAST:event_exitActionPerformed
 
     /**
      * @param args the command line arguments
@@ -391,16 +300,17 @@ public class MenuDisponible extends javax.swing.JFrame {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JButton back;
     private javax.swing.JLabel descripcion;
     private javax.swing.JLabel descripcion2;
     private javax.swing.JLabel descripcion3;
     private javax.swing.JLabel descripcion4;
+    private javax.swing.JButton exit;
     private javax.swing.JLabel id;
     private javax.swing.JLabel id2;
     private javax.swing.JLabel id3;
     private javax.swing.JLabel id4;
-    private javax.swing.JButton jButton1;
-    private javax.swing.JButton jButton3;
+    private javax.swing.JLabel imagenLateral;
     private javax.swing.JLabel jLabel13;
     private javax.swing.JLabel precio;
     private javax.swing.JLabel precio2;

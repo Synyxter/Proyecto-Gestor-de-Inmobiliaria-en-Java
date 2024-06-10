@@ -6,6 +6,7 @@ import gestioninmuebleudc.GestionInmuebleUdc;
 import gestioninmuebleudc.Local;
 import interfazUsuario.MenuDisponible;
 import java.util.Random;
+import javax.swing.ImageIcon;
 import javax.swing.JOptionPane;
 import javax.swing.JTextField;
 
@@ -15,6 +16,7 @@ public class AgregarLocal extends javax.swing.JFrame {
    //AgregarLocalEdificio es diferente de AgregarLocal puesto que aca no se pide el ciertos datos ya que el sistema lo hace automatico
     public AgregarLocal() {
         initComponents();
+        setIconImage(new ImageIcon(getClass().getResource("/Imagenes/empresaIcon.png")).getImage());
         this.setLocationRelativeTo(null);
     }
     
@@ -33,11 +35,11 @@ public class AgregarLocal extends javax.swing.JFrame {
         textDescripcion = new javax.swing.JLabel();
         descripcion = new javax.swing.JTextField();
         confirmar = new javax.swing.JButton();
-        pisoActualMenu = new javax.swing.JLabel();
         precio = new javax.swing.JTextField();
         textPrecio = new javax.swing.JLabel();
         textDireccion = new javax.swing.JLabel();
         direccion = new javax.swing.JTextField();
+        imagenLateral = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setUndecorated(true);
@@ -63,7 +65,6 @@ public class AgregarLocal extends javax.swing.JFrame {
 
         textDescripcion.setText("Descripcion");
 
-        descripcion.setText(" ");
         descripcion.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 descripcionActionPerformed(evt);
@@ -78,74 +79,77 @@ public class AgregarLocal extends javax.swing.JFrame {
             }
         });
 
-        pisoActualMenu.setText(" ");
-
-        precio.setText(" ");
+        precio.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                precioActionPerformed(evt);
+            }
+        });
 
         textPrecio.setText("Precio Alquiler");
 
         textDireccion.setText("Direccion");
 
-        direccion.setText(" ");
+        direccion.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                direccionActionPerformed(evt);
+            }
+        });
+
+        imagenLateral.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagenes/edificioColorFondo.png"))); // NOI18N
+        imagenLateral.setText("jLabel2");
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
+                .addComponent(imagenLateral, javax.swing.GroupLayout.PREFERRED_SIZE, 330, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(120, 120, 120)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(layout.createSequentialGroup()
-                        .addGap(200, 200, 200)
-                        .addComponent(back)
-                        .addGap(8, 8, 8)
-                        .addComponent(exit))
+                        .addGap(150, 150, 150)
+                        .addComponent(back))
+                    .addComponent(tituloMenu)
                     .addGroup(layout.createSequentialGroup()
-                        .addGap(65, 65, 65)
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addGroup(layout.createSequentialGroup()
-                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                    .addComponent(textDescripcion)
-                                    .addComponent(textPrecio)
-                                    .addComponent(textDireccion))
-                                .addGap(35, 35, 35)
-                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                                    .addComponent(descripcion, javax.swing.GroupLayout.DEFAULT_SIZE, 110, Short.MAX_VALUE)
-                                    .addComponent(direccion)
-                                    .addComponent(precio)))
-                            .addComponent(tituloMenu))
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                        .addComponent(pisoActualMenu)))
-                .addContainerGap())
-            .addGroup(layout.createSequentialGroup()
-                .addGap(129, 129, 129)
-                .addComponent(confirmar)
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                        .addComponent(textDescripcion)
+                        .addGap(48, 48, 48)
+                        .addComponent(descripcion, javax.swing.GroupLayout.PREFERRED_SIZE, 110, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addGroup(layout.createSequentialGroup()
+                        .addComponent(textPrecio)
+                        .addGap(33, 33, 33)
+                        .addComponent(precio, javax.swing.GroupLayout.PREFERRED_SIZE, 110, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addGroup(layout.createSequentialGroup()
+                        .addComponent(textDireccion)
+                        .addGap(60, 60, 60)
+                        .addComponent(direccion, javax.swing.GroupLayout.PREFERRED_SIZE, 110, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addGroup(layout.createSequentialGroup()
+                        .addGap(60, 60, 60)
+                        .addComponent(confirmar)))
+                .addGap(8, 8, 8)
+                .addComponent(exit))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addComponent(imagenLateral, javax.swing.GroupLayout.PREFERRED_SIZE, 510, javax.swing.GroupLayout.PREFERRED_SIZE)
             .addGroup(layout.createSequentialGroup()
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(back)
-                    .addComponent(exit))
-                .addGap(41, 41, 41)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(pisoActualMenu)
-                    .addComponent(tituloMenu))
+                .addComponent(back)
+                .addGap(77, 77, 77)
+                .addComponent(tituloMenu)
                 .addGap(20, 20, 20)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(descripcion, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(textDescripcion))
-                .addGap(23, 23, 23)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(textPrecio)
-                    .addComponent(precio, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGap(18, 18, 18)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(textDireccion)
-                    .addComponent(direccion, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 37, Short.MAX_VALUE)
-                .addComponent(confirmar)
-                .addGap(26, 26, 26))
+                    .addComponent(precio, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(textPrecio))
+                .addGap(18, 18, 18)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(direccion, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(textDireccion))
+                .addGap(38, 38, 38)
+                .addComponent(confirmar))
+            .addComponent(exit)
         );
 
         pack();
@@ -210,6 +214,14 @@ public class AgregarLocal extends javax.swing.JFrame {
         // TODO add your handling code here:
     }//GEN-LAST:event_descripcionActionPerformed
 
+    private void precioActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_precioActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_precioActionPerformed
+
+    private void direccionActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_direccionActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_direccionActionPerformed
+
     /**
      * @param args the command line arguments
      */
@@ -258,7 +270,7 @@ public class AgregarLocal extends javax.swing.JFrame {
     private javax.swing.JTextField descripcion;
     private javax.swing.JTextField direccion;
     private javax.swing.JButton exit;
-    private javax.swing.JLabel pisoActualMenu;
+    private javax.swing.JLabel imagenLateral;
     private javax.swing.JTextField precio;
     private javax.swing.JLabel textDescripcion;
     private javax.swing.JLabel textDireccion;

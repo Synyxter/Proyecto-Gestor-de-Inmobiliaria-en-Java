@@ -1,6 +1,7 @@
 
 package interfazUsuario;
 import interfazMain.MenuIngreso;
+import javax.swing.ImageIcon;
 
 public class MenuUsuario extends javax.swing.JFrame {
 
@@ -9,6 +10,7 @@ public class MenuUsuario extends javax.swing.JFrame {
      */
     public MenuUsuario() {
         initComponents();
+        setIconImage(new ImageIcon(getClass().getResource("/Imagenes/empresaIcon.png")).getImage());
         this.setLocationRelativeTo(null); //centramos el menu
     }
 
@@ -26,9 +28,11 @@ public class MenuUsuario extends javax.swing.JFrame {
         mensajeWelcome1 = new javax.swing.JLabel();
         mensajeWelcome2 = new javax.swing.JLabel();
         imagen = new javax.swing.JLabel();
+        imagenLateral = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setUndecorated(true);
+        getContentPane().setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
         Back.setFont(new java.awt.Font("Segoe UI", 1, 12)); // NOI18N
         Back.setText("Back");
@@ -37,6 +41,7 @@ public class MenuUsuario extends javax.swing.JFrame {
                 BackActionPerformed(evt);
             }
         });
+        getContentPane().add(Back, new org.netbeans.lib.awtextra.AbsoluteConstraints(600, 0, -1, -1));
 
         Exit.setFont(new java.awt.Font("Segoe UI", 1, 12)); // NOI18N
         Exit.setText("Exit");
@@ -45,6 +50,7 @@ public class MenuUsuario extends javax.swing.JFrame {
                 ExitActionPerformed(evt);
             }
         });
+        getContentPane().add(Exit, new org.netbeans.lib.awtextra.AbsoluteConstraints(680, 0, -1, -1));
 
         registrar.setText("Registrarse");
         registrar.addActionListener(new java.awt.event.ActionListener() {
@@ -52,6 +58,7 @@ public class MenuUsuario extends javax.swing.JFrame {
                 registrarActionPerformed(evt);
             }
         });
+        getContentPane().add(registrar, new org.netbeans.lib.awtextra.AbsoluteConstraints(470, 420, 110, -1));
 
         iniciarSesion.setText("Iniciar Sesión");
         iniciarSesion.addActionListener(new java.awt.event.ActionListener() {
@@ -59,75 +66,29 @@ public class MenuUsuario extends javax.swing.JFrame {
                 iniciarSesionActionPerformed(evt);
             }
         });
+        getContentPane().add(iniciarSesion, new org.netbeans.lib.awtextra.AbsoluteConstraints(470, 450, 110, -1));
 
         tituloInmobiliaria.setFont(new java.awt.Font("Segoe UI", 1, 18)); // NOI18N
         tituloInmobiliaria.setText("¡Inmobiliaria UdC!");
+        getContentPane().add(tituloInmobiliaria, new org.netbeans.lib.awtextra.AbsoluteConstraints(450, 30, -1, -1));
 
         desea.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
         desea.setText("Desea");
+        getContentPane().add(desea, new org.netbeans.lib.awtextra.AbsoluteConstraints(500, 390, -1, -1));
 
         mensajeWelcome1.setText("Bienvenido al menu de usuario");
+        getContentPane().add(mensajeWelcome1, new org.netbeans.lib.awtextra.AbsoluteConstraints(440, 60, -1, -1));
 
         mensajeWelcome2.setText(" le ofrecemos una calida bienvenida");
+        getContentPane().add(mensajeWelcome2, new org.netbeans.lib.awtextra.AbsoluteConstraints(430, 80, -1, -1));
 
         imagen.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagenes/User.png"))); // NOI18N
         imagen.setText(" ");
+        getContentPane().add(imagen, new org.netbeans.lib.awtextra.AbsoluteConstraints(390, 130, -1, -1));
 
-        javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
-        getContentPane().setLayout(layout);
-        layout.setHorizontalGroup(
-            layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(layout.createSequentialGroup()
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(layout.createSequentialGroup()
-                        .addGap(360, 360, 360)
-                        .addComponent(Back)
-                        .addGap(6, 6, 6)
-                        .addComponent(Exit))
-                    .addGroup(layout.createSequentialGroup()
-                        .addGap(169, 169, 169)
-                        .addComponent(mensajeWelcome2))
-                    .addGroup(layout.createSequentialGroup()
-                        .addGap(138, 138, 138)
-                        .addComponent(imagen))
-                    .addGroup(layout.createSequentialGroup()
-                        .addGap(218, 218, 218)
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                            .addComponent(registrar, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                            .addComponent(iniciarSesion, javax.swing.GroupLayout.DEFAULT_SIZE, 110, Short.MAX_VALUE)))
-                    .addGroup(layout.createSequentialGroup()
-                        .addGap(183, 183, 183)
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                            .addComponent(mensajeWelcome1)
-                            .addComponent(tituloInmobiliaria))))
-                .addContainerGap(9, Short.MAX_VALUE))
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                .addGap(0, 0, Short.MAX_VALUE)
-                .addComponent(desea)
-                .addGap(230, 230, 230))
-        );
-        layout.setVerticalGroup(
-            layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(layout.createSequentialGroup()
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(Back)
-                    .addComponent(Exit))
-                .addGap(2, 2, 2)
-                .addComponent(tituloInmobiliaria)
-                .addGap(6, 6, 6)
-                .addComponent(mensajeWelcome1)
-                .addGap(6, 6, 6)
-                .addComponent(mensajeWelcome2)
-                .addGap(6, 6, 6)
-                .addComponent(imagen)
-                .addGap(12, 12, 12)
-                .addComponent(desea)
-                .addGap(6, 6, 6)
-                .addComponent(registrar)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(iniciarSesion)
-                .addContainerGap(18, Short.MAX_VALUE))
-        );
+        imagenLateral.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagenes/edificioColorFondo.png"))); // NOI18N
+        imagenLateral.setText("jLabel2");
+        getContentPane().add(imagenLateral, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 330, 510));
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
@@ -200,6 +161,7 @@ public class MenuUsuario extends javax.swing.JFrame {
     private javax.swing.JButton Exit;
     private javax.swing.JLabel desea;
     private javax.swing.JLabel imagen;
+    private javax.swing.JLabel imagenLateral;
     private javax.swing.JButton iniciarSesion;
     private javax.swing.JLabel mensajeWelcome1;
     private javax.swing.JLabel mensajeWelcome2;

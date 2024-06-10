@@ -3,15 +3,17 @@ package gestioninmuebleudc;
 import java.time.LocalDate;
 
 public class MovimientoBancario {
-
+    
     private String tipoMovimiento;
+    private String descripcion;
     private LocalDate fechaEmision;
     private float costo;
     private String deudor;
     private String acreedor;
 
-    public MovimientoBancario(String tipoMovimiento, LocalDate fechaEmision, float costo, String deudor, String acreedor) {
+    public MovimientoBancario(String tipoMovimiento, String descripcion, LocalDate fechaEmision, float costo, String deudor, String acreedor) {
         this.tipoMovimiento = tipoMovimiento;
+        this.descripcion = descripcion;
         this.fechaEmision = fechaEmision;
         this.costo = costo;
         this.deudor = deudor;

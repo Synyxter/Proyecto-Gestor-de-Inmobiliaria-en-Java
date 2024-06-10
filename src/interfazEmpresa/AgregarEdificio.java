@@ -10,6 +10,7 @@ import gestioninmuebleudc.GestionInmuebleUdc;
 import gestioninmuebleudc.Piso;
 import gestioninmuebleudc.Local;
 import interfazUsuario.MenuDisponible;
+import javax.swing.ImageIcon;
 import javax.swing.JOptionPane;
 
 /**
@@ -25,6 +26,7 @@ public class AgregarEdificio extends javax.swing.JFrame {
     
     public AgregarEdificio() {
         initComponents();
+        setIconImage(new ImageIcon(getClass().getResource("/Imagenes/empresaIcon.png")).getImage());
         this.setLocationRelativeTo(null); //fijamos la ventana en la mitad de la pantalla
     }
 
@@ -51,9 +53,11 @@ public class AgregarEdificio extends javax.swing.JFrame {
         confirmar = new javax.swing.JButton();
         textLocales = new javax.swing.JLabel();
         local = new javax.swing.JTextField();
+        imagenLateral = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setUndecorated(true);
+        getContentPane().setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
         exit.setFont(new java.awt.Font("Segoe UI", 1, 12)); // NOI18N
         exit.setText("Exit");
@@ -62,6 +66,7 @@ public class AgregarEdificio extends javax.swing.JFrame {
                 exitActionPerformed(evt);
             }
         });
+        getContentPane().add(exit, new org.netbeans.lib.awtextra.AbsoluteConstraints(620, 0, -1, -1));
 
         back.setFont(new java.awt.Font("Segoe UI", 1, 12)); // NOI18N
         back.setText("Back");
@@ -70,29 +75,45 @@ public class AgregarEdificio extends javax.swing.JFrame {
                 backActionPerformed(evt);
             }
         });
+        getContentPane().add(back, new org.netbeans.lib.awtextra.AbsoluteConstraints(540, 0, -1, -1));
 
         textNombre.setText("Nombre Edificio:");
+        getContentPane().add(textNombre, new org.netbeans.lib.awtextra.AbsoluteConstraints(360, 130, -1, -1));
 
         textDireccion.setText("Direccion Edificio:");
+        getContentPane().add(textDireccion, new org.netbeans.lib.awtextra.AbsoluteConstraints(360, 170, -1, -1));
 
         textPisos.setText("Pisos Edificio:");
+        getContentPane().add(textPisos, new org.netbeans.lib.awtextra.AbsoluteConstraints(360, 210, -1, -1));
 
         textPrecio.setText("Precio Alquiler del edificio:");
+        getContentPane().add(textPrecio, new org.netbeans.lib.awtextra.AbsoluteConstraints(360, 250, -1, -1));
 
         nombre.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 nombreActionPerformed(evt);
             }
         });
+        getContentPane().add(nombre, new org.netbeans.lib.awtextra.AbsoluteConstraints(530, 130, 115, -1));
+        getContentPane().add(direccion, new org.netbeans.lib.awtextra.AbsoluteConstraints(530, 170, 115, -1));
 
         pisos.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 pisosActionPerformed(evt);
             }
         });
+        getContentPane().add(pisos, new org.netbeans.lib.awtextra.AbsoluteConstraints(530, 210, 115, -1));
+
+        precio.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                precioActionPerformed(evt);
+            }
+        });
+        getContentPane().add(precio, new org.netbeans.lib.awtextra.AbsoluteConstraints(530, 250, 115, -1));
 
         tituloMenu.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
         tituloMenu.setText("AGREGAR EDIFICIO");
+        getContentPane().add(tituloMenu, new org.netbeans.lib.awtextra.AbsoluteConstraints(360, 90, -1, -1));
 
         confirmar.setFont(new java.awt.Font("Segoe UI", 1, 12)); // NOI18N
         confirmar.setText("Confirmar");
@@ -101,77 +122,15 @@ public class AgregarEdificio extends javax.swing.JFrame {
                 confirmarActionPerformed(evt);
             }
         });
+        getContentPane().add(confirmar, new org.netbeans.lib.awtextra.AbsoluteConstraints(440, 390, -1, -1));
 
         textLocales.setText("Locales:");
+        getContentPane().add(textLocales, new org.netbeans.lib.awtextra.AbsoluteConstraints(360, 290, -1, -1));
+        getContentPane().add(local, new org.netbeans.lib.awtextra.AbsoluteConstraints(530, 290, 115, -1));
 
-        javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
-        getContentPane().setLayout(layout);
-        layout.setHorizontalGroup(
-            layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(layout.createSequentialGroup()
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                        .addGap(0, 0, Short.MAX_VALUE)
-                        .addComponent(back)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(exit))
-                    .addGroup(layout.createSequentialGroup()
-                        .addGap(72, 72, 72)
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(tituloMenu)
-                            .addGroup(layout.createSequentialGroup()
-                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                                    .addComponent(textDireccion, javax.swing.GroupLayout.Alignment.LEADING)
-                                    .addComponent(textPisos, javax.swing.GroupLayout.Alignment.LEADING)
-                                    .addComponent(textPrecio, javax.swing.GroupLayout.Alignment.LEADING)
-                                    .addComponent(textNombre, javax.swing.GroupLayout.Alignment.LEADING)
-                                    .addComponent(textLocales, javax.swing.GroupLayout.Alignment.LEADING))
-                                .addGap(35, 35, 35)
-                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                                    .addComponent(nombre)
-                                    .addComponent(direccion)
-                                    .addComponent(pisos)
-                                    .addComponent(precio)
-                                    .addComponent(local, javax.swing.GroupLayout.DEFAULT_SIZE, 115, Short.MAX_VALUE))))
-                        .addGap(0, 40, Short.MAX_VALUE)))
-                .addContainerGap())
-            .addGroup(layout.createSequentialGroup()
-                .addGap(154, 154, 154)
-                .addComponent(confirmar)
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-        );
-        layout.setVerticalGroup(
-            layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(layout.createSequentialGroup()
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(exit)
-                    .addComponent(back))
-                .addGap(13, 13, 13)
-                .addComponent(tituloMenu)
-                .addGap(18, 18, 18)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(textNombre)
-                    .addComponent(nombre, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(18, 18, 18)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(direccion, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(textDireccion))
-                .addGap(18, 18, 18)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(textPisos)
-                    .addComponent(pisos, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(18, 18, 18)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(textPrecio)
-                    .addComponent(precio, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(18, 18, 18)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(textLocales)
-                    .addComponent(local, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 77, Short.MAX_VALUE)
-                .addComponent(confirmar)
-                .addGap(19, 19, 19))
-        );
+        imagenLateral.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagenes/edificioColorFondo.png"))); // NOI18N
+        imagenLateral.setText("jLabel2");
+        getContentPane().add(imagenLateral, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 330, 510));
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
@@ -296,6 +255,10 @@ public class AgregarEdificio extends javax.swing.JFrame {
         menu.setVisible(true);   
     }//GEN-LAST:event_confirmarActionPerformed
 
+    private void precioActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_precioActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_precioActionPerformed
+
     /**
      * @param args the command line arguments
      */
@@ -336,6 +299,7 @@ public class AgregarEdificio extends javax.swing.JFrame {
     private javax.swing.JButton confirmar;
     private javax.swing.JTextField direccion;
     private javax.swing.JButton exit;
+    private javax.swing.JLabel imagenLateral;
     private javax.swing.JTextField local;
     private javax.swing.JTextField nombre;
     private javax.swing.JTextField pisos;

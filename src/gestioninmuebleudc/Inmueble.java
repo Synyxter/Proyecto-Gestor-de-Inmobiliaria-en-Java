@@ -1,18 +1,23 @@
 package gestioninmuebleudc;
 
 // Inmueble.java
+
+import java.util.ArrayList;
+
 public abstract class Inmueble {
     //al tratarse de una herencia usamos protected en la clase madre
     protected String direccion;
     protected float precioAlquiler;
-    protected int alquilado; //cada inmueble tendra un estado de si alquilado o no alquilado
+    protected int alquilado; //cada inmueble tendra un dueño, alquilado sera igual a la cedula del dueño
     protected int id; //cada inmueble tendra un id
-    
+   
+        
     public Inmueble(String direccion, float precioAlquiler, int alquilado, int id) {
         this.direccion = direccion;
         this.precioAlquiler = precioAlquiler;
         this.alquilado = alquilado;
         this.id = id;
+        
     }
     
     public abstract float consultarPrecioAlquiler(int i);

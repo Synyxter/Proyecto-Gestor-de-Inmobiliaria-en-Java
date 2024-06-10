@@ -22,7 +22,8 @@ public class GestionInmuebleUdc {
     public static ArrayList<Inmueble> listaInmuebles;
     public static ArrayList<Usuario> listaUsuarios;
     public static ArrayList<MovimientoBancario> listaMovimientosBancarios;
-    
+    public static ArrayList<Recibo> listaRecibos;
+
     private static String RUTA_USUARIOS = "usuarios.txt";
     private static String RUTA_INMUEBLES = "inmuebles.txt";
     private static String RUTA_MOVIMIENTOS = "movimientos.txt";
@@ -31,6 +32,7 @@ public class GestionInmuebleUdc {
         listaInmuebles = new ArrayList<>();
         listaUsuarios = new ArrayList<>();
         listaMovimientosBancarios = new ArrayList<>();
+        listaRecibos = new ArrayList<Recibo>();
     }
      
     //main
@@ -143,12 +145,14 @@ public class GestionInmuebleUdc {
         while ((linea = reader.readLine()) != null) {
             String[] datos = linea.split(",");
             String tipoMovimiento = datos[0];
-            LocalDate fecha = LocalDate.parse(datos[1], DateTimeFormatter.ISO_LOCAL_DATE);            float importe = Float.parseFloat(datos[2]); // Asegúrate que el tipo de dato coincida con el del constructor
-            String deudor = datos[3];
-            String acreedor = datos[4];
-            Inmueble inmueble = buscarInmueblePorDireccion(datos[5]);
+            String descripcion = datos[1];
+            LocalDate fecha = LocalDate.parse(datos[2], DateTimeFormatter.ISO_LOCAL_DATE);            
+            float costo = Float.parseFloat(datos[3]); // Asegúrate que el tipo de dato coincida con el del constructor
+            String deudor = datos[5];
+            String acreedor = datos[6];
+            Inmueble inmueble = buscarInmueblePorDireccion(datos[7]);
             if (inmueble != null) { // Asegurarse que el inmueble no es null antes de crear el objeto
-                 MovimientoBancario movimiento = new MovimientoBancario(tipoMovimiento, fecha, importe, deudor, acreedor);
+                 MovimientoBancario movimiento = new MovimientoBancario(tipoMovimiento,descripcion, fecha, costo, deudor, acreedor);
                 listaMovimientosBancarios.add(movimiento);
             } else {
                 System.out.println("No se encontró el inmueble con dirección: " + datos[5]);

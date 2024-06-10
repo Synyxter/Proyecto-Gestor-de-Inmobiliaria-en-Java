@@ -3,11 +3,13 @@
 package interfazUsuario;
 
 import gestioninmuebleudc.GestionInmuebleUdc;
+import gestioninmuebleudc.Inmueble;
 import gestioninmuebleudc.Recibo;
 import java.time.LocalDate;
 import gestioninmuebleudc.Usuario;
 import static interfazUsuario.InicioSesion.sesionActivaUbic;
 import java.time.format.DateTimeFormatter;
+import javax.swing.ImageIcon;
 import javax.swing.JLabel;
 import javax.swing.JOptionPane;
 
@@ -20,6 +22,7 @@ public class InicioExitoso extends javax.swing.JFrame {
      
     public InicioExitoso() {
         initComponents();
+        setIconImage(new ImageIcon(getClass().getResource("/Imagenes/empresaIcon.png")).getImage());
         this.setLocationRelativeTo(null); //centramos el menu
     }
     
@@ -44,20 +47,27 @@ public class InicioExitoso extends javax.swing.JFrame {
     
     public void llamarRecibo(){
         if(Usuario.time.getDayOfMonth() < 25 && alquilerYes == true){
-            
+            GestorPago.gasStatic = 0;
+            GestorPago.luzStatic = 0;
+            GestorPago.aguaStatic = 0;
         } else { //solo se genera un recibo cuando toca pagarlo, es decir mensual
             //sirve para evitar un recibo nuevo cada 15 dias
             
-            //SSSSSSS no olvidar confirmar que tenemos arriendo antes de generar recibos
-            Recibo next = new Recibo();    //creamos un objeto de Recibo
-            next.generarRecibo(InicioSesion.sesionActivaUbic); //llamamos a su metodo para que genere valores aleatorios
-            //apartir del estrato.
-            //actualizamos los atributos static con los valores aleatorios que recibimos usando los getters
-            GestorPago.gasStatic = next.getGas();
-            GestorPago.luzStatic = next.getLuz();
-            GestorPago.aguaStatic = next.getAgua();
-        }
-    }
+            int ubicInmueble = -1;
+            for(int i = 0; i < GestionInmuebleUdc.listaInmuebles.size(); i++){
+                //buscaremos si existe un inmueble ocupado cuyo inquilino tenga la cedula de 
+                //nuestro usser, es decir sean la misma persona
+                if(Integer.parseInt(GestionInmuebleUdc.listaUsuarios.get(sesionActivaUbic).getCedula()) == GestionInmuebleUdc.listaInmuebles.get(i).getAlquilado()){
+                    ubicInmueble = i;
+                    GestionInmuebleUdc.listaRecibos.add(new Recibo(0,0,0,GestionInmuebleUdc.listaInmuebles.get(ubicInmueble).getId(),Usuario.time));
+                    GestorPago.gasStatic = Recibo.generarReciboGas(sesionActivaUbic);
+                    GestorPago.luzStatic = Recibo.generarReciboLuz(sesionActivaUbic);
+                    GestorPago.aguaStatic = Recibo.generarReciboAgua(sesionActivaUbic);
+                }
+            }//end for
+      
+        }///end else if externo
+    } //end funcion de llamarRecibo
     
     @SuppressWarnings("unchecked")
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
@@ -65,11 +75,11 @@ public class InicioExitoso extends javax.swing.JFrame {
 
         exit = new javax.swing.JButton();
         alquilar = new javax.swing.JButton();
+        back = new javax.swing.JButton();
         textFecha = new javax.swing.JLabel();
         fecha = new javax.swing.JLabel();
         mensaje = new javax.swing.JLabel();
         avanzarTime = new javax.swing.JButton();
-        back = new javax.swing.JButton();
         verDisponible = new javax.swing.JButton();
         textPago = new javax.swing.JLabel();
         debePagar = new javax.swing.JLabel();
@@ -79,10 +89,13 @@ public class InicioExitoso extends javax.swing.JFrame {
         textDinero = new javax.swing.JLabel();
         dinero = new javax.swing.JLabel();
         gestionarPago = new javax.swing.JButton();
-        jButton1 = new javax.swing.JButton();
+        desalojar = new javax.swing.JButton();
+        imagenLateral = new javax.swing.JLabel();
+        jLabel1 = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setUndecorated(true);
+        getContentPane().setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
         exit.setFont(new java.awt.Font("Segoe UI", 1, 12)); // NOI18N
         exit.setText("Exit");
@@ -91,6 +104,7 @@ public class InicioExitoso extends javax.swing.JFrame {
                 exitActionPerformed(evt);
             }
         });
+        getContentPane().add(exit, new org.netbeans.lib.awtextra.AbsoluteConstraints(680, 10, -1, -1));
 
         alquilar.setText("Alquilar Inmueble");
         alquilar.addActionListener(new java.awt.event.ActionListener() {
@@ -98,19 +112,7 @@ public class InicioExitoso extends javax.swing.JFrame {
                 alquilarActionPerformed(evt);
             }
         });
-
-        textFecha.setText("Fecha Actual:");
-
-        fecha.setText("null");
-
-        mensaje.setText("Si cuenta con arriendo no olvide pagar a final de mes!");
-
-        avanzarTime.setText("Esperar Quincena...");
-        avanzarTime.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                avanzarTimeActionPerformed(evt);
-            }
-        });
+        getContentPane().add(alquilar, new org.netbeans.lib.awtextra.AbsoluteConstraints(430, 230, 213, -1));
 
         back.setFont(new java.awt.Font("Segoe UI", 1, 12)); // NOI18N
         back.setText("Cerrar Sesion");
@@ -119,6 +121,24 @@ public class InicioExitoso extends javax.swing.JFrame {
                 backActionPerformed(evt);
             }
         });
+        getContentPane().add(back, new org.netbeans.lib.awtextra.AbsoluteConstraints(540, 10, 123, -1));
+
+        textFecha.setText("Fecha Actual:");
+        getContentPane().add(textFecha, new org.netbeans.lib.awtextra.AbsoluteConstraints(380, 90, -1, -1));
+
+        fecha.setText("null");
+        getContentPane().add(fecha, new org.netbeans.lib.awtextra.AbsoluteConstraints(470, 90, -1, -1));
+
+        mensaje.setText("Si cuenta con arriendo no olvide pagar a final de mes!");
+        getContentPane().add(mensaje, new org.netbeans.lib.awtextra.AbsoluteConstraints(380, 110, -1, -1));
+
+        avanzarTime.setText("Esperar Quincena...");
+        avanzarTime.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                avanzarTimeActionPerformed(evt);
+            }
+        });
+        getContentPane().add(avanzarTime, new org.netbeans.lib.awtextra.AbsoluteConstraints(430, 430, 213, -1));
 
         verDisponible.setText("Ver lista de inmuebles Disponibles");
         verDisponible.addActionListener(new java.awt.event.ActionListener() {
@@ -126,20 +146,29 @@ public class InicioExitoso extends javax.swing.JFrame {
                 verDisponibleActionPerformed(evt);
             }
         });
+        getContentPane().add(verDisponible, new org.netbeans.lib.awtextra.AbsoluteConstraints(430, 310, 213, -1));
 
         textPago.setText("Debe pagar ahora: ");
+        getContentPane().add(textPago, new org.netbeans.lib.awtextra.AbsoluteConstraints(380, 130, -1, -1));
 
         debePagar.setText("no");
+        getContentPane().add(debePagar, new org.netbeans.lib.awtextra.AbsoluteConstraints(490, 130, -1, -1));
 
         textEventos.setText("eventos en este mes: ");
+        getContentPane().add(textEventos, new org.netbeans.lib.awtextra.AbsoluteConstraints(380, 160, -1, -1));
 
         eventoInfo.setText("no");
+        getContentPane().add(eventoInfo, new org.netbeans.lib.awtextra.AbsoluteConstraints(510, 160, -1, -1));
 
+        infoEvento.setFont(new java.awt.Font("Segoe UI", 1, 12)); // NOI18N
         infoEvento.setText("Ver Información Evento");
+        getContentPane().add(infoEvento, new org.netbeans.lib.awtextra.AbsoluteConstraints(430, 390, 213, -1));
 
         textDinero.setText("Dinero:");
+        getContentPane().add(textDinero, new org.netbeans.lib.awtextra.AbsoluteConstraints(380, 180, -1, -1));
 
         dinero.setText(" ");
+        getContentPane().add(dinero, new org.netbeans.lib.awtextra.AbsoluteConstraints(430, 180, 103, -1));
 
         gestionarPago.setText("Gestionar Pagos");
         gestionarPago.addActionListener(new java.awt.event.ActionListener() {
@@ -147,96 +176,23 @@ public class InicioExitoso extends javax.swing.JFrame {
                 gestionarPagoActionPerformed(evt);
             }
         });
+        getContentPane().add(gestionarPago, new org.netbeans.lib.awtextra.AbsoluteConstraints(430, 350, 213, -1));
 
-        jButton1.setText("Desalojar Inmueble");
+        desalojar.setText("Desalojar Inmueble");
+        desalojar.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                desalojarActionPerformed(evt);
+            }
+        });
+        getContentPane().add(desalojar, new org.netbeans.lib.awtextra.AbsoluteConstraints(430, 270, 213, -1));
 
-        javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
-        getContentPane().setLayout(layout);
-        layout.setHorizontalGroup(
-            layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                .addContainerGap(20, Short.MAX_VALUE)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                    .addGroup(layout.createSequentialGroup()
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(mensaje)
-                            .addGroup(layout.createSequentialGroup()
-                                .addComponent(textFecha)
-                                .addGap(18, 18, 18)
-                                .addComponent(fecha))
-                            .addGroup(layout.createSequentialGroup()
-                                .addComponent(textEventos)
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                                .addComponent(eventoInfo))
-                            .addGroup(layout.createSequentialGroup()
-                                .addComponent(textPago)
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                                .addComponent(debePagar))
-                            .addGroup(layout.createSequentialGroup()
-                                .addComponent(textDinero)
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                .addComponent(dinero, javax.swing.GroupLayout.PREFERRED_SIZE, 103, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                        .addContainerGap(98, Short.MAX_VALUE))
-                    .addGroup(layout.createSequentialGroup()
-                        .addGap(0, 0, Short.MAX_VALUE)
-                        .addComponent(back, javax.swing.GroupLayout.PREFERRED_SIZE, 123, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(18, 18, 18)
-                        .addComponent(exit)
-                        .addGap(14, 14, 14))))
-            .addGroup(layout.createSequentialGroup()
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                    .addGroup(layout.createSequentialGroup()
-                        .addContainerGap()
-                        .addComponent(infoEvento, javax.swing.GroupLayout.PREFERRED_SIZE, 213, javax.swing.GroupLayout.PREFERRED_SIZE))
-                    .addGroup(javax.swing.GroupLayout.Alignment.LEADING, layout.createSequentialGroup()
-                        .addGap(71, 71, 71)
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
-                            .addComponent(alquilar, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                            .addComponent(verDisponible, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, 213, Short.MAX_VALUE)
-                            .addComponent(gestionarPago, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                            .addComponent(avanzarTime, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                            .addComponent(jButton1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))))
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-        );
-        layout.setVerticalGroup(
-            layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(layout.createSequentialGroup()
-                .addContainerGap()
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(exit)
-                    .addComponent(back))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(textFecha)
-                    .addComponent(fecha))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(mensaje)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(textPago)
-                    .addComponent(debePagar))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(textEventos)
-                    .addComponent(eventoInfo))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(textDinero)
-                    .addComponent(dinero))
-                .addGap(38, 38, 38)
-                .addComponent(infoEvento)
-                .addGap(18, 18, 18)
-                .addComponent(alquilar)
-                .addGap(18, 18, 18)
-                .addComponent(verDisponible)
-                .addGap(18, 18, 18)
-                .addComponent(gestionarPago)
-                .addGap(18, 18, 18)
-                .addComponent(jButton1)
-                .addGap(18, 18, 18)
-                .addComponent(avanzarTime)
-                .addContainerGap(35, Short.MAX_VALUE))
-        );
+        imagenLateral.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagenes/edificioColorFondo.png"))); // NOI18N
+        imagenLateral.setText("jLabel2");
+        getContentPane().add(imagenLateral, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 330, 510));
+
+        jLabel1.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
+        jLabel1.setText("Menu de Usuario");
+        getContentPane().add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(380, 50, -1, -1));
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
@@ -347,8 +303,8 @@ public class InicioExitoso extends javax.swing.JFrame {
             //actualizamos el menu de GestorPago
             GestorPago next = new GestorPago();
             next.actualizarDinero();
-            next.actualizarEstrato();
             GestorPago.estratoStatic = String.valueOf(GestionInmuebleUdc.listaUsuarios.get(sesionActivaUbic).getEstrato());
+            next.actualizarEstrato();
             next.setVisible(true);
 
             next.actualizarRecibo();
@@ -356,6 +312,31 @@ public class InicioExitoso extends javax.swing.JFrame {
             JOptionPane.showMessageDialog(null, "No cuenta con ningun inmueble arrendado :/","Upps...",JOptionPane.INFORMATION_MESSAGE);
         }
     }//GEN-LAST:event_gestionarPagoActionPerformed
+
+    private void desalojarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_desalojarActionPerformed
+        //si el alquiler se cumple, es decir, si tiene un inmueble alquilado (true) 
+        if(alquilerYes){
+            String s = JOptionPane.showInputDialog(null, "Ingrese el ID del inmueble", "Pagar Arriendo", JOptionPane.QUESTION_MESSAGE);
+                        
+            for(int i = 0; i < GestionInmuebleUdc.listaInmuebles.size(); i++){
+                //aca determinamos si se encontro o no el id introducido por el usuario
+                if(Integer.parseInt(s) == GestionInmuebleUdc.listaInmuebles.get(i).getId() ){
+                    //en caso de que se encontrase el inmueble se prosigue con el desalojo
+                    alquilerYes = false; //decimos que no esta alquilado
+                    GestionInmuebleUdc.listaInmuebles.get(i).setAlquilado(-1); //lo volvemos a colocar en -1
+                    //esto es para indicar que nadie lo ocupa
+                } else {
+                    JOptionPane.showMessageDialog(null, "ID del Inmueble no encontrado", "Transaccion Fallida", JOptionPane.INFORMATION_MESSAGE);
+                }
+            }    
+        } else { //si no tiene inmueble no se puede desalojar
+            JOptionPane.showMessageDialog(null, "No cuenta con ningun inmueble arrendado :/","Upps...",JOptionPane.INFORMATION_MESSAGE);            
+        }//end if else
+        
+        this.fecha.setText(String.valueOf(Usuario.time.format(DateTimeFormatter.ofPattern("dd/MM/yyyy"))));
+        this.dinero.setText(String.valueOf(InicioExitoso.dineroStatic));
+ 
+    }//GEN-LAST:event_desalojarActionPerformed
 
     /**
      * @param args the command line arguments
@@ -397,14 +378,17 @@ public class InicioExitoso extends javax.swing.JFrame {
     private javax.swing.JButton alquilar;
     private javax.swing.JButton avanzarTime;
     private javax.swing.JButton back;
+    private javax.swing.JButton back1;
     private javax.swing.JLabel debePagar;
+    private javax.swing.JButton desalojar;
     private javax.swing.JLabel dinero;
     private javax.swing.JLabel eventoInfo;
     private javax.swing.JButton exit;
     private javax.swing.JLabel fecha;
     private javax.swing.JButton gestionarPago;
+    private javax.swing.JLabel imagenLateral;
     private javax.swing.JButton infoEvento;
-    private javax.swing.JButton jButton1;
+    private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel mensaje;
     private javax.swing.JLabel textDinero;
     private javax.swing.JLabel textEventos;

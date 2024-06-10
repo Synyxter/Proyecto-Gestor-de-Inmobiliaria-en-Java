@@ -2,6 +2,7 @@
 package interfazEmpresa;
 
 import interfazMain.MenuIngreso;
+import javax.swing.ImageIcon;
 
 public class MenuEmpresa extends javax.swing.JFrame {
 
@@ -10,6 +11,7 @@ public class MenuEmpresa extends javax.swing.JFrame {
      */
     public MenuEmpresa() {
         initComponents();
+        setIconImage(new ImageIcon(getClass().getResource("/Imagenes/empresaIcon.png")).getImage());
         this.setLocationRelativeTo(null); //con esta linea centramos la interfaz para que aparezca centrada al usuario
     }
      
@@ -34,10 +36,12 @@ public class MenuEmpresa extends javax.swing.JFrame {
         gerenteMensaje2 = new javax.swing.JLabel();
         imagen = new javax.swing.JLabel();
         jLabel1 = new javax.swing.JLabel();
-        negocioEmpresa = new javax.swing.JButton();
+        economia = new javax.swing.JButton();
+        imagenLateral = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setUndecorated(true);
+        getContentPane().setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
         Back.setFont(new java.awt.Font("Segoe UI", 1, 12)); // NOI18N
         Back.setText("Back");
@@ -46,6 +50,7 @@ public class MenuEmpresa extends javax.swing.JFrame {
                 BackActionPerformed(evt);
             }
         });
+        getContentPane().add(Back, new org.netbeans.lib.awtextra.AbsoluteConstraints(600, 0, -1, -1));
 
         Exit.setFont(new java.awt.Font("Segoe UI", 1, 12)); // NOI18N
         Exit.setText("Exit");
@@ -54,6 +59,7 @@ public class MenuEmpresa extends javax.swing.JFrame {
                 ExitActionPerformed(evt);
             }
         });
+        getContentPane().add(Exit, new org.netbeans.lib.awtextra.AbsoluteConstraints(680, 0, -1, -1));
 
         edificio.setText("Edificio");
         edificio.addActionListener(new java.awt.event.ActionListener() {
@@ -61,6 +67,7 @@ public class MenuEmpresa extends javax.swing.JFrame {
                 edificioActionPerformed(evt);
             }
         });
+        getContentPane().add(edificio, new org.netbeans.lib.awtextra.AbsoluteConstraints(450, 330, -1, -1));
 
         local.setText("Local");
         local.addActionListener(new java.awt.event.ActionListener() {
@@ -68,6 +75,7 @@ public class MenuEmpresa extends javax.swing.JFrame {
                 localActionPerformed(evt);
             }
         });
+        getContentPane().add(local, new org.netbeans.lib.awtextra.AbsoluteConstraints(450, 360, -1, -1));
 
         piso.setText("Piso");
         piso.addActionListener(new java.awt.event.ActionListener() {
@@ -75,6 +83,7 @@ public class MenuEmpresa extends javax.swing.JFrame {
                 pisoActionPerformed(evt);
             }
         });
+        getContentPane().add(piso, new org.netbeans.lib.awtextra.AbsoluteConstraints(450, 390, -1, -1));
 
         finca.setText("Finca");
         finca.addActionListener(new java.awt.event.ActionListener() {
@@ -82,96 +91,40 @@ public class MenuEmpresa extends javax.swing.JFrame {
                 fincaActionPerformed(evt);
             }
         });
+        getContentPane().add(finca, new org.netbeans.lib.awtextra.AbsoluteConstraints(450, 420, -1, -1));
 
         tituloInmobiliaria.setFont(new java.awt.Font("Segoe UI", 1, 18)); // NOI18N
         tituloInmobiliaria.setText("¡Inmobiliaria UdC!");
+        getContentPane().add(tituloInmobiliaria, new org.netbeans.lib.awtextra.AbsoluteConstraints(420, 20, -1, -1));
 
         deseaAgregar.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
         deseaAgregar.setText("Desea Agregar a Nuestra Empresa");
+        getContentPane().add(deseaAgregar, new org.netbeans.lib.awtextra.AbsoluteConstraints(390, 300, -1, -1));
 
         gerenteMensaje1.setText("Como nuestro gerente de confianza");
+        getContentPane().add(gerenteMensaje1, new org.netbeans.lib.awtextra.AbsoluteConstraints(390, 50, -1, -1));
 
         gerenteMensaje2.setText(" le ofrecemos una calida bienvenida");
+        getContentPane().add(gerenteMensaje2, new org.netbeans.lib.awtextra.AbsoluteConstraints(390, 70, -1, -1));
 
         imagen.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagenes/empresaIcon.png"))); // NOI18N
         imagen.setText(" ");
+        getContentPane().add(imagen, new org.netbeans.lib.awtextra.AbsoluteConstraints(360, 80, 240, 220));
 
         jLabel1.setText("o quizás...");
+        getContentPane().add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(460, 450, -1, -1));
 
-        negocioEmpresa.setText("Ver dinero disponible y ventas");
+        economia.setText("Ingresos Inmueble");
+        economia.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                economiaActionPerformed(evt);
+            }
+        });
+        getContentPane().add(economia, new org.netbeans.lib.awtextra.AbsoluteConstraints(420, 470, -1, -1));
 
-        javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
-        getContentPane().setLayout(layout);
-        layout.setHorizontalGroup(
-            layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(layout.createSequentialGroup()
-                .addGap(360, 360, 360)
-                .addComponent(Back)
-                .addGap(6, 6, 6)
-                .addComponent(Exit))
-            .addGroup(layout.createSequentialGroup()
-                .addGap(192, 192, 192)
-                .addComponent(tituloInmobiliaria))
-            .addGroup(layout.createSequentialGroup()
-                .addGap(169, 169, 169)
-                .addComponent(gerenteMensaje1))
-            .addGroup(layout.createSequentialGroup()
-                .addGap(169, 169, 169)
-                .addComponent(gerenteMensaje2))
-            .addGroup(layout.createSequentialGroup()
-                .addGap(230, 230, 230)
-                .addComponent(edificio))
-            .addGroup(layout.createSequentialGroup()
-                .addGap(230, 230, 230)
-                .addComponent(local))
-            .addGroup(layout.createSequentialGroup()
-                .addGap(140, 140, 140)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                    .addComponent(deseaAgregar)
-                    .addComponent(imagen, javax.swing.GroupLayout.PREFERRED_SIZE, 240, javax.swing.GroupLayout.PREFERRED_SIZE)))
-            .addGroup(layout.createSequentialGroup()
-                .addGap(230, 230, 230)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                    .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                        .addGroup(layout.createSequentialGroup()
-                            .addGap(6, 6, 6)
-                            .addComponent(jLabel1))
-                        .addComponent(finca))
-                    .addComponent(piso)))
-            .addGroup(layout.createSequentialGroup()
-                .addGap(159, 159, 159)
-                .addComponent(negocioEmpresa))
-        );
-        layout.setVerticalGroup(
-            layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(layout.createSequentialGroup()
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(Back)
-                    .addComponent(Exit))
-                .addGap(2, 2, 2)
-                .addComponent(tituloInmobiliaria)
-                .addGap(6, 6, 6)
-                .addComponent(gerenteMensaje1)
-                .addGap(6, 6, 6)
-                .addComponent(gerenteMensaje2)
-                .addGap(16, 16, 16)
-                .addComponent(imagen, javax.swing.GroupLayout.PREFERRED_SIZE, 220, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(deseaAgregar)
-                .addGap(18, 18, 18)
-                .addComponent(edificio)
-                .addGap(7, 7, 7)
-                .addComponent(local)
-                .addGap(7, 7, 7)
-                .addComponent(piso)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(finca)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                .addComponent(jLabel1)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(negocioEmpresa)
-                .addContainerGap(14, Short.MAX_VALUE))
-        );
+        imagenLateral.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagenes/edificioColorFondo.png"))); // NOI18N
+        imagenLateral.setText("jLabel2");
+        getContentPane().add(imagenLateral, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 330, 510));
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
@@ -218,6 +171,12 @@ public class MenuEmpresa extends javax.swing.JFrame {
         
     }//GEN-LAST:event_fincaActionPerformed
 
+    private void economiaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_economiaActionPerformed
+        EconomiaEmpresa next = new EconomiaEmpresa();
+        next.setVisible(true);
+        this.setVisible(false);
+    }//GEN-LAST:event_economiaActionPerformed
+
     /**
      * @param args the command line arguments
      */
@@ -257,14 +216,15 @@ public class MenuEmpresa extends javax.swing.JFrame {
     private javax.swing.JButton Back;
     private javax.swing.JButton Exit;
     private javax.swing.JLabel deseaAgregar;
+    private javax.swing.JButton economia;
     private javax.swing.JButton edificio;
     private javax.swing.JButton finca;
     private javax.swing.JLabel gerenteMensaje1;
     private javax.swing.JLabel gerenteMensaje2;
     private javax.swing.JLabel imagen;
+    private javax.swing.JLabel imagenLateral;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JButton local;
-    private javax.swing.JButton negocioEmpresa;
     private javax.swing.JButton piso;
     private javax.swing.JLabel tituloInmobiliaria;
     // End of variables declaration//GEN-END:variables

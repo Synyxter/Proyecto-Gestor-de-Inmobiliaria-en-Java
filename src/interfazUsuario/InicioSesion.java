@@ -7,6 +7,7 @@ import gestioninmuebleudc.GestionInmuebleUdc;
 import gestioninmuebleudc.Usuario;
 import java.time.LocalDate;
 import java.time.format.DateTimeFormatter;
+import javax.swing.ImageIcon;
 import javax.swing.JOptionPane;
 
 /**
@@ -20,6 +21,7 @@ public class InicioSesion extends javax.swing.JFrame {
     
     public InicioSesion() {
         initComponents();
+        setIconImage(new ImageIcon(getClass().getResource("/Imagenes/empresaIcon.png")).getImage());
         this.setLocationRelativeTo(null); //centramos el menu
     }
 
@@ -39,9 +41,12 @@ public class InicioSesion extends javax.swing.JFrame {
         confirmar = new javax.swing.JButton();
         usser = new javax.swing.JTextField();
         contraseña = new javax.swing.JPasswordField();
+        imagenLateral = new javax.swing.JLabel();
+        jLabel1 = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setUndecorated(true);
+        getContentPane().setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
         exit.setFont(new java.awt.Font("Segoe UI", 1, 12)); // NOI18N
         exit.setText("Exit");
@@ -50,6 +55,7 @@ public class InicioSesion extends javax.swing.JFrame {
                 exitActionPerformed(evt);
             }
         });
+        getContentPane().add(exit, new org.netbeans.lib.awtextra.AbsoluteConstraints(620, 0, -1, -1));
 
         back.setFont(new java.awt.Font("Segoe UI", 1, 12)); // NOI18N
         back.setText("Back");
@@ -58,10 +64,13 @@ public class InicioSesion extends javax.swing.JFrame {
                 backActionPerformed(evt);
             }
         });
+        getContentPane().add(back, new org.netbeans.lib.awtextra.AbsoluteConstraints(540, 0, -1, -1));
 
         textUsser.setText("Nombre de Usuario");
+        getContentPane().add(textUsser, new org.netbeans.lib.awtextra.AbsoluteConstraints(410, 130, -1, -1));
 
         textContraseña.setText("Contraseña");
+        getContentPane().add(textContraseña, new org.netbeans.lib.awtextra.AbsoluteConstraints(410, 170, -1, -1));
 
         confirmar.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
         confirmar.setText("confirmar");
@@ -70,6 +79,7 @@ public class InicioSesion extends javax.swing.JFrame {
                 confirmarActionPerformed(evt);
             }
         });
+        getContentPane().add(confirmar, new org.netbeans.lib.awtextra.AbsoluteConstraints(460, 210, -1, -1));
 
         usser.setText("danyysk");
         usser.addActionListener(new java.awt.event.ActionListener() {
@@ -77,53 +87,18 @@ public class InicioSesion extends javax.swing.JFrame {
                 usserActionPerformed(evt);
             }
         });
+        getContentPane().add(usser, new org.netbeans.lib.awtextra.AbsoluteConstraints(540, 130, 120, -1));
 
         contraseña.setText("123");
+        getContentPane().add(contraseña, new org.netbeans.lib.awtextra.AbsoluteConstraints(540, 170, 120, -1));
 
-        javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
-        getContentPane().setLayout(layout);
-        layout.setHorizontalGroup(
-            layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                .addContainerGap(82, Short.MAX_VALUE)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(textUsser)
-                    .addComponent(textContraseña))
-                .addGap(25, 25, 25)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(layout.createSequentialGroup()
-                        .addComponent(back)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                        .addComponent(exit))
-                    .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
-                        .addComponent(contraseña, javax.swing.GroupLayout.Alignment.LEADING)
-                        .addComponent(usser, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, 120, Short.MAX_VALUE)))
-                .addContainerGap())
-            .addGroup(layout.createSequentialGroup()
-                .addGap(128, 128, 128)
-                .addComponent(confirmar)
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-        );
-        layout.setVerticalGroup(
-            layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(layout.createSequentialGroup()
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(exit)
-                    .addComponent(back))
-                .addGap(35, 35, 35)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(layout.createSequentialGroup()
-                        .addComponent(usser, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                        .addComponent(contraseña, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                    .addGroup(layout.createSequentialGroup()
-                        .addComponent(textUsser)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                        .addComponent(textContraseña)))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 23, Short.MAX_VALUE)
-                .addComponent(confirmar)
-                .addGap(46, 46, 46))
-        );
+        imagenLateral.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagenes/edificioColorFondo.png"))); // NOI18N
+        imagenLateral.setText("jLabel2");
+        getContentPane().add(imagenLateral, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 330, 380));
+
+        jLabel1.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
+        jLabel1.setText("Inicio de Sesion");
+        getContentPane().add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(410, 70, -1, -1));
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
@@ -263,6 +238,8 @@ public class InicioSesion extends javax.swing.JFrame {
     private javax.swing.JButton confirmar;
     private javax.swing.JPasswordField contraseña;
     private javax.swing.JButton exit;
+    private javax.swing.JLabel imagenLateral;
+    private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel textContraseña;
     private javax.swing.JLabel textUsser;
     private javax.swing.JTextField usser;

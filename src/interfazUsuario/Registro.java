@@ -5,6 +5,7 @@
 package interfazUsuario;
 import gestioninmuebleudc.GestionInmuebleUdc;
 import gestioninmuebleudc.Usuario;
+import javax.swing.ImageIcon;
 import javax.swing.JOptionPane;
 /**
  *
@@ -17,6 +18,7 @@ public class Registro extends javax.swing.JFrame {
      */
     public Registro() {
         initComponents();
+        setIconImage(new ImageIcon(getClass().getResource("/Imagenes/empresaIcon.png")).getImage());
         this.setLocationRelativeTo(null); //centramos el menu
     }
 
@@ -49,9 +51,11 @@ public class Registro extends javax.swing.JFrame {
         textContraseña2 = new javax.swing.JLabel();
         textEstrato = new javax.swing.JLabel();
         estrato = new javax.swing.JTextField();
+        imagenLateral = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setUndecorated(true);
+        getContentPane().setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
         exit.setFont(new java.awt.Font("Segoe UI", 1, 12)); // NOI18N
         exit.setText("Exit");
@@ -60,6 +64,7 @@ public class Registro extends javax.swing.JFrame {
                 exitActionPerformed(evt);
             }
         });
+        getContentPane().add(exit, new org.netbeans.lib.awtextra.AbsoluteConstraints(610, 0, -1, -1));
 
         back.setFont(new java.awt.Font("Segoe UI", 1, 12)); // NOI18N
         back.setText("Back");
@@ -68,10 +73,13 @@ public class Registro extends javax.swing.JFrame {
                 backActionPerformed(evt);
             }
         });
+        getContentPane().add(back, new org.netbeans.lib.awtextra.AbsoluteConstraints(530, 0, -1, -1));
 
         textUsser.setText("Nombre de Usuario");
+        getContentPane().add(textUsser, new org.netbeans.lib.awtextra.AbsoluteConstraints(390, 130, -1, -1));
 
         textCedula.setText("Cedula");
+        getContentPane().add(textCedula, new org.netbeans.lib.awtextra.AbsoluteConstraints(390, 160, -1, -1));
 
         confirmar.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
         confirmar.setText("confirmar");
@@ -80,8 +88,10 @@ public class Registro extends javax.swing.JFrame {
                 confirmarActionPerformed(evt);
             }
         });
+        getContentPane().add(confirmar, new org.netbeans.lib.awtextra.AbsoluteConstraints(430, 390, -1, -1));
 
         usser.setText("danyysk");
+        getContentPane().add(usser, new org.netbeans.lib.awtextra.AbsoluteConstraints(540, 130, 120, -1));
 
         cedula.setText("123");
         cedula.addActionListener(new java.awt.event.ActionListener() {
@@ -89,8 +99,10 @@ public class Registro extends javax.swing.JFrame {
                 cedulaActionPerformed(evt);
             }
         });
+        getContentPane().add(cedula, new org.netbeans.lib.awtextra.AbsoluteConstraints(540, 160, 120, -1));
 
         textEdad.setText("Edad");
+        getContentPane().add(textEdad, new org.netbeans.lib.awtextra.AbsoluteConstraints(390, 190, -1, -1));
 
         edad.setText("1");
         edad.addActionListener(new java.awt.event.ActionListener() {
@@ -98,8 +110,10 @@ public class Registro extends javax.swing.JFrame {
                 edadActionPerformed(evt);
             }
         });
+        getContentPane().add(edad, new org.netbeans.lib.awtextra.AbsoluteConstraints(540, 190, 120, -1));
 
         textSexo.setText("Sexo");
+        getContentPane().add(textSexo, new org.netbeans.lib.awtextra.AbsoluteConstraints(390, 220, -1, -1));
 
         sexo.setText("m");
         sexo.addActionListener(new java.awt.event.ActionListener() {
@@ -107,8 +121,10 @@ public class Registro extends javax.swing.JFrame {
                 sexoActionPerformed(evt);
             }
         });
+        getContentPane().add(sexo, new org.netbeans.lib.awtextra.AbsoluteConstraints(540, 220, 120, -1));
 
         textFoto.setText("Foto");
+        getContentPane().add(textFoto, new org.netbeans.lib.awtextra.AbsoluteConstraints(390, 250, -1, -1));
 
         foto.setText("m");
         foto.addActionListener(new java.awt.event.ActionListener() {
@@ -116,13 +132,17 @@ public class Registro extends javax.swing.JFrame {
                 fotoActionPerformed(evt);
             }
         });
+        getContentPane().add(foto, new org.netbeans.lib.awtextra.AbsoluteConstraints(540, 250, 120, -1));
 
         textContraseña.setText("Contraseña");
+        getContentPane().add(textContraseña, new org.netbeans.lib.awtextra.AbsoluteConstraints(390, 320, -1, -1));
 
         textRegistro.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
         textRegistro.setText("Registro");
+        getContentPane().add(textRegistro, new org.netbeans.lib.awtextra.AbsoluteConstraints(390, 90, -1, -1));
 
         contraseña.setText("123");
+        getContentPane().add(contraseña, new org.netbeans.lib.awtextra.AbsoluteConstraints(540, 320, 120, -1));
 
         contraseña2.setText("123");
         contraseña2.addActionListener(new java.awt.event.ActionListener() {
@@ -130,10 +150,13 @@ public class Registro extends javax.swing.JFrame {
                 contraseña2ActionPerformed(evt);
             }
         });
+        getContentPane().add(contraseña2, new org.netbeans.lib.awtextra.AbsoluteConstraints(540, 350, 120, -1));
 
         textContraseña2.setText("Confirmar Contraseña");
+        getContentPane().add(textContraseña2, new org.netbeans.lib.awtextra.AbsoluteConstraints(390, 350, -1, -1));
 
         textEstrato.setText("estrato (1-6)");
+        getContentPane().add(textEstrato, new org.netbeans.lib.awtextra.AbsoluteConstraints(390, 280, -1, -1));
 
         estrato.setText("1");
         estrato.addActionListener(new java.awt.event.ActionListener() {
@@ -141,96 +164,11 @@ public class Registro extends javax.swing.JFrame {
                 estratoActionPerformed(evt);
             }
         });
+        getContentPane().add(estrato, new org.netbeans.lib.awtextra.AbsoluteConstraints(540, 280, 120, -1));
 
-        javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
-        getContentPane().setLayout(layout);
-        layout.setHorizontalGroup(
-            layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(layout.createSequentialGroup()
-                .addGap(136, 136, 136)
-                .addComponent(confirmar)
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                .addContainerGap(96, Short.MAX_VALUE)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(layout.createSequentialGroup()
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(textUsser)
-                            .addComponent(textCedula)
-                            .addComponent(textEdad)
-                            .addComponent(textSexo)
-                            .addComponent(textFoto)
-                            .addComponent(textRegistro)
-                            .addComponent(textEstrato))
-                        .addGap(39, 39, 39)
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addGroup(layout.createSequentialGroup()
-                                .addComponent(back)
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                                .addComponent(exit))
-                            .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
-                                .addComponent(estrato, javax.swing.GroupLayout.Alignment.LEADING)
-                                .addComponent(cedula, javax.swing.GroupLayout.Alignment.LEADING)
-                                .addComponent(usser, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, 120, Short.MAX_VALUE)
-                                .addComponent(edad, javax.swing.GroupLayout.Alignment.LEADING)
-                                .addComponent(sexo, javax.swing.GroupLayout.Alignment.LEADING)
-                                .addComponent(foto, javax.swing.GroupLayout.Alignment.LEADING))))
-                    .addGroup(layout.createSequentialGroup()
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(textContraseña)
-                            .addComponent(textContraseña2))
-                        .addGap(25, 25, 25)
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                            .addComponent(contraseña, javax.swing.GroupLayout.DEFAULT_SIZE, 120, Short.MAX_VALUE)
-                            .addComponent(contraseña2))))
-                .addContainerGap())
-        );
-        layout.setVerticalGroup(
-            layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(layout.createSequentialGroup()
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(exit)
-                    .addComponent(back))
-                .addGap(7, 7, 7)
-                .addComponent(textRegistro)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(layout.createSequentialGroup()
-                        .addComponent(usser, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(cedula, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(edad, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(sexo, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(foto, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                    .addGroup(layout.createSequentialGroup()
-                        .addComponent(textUsser)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                        .addComponent(textCedula)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                        .addComponent(textEdad)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                        .addComponent(textSexo)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                        .addComponent(textFoto)))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(estrato, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(textEstrato))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 18, Short.MAX_VALUE)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(textContraseña)
-                    .addComponent(contraseña, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(textContraseña2)
-                    .addComponent(contraseña2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(18, 18, 18)
-                .addComponent(confirmar)
-                .addContainerGap())
-        );
+        imagenLateral.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagenes/edificioColorFondo.png"))); // NOI18N
+        imagenLateral.setText("jLabel2");
+        getContentPane().add(imagenLateral, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 330, 510));
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
@@ -336,6 +274,7 @@ public class Registro extends javax.swing.JFrame {
     private javax.swing.JTextField estrato;
     private javax.swing.JButton exit;
     private javax.swing.JTextField foto;
+    private javax.swing.JLabel imagenLateral;
     private javax.swing.JTextField sexo;
     private javax.swing.JLabel textCedula;
     private javax.swing.JLabel textContraseña;

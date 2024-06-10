@@ -1,13 +1,12 @@
-/*
- * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
- * Click nbfs://nbhost/SystemFileSystem/Templates/GUIForms/JFrame.java to edit this template
- */
+
 package interfazEmpresa;
 
-/**
- *
- * @author Danyysk
- */
+import gestioninmuebleudc.GestionInmuebleUdc;
+import gestioninmuebleudc.Usuario;
+import interfazUsuario.InicioExitoso;
+import javax.swing.ImageIcon;
+import javax.swing.JOptionPane;
+
 public class EconomiaEmpresa extends javax.swing.JFrame {
 
     /**
@@ -15,6 +14,8 @@ public class EconomiaEmpresa extends javax.swing.JFrame {
      */
     public EconomiaEmpresa() {
         initComponents();
+        setIconImage(new ImageIcon(getClass().getResource("/Imagenes/empresaIcon.png")).getImage());
+        this.setLocationRelativeTo(null);
     }
 
     /**
@@ -26,21 +27,119 @@ public class EconomiaEmpresa extends javax.swing.JFrame {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
-        setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
+        exit = new javax.swing.JButton();
+        back = new javax.swing.JButton();
+        idInmueble = new javax.swing.JTextField();
+        confirmar = new javax.swing.JButton();
+        jLabel1 = new javax.swing.JLabel();
+        jLabel2 = new javax.swing.JLabel();
+        imagenLateral = new javax.swing.JLabel();
+        jLabel3 = new javax.swing.JLabel();
 
-        javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
-        getContentPane().setLayout(layout);
-        layout.setHorizontalGroup(
-            layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 400, Short.MAX_VALUE)
-        );
-        layout.setVerticalGroup(
-            layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 300, Short.MAX_VALUE)
-        );
+        setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
+        setUndecorated(true);
+        getContentPane().setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
+
+        exit.setFont(new java.awt.Font("Segoe UI", 1, 12)); // NOI18N
+        exit.setText("Exit");
+        exit.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                exitActionPerformed(evt);
+            }
+        });
+        getContentPane().add(exit, new org.netbeans.lib.awtextra.AbsoluteConstraints(620, 0, -1, -1));
+
+        back.setFont(new java.awt.Font("Segoe UI", 1, 12)); // NOI18N
+        back.setText("Back");
+        back.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                backActionPerformed(evt);
+            }
+        });
+        getContentPane().add(back, new org.netbeans.lib.awtextra.AbsoluteConstraints(540, 0, -1, -1));
+
+        idInmueble.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                idInmuebleActionPerformed(evt);
+            }
+        });
+        getContentPane().add(idInmueble, new org.netbeans.lib.awtextra.AbsoluteConstraints(520, 160, 124, -1));
+
+        confirmar.setText("Confirmar");
+        confirmar.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                confirmarActionPerformed(evt);
+            }
+        });
+        getContentPane().add(confirmar, new org.netbeans.lib.awtextra.AbsoluteConstraints(440, 220, -1, -1));
+
+        jLabel1.setText("Ingrese el ID del inmueble");
+        getContentPane().add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(360, 150, -1, -1));
+
+        jLabel2.setText("Al que le consultara");
+        getContentPane().add(jLabel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(360, 170, 136, -1));
+
+        imagenLateral.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagenes/edificioColorFondo.png"))); // NOI18N
+        imagenLateral.setText("jLabel2");
+        getContentPane().add(imagenLateral, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 330, 390));
+
+        jLabel3.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
+        jLabel3.setText("Informacion Inmueble");
+        getContentPane().add(jLabel3, new org.netbeans.lib.awtextra.AbsoluteConstraints(360, 100, -1, -1));
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
+
+    private void exitActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_exitActionPerformed
+        System.exit(0);
+    }//GEN-LAST:event_exitActionPerformed
+
+    private void backActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_backActionPerformed
+        this.setVisible(false);
+
+        InicioExitoso back = new InicioExitoso();
+        back.actualizarFecha(Usuario.time);
+        back.actualizarDinero();
+        back.setVisible(true);
+    }//GEN-LAST:event_backActionPerformed
+
+    private void idInmuebleActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_idInmuebleActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_idInmuebleActionPerformed
+
+    private void confirmarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_confirmarActionPerformed
+        
+        for(int i = 0; i < GestionInmuebleUdc.listaInmuebles.size(); i++){
+            //encontramos la ubicacion i de un inmueble que coincide con el que introdujo el usuario
+            if(Integer.parseInt(idInmueble.getText()) ==  GestionInmuebleUdc.listaInmuebles.get(i).getId()){
+                
+                int ubicInmueble = i;
+                //ahora necesitamos encontrar la ubicacion i del recibo
+                for(int j = 0; j < GestionInmuebleUdc.listaRecibos.size(); j++){
+                    if(GestionInmuebleUdc.listaRecibos.get(j).getvinculacionInmueble() == GestionInmuebleUdc.listaInmuebles.get(j).getId()){
+                        IngresoInmueble next = new IngresoInmueble();
+                        
+                        //modificamos los atributos static con los valores que tenemos almacenado en nuestro vector de recibos
+                        IngresoInmueble.luzStatic = GestionInmuebleUdc.listaRecibos.get(j).getLuz();
+                        IngresoInmueble.gasStatic = GestionInmuebleUdc.listaRecibos.get(j).getGas();
+                        IngresoInmueble.aguaStatic = GestionInmuebleUdc.listaRecibos.get(j).getAgua();
+                        //ahora asignamos al menu de ingreso inmueble el valor de su arriendo
+                        IngresoInmueble.arriendoStatic = GestionInmuebleUdc.listaInmuebles.get(ubicInmueble).getPrecioAlquiler();
+                        
+                        next.actualizarTabla();
+
+                        this.setVisible(false);
+                        next.setVisible(true);
+                    }
+                }
+                
+            } else {
+                //id no encontrada
+                JOptionPane.showMessageDialog(null, "No hemos encontrado su inmueble :/","ID incorrecto",JOptionPane.INFORMATION_MESSAGE);
+            } //end else if
+        } //end for
+        
+    }//GEN-LAST:event_confirmarActionPerformed
 
     /**
      * @param args the command line arguments
@@ -78,5 +177,13 @@ public class EconomiaEmpresa extends javax.swing.JFrame {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JButton back;
+    private javax.swing.JButton confirmar;
+    private javax.swing.JButton exit;
+    private javax.swing.JTextField idInmueble;
+    private javax.swing.JLabel imagenLateral;
+    private javax.swing.JLabel jLabel1;
+    private javax.swing.JLabel jLabel2;
+    private javax.swing.JLabel jLabel3;
     // End of variables declaration//GEN-END:variables
 }

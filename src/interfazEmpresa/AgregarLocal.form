@@ -25,75 +25,65 @@
     <DimensionLayout dim="0">
       <Group type="103" groupAlignment="0" attributes="0">
           <Group type="102" attributes="0">
+              <Component id="imagenLateral" min="-2" pref="330" max="-2" attributes="0"/>
+              <EmptySpace min="120" pref="120" max="-2" attributes="0"/>
               <Group type="103" groupAlignment="0" attributes="0">
                   <Group type="102" attributes="0">
-                      <EmptySpace min="200" pref="200" max="-2" attributes="0"/>
+                      <EmptySpace min="150" pref="150" max="-2" attributes="0"/>
                       <Component id="back" min="-2" max="-2" attributes="0"/>
-                      <EmptySpace min="8" pref="8" max="-2" attributes="0"/>
-                      <Component id="exit" min="-2" max="-2" attributes="0"/>
                   </Group>
-                  <Group type="102" alignment="0" attributes="0">
-                      <EmptySpace min="65" pref="65" max="-2" attributes="0"/>
-                      <Group type="103" groupAlignment="0" attributes="0">
-                          <Group type="102" attributes="0">
-                              <Group type="103" groupAlignment="0" attributes="0">
-                                  <Component id="textDescripcion" min="-2" max="-2" attributes="0"/>
-                                  <Component id="textPrecio" min="-2" max="-2" attributes="0"/>
-                                  <Component id="textDireccion" alignment="0" min="-2" max="-2" attributes="0"/>
-                              </Group>
-                              <EmptySpace min="-2" pref="35" max="-2" attributes="0"/>
-                              <Group type="103" groupAlignment="0" max="-2" attributes="0">
-                                  <Component id="descripcion" alignment="0" pref="110" max="32767" attributes="0"/>
-                                  <Component id="direccion" alignment="0" max="32767" attributes="0"/>
-                                  <Component id="precio" alignment="0" max="32767" attributes="0"/>
-                              </Group>
-                          </Group>
-                          <Component id="tituloMenu" min="-2" max="-2" attributes="0"/>
-                      </Group>
-                      <EmptySpace max="32767" attributes="0"/>
-                      <Component id="pisoActualMenu" min="-2" max="-2" attributes="0"/>
+                  <Component id="tituloMenu" min="-2" max="-2" attributes="0"/>
+                  <Group type="102" attributes="0">
+                      <Component id="textDescripcion" min="-2" max="-2" attributes="0"/>
+                      <EmptySpace min="48" pref="48" max="-2" attributes="0"/>
+                      <Component id="descripcion" min="-2" pref="110" max="-2" attributes="0"/>
+                  </Group>
+                  <Group type="102" attributes="0">
+                      <Component id="textPrecio" min="-2" max="-2" attributes="0"/>
+                      <EmptySpace min="33" pref="33" max="-2" attributes="0"/>
+                      <Component id="precio" min="-2" pref="110" max="-2" attributes="0"/>
+                  </Group>
+                  <Group type="102" attributes="0">
+                      <Component id="textDireccion" min="-2" max="-2" attributes="0"/>
+                      <EmptySpace min="60" pref="60" max="-2" attributes="0"/>
+                      <Component id="direccion" min="-2" pref="110" max="-2" attributes="0"/>
+                  </Group>
+                  <Group type="102" attributes="0">
+                      <EmptySpace min="60" pref="60" max="-2" attributes="0"/>
+                      <Component id="confirmar" min="-2" max="-2" attributes="0"/>
                   </Group>
               </Group>
-              <EmptySpace max="-2" attributes="0"/>
-          </Group>
-          <Group type="102" alignment="0" attributes="0">
-              <EmptySpace min="-2" pref="129" max="-2" attributes="0"/>
-              <Component id="confirmar" min="-2" max="-2" attributes="0"/>
-              <EmptySpace max="32767" attributes="0"/>
+              <EmptySpace min="8" pref="8" max="-2" attributes="0"/>
+              <Component id="exit" min="-2" max="-2" attributes="0"/>
           </Group>
       </Group>
     </DimensionLayout>
     <DimensionLayout dim="1">
       <Group type="103" groupAlignment="0" attributes="0">
+          <Component id="imagenLateral" min="-2" pref="510" max="-2" attributes="0"/>
           <Group type="102" attributes="0">
-              <Group type="103" groupAlignment="0" attributes="0">
-                  <Component id="back" min="-2" max="-2" attributes="0"/>
-                  <Component id="exit" min="-2" max="-2" attributes="0"/>
-              </Group>
-              <EmptySpace min="-2" pref="41" max="-2" attributes="0"/>
-              <Group type="103" groupAlignment="3" attributes="0">
-                  <Component id="pisoActualMenu" alignment="3" min="-2" max="-2" attributes="0"/>
-                  <Component id="tituloMenu" alignment="3" min="-2" max="-2" attributes="0"/>
-              </Group>
-              <EmptySpace min="-2" pref="20" max="-2" attributes="0"/>
+              <Component id="back" min="-2" max="-2" attributes="0"/>
+              <EmptySpace min="77" pref="77" max="-2" attributes="0"/>
+              <Component id="tituloMenu" min="-2" max="-2" attributes="0"/>
+              <EmptySpace min="20" pref="20" max="-2" attributes="0"/>
               <Group type="103" groupAlignment="3" attributes="0">
                   <Component id="descripcion" alignment="3" min="-2" max="-2" attributes="0"/>
                   <Component id="textDescripcion" alignment="3" min="-2" max="-2" attributes="0"/>
               </Group>
-              <EmptySpace min="-2" pref="23" max="-2" attributes="0"/>
+              <EmptySpace type="separate" min="-2" max="-2" attributes="0"/>
               <Group type="103" groupAlignment="3" attributes="0">
-                  <Component id="textPrecio" alignment="3" min="-2" max="-2" attributes="0"/>
                   <Component id="precio" alignment="3" min="-2" max="-2" attributes="0"/>
+                  <Component id="textPrecio" alignment="3" min="-2" max="-2" attributes="0"/>
               </Group>
-              <EmptySpace type="separate" max="-2" attributes="0"/>
+              <EmptySpace type="separate" min="-2" max="-2" attributes="0"/>
               <Group type="103" groupAlignment="3" attributes="0">
-                  <Component id="textDireccion" alignment="3" min="-2" max="-2" attributes="0"/>
                   <Component id="direccion" alignment="3" min="-2" max="-2" attributes="0"/>
+                  <Component id="textDireccion" alignment="3" min="-2" max="-2" attributes="0"/>
               </Group>
-              <EmptySpace pref="37" max="32767" attributes="0"/>
+              <EmptySpace min="38" pref="38" max="-2" attributes="0"/>
               <Component id="confirmar" min="-2" max="-2" attributes="0"/>
-              <EmptySpace min="-2" pref="26" max="-2" attributes="0"/>
           </Group>
+          <Component id="exit" min="-2" max="-2" attributes="0"/>
       </Group>
     </DimensionLayout>
   </Layout>
@@ -134,9 +124,6 @@
       </Properties>
     </Component>
     <Component class="javax.swing.JTextField" name="descripcion">
-      <Properties>
-        <Property name="text" type="java.lang.String" value=" "/>
-      </Properties>
       <Events>
         <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="descripcionActionPerformed"/>
       </Events>
@@ -152,15 +139,10 @@
         <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="confirmarActionPerformed"/>
       </Events>
     </Component>
-    <Component class="javax.swing.JLabel" name="pisoActualMenu">
-      <Properties>
-        <Property name="text" type="java.lang.String" value=" "/>
-      </Properties>
-    </Component>
     <Component class="javax.swing.JTextField" name="precio">
-      <Properties>
-        <Property name="text" type="java.lang.String" value=" "/>
-      </Properties>
+      <Events>
+        <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="precioActionPerformed"/>
+      </Events>
     </Component>
     <Component class="javax.swing.JLabel" name="textPrecio">
       <Properties>
@@ -173,8 +155,16 @@
       </Properties>
     </Component>
     <Component class="javax.swing.JTextField" name="direccion">
+      <Events>
+        <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="direccionActionPerformed"/>
+      </Events>
+    </Component>
+    <Component class="javax.swing.JLabel" name="imagenLateral">
       <Properties>
-        <Property name="text" type="java.lang.String" value=" "/>
+        <Property name="icon" type="javax.swing.Icon" editor="org.netbeans.modules.form.editors2.IconEditor">
+          <Image iconType="3" name="/Imagenes/edificioColorFondo.png"/>
+        </Property>
+        <Property name="text" type="java.lang.String" value="jLabel2"/>
       </Properties>
     </Component>
   </SubComponents>

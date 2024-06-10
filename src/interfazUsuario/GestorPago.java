@@ -7,12 +7,16 @@ package interfazUsuario;
 import gestioninmuebleudc.GestionInmuebleUdc;
 import gestioninmuebleudc.Usuario;
 import static interfazUsuario.InicioSesion.sesionActivaUbic;
+import java.time.LocalDate;
+import java.time.format.DateTimeFormatter;
+import javax.swing.ImageIcon;
 import javax.swing.JOptionPane;
 
 public class GestorPago extends javax.swing.JFrame {
     
     public GestorPago() {
         initComponents();
+        setIconImage(new ImageIcon(getClass().getResource("/Imagenes/empresaIcon.png")).getImage());
         this.setLocationRelativeTo(null);
     }
 
@@ -59,13 +63,15 @@ public class GestorPago extends javax.swing.JFrame {
         luz = new javax.swing.JLabel();
         textDinero = new javax.swing.JLabel();
         dinero = new javax.swing.JLabel();
+        titulo = new javax.swing.JLabel();
         exit = new javax.swing.JButton();
         back = new javax.swing.JButton();
-        titulo = new javax.swing.JLabel();
         pagarLuz = new javax.swing.JButton();
+        imagenLateral = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setUndecorated(true);
+        getContentPane().setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
         pagarArriendo.setText("Pagar Arriendo");
         pagarArriendo.addActionListener(new java.awt.event.ActionListener() {
@@ -73,6 +79,7 @@ public class GestorPago extends javax.swing.JFrame {
                 pagarArriendoActionPerformed(evt);
             }
         });
+        getContentPane().add(pagarArriendo, new org.netbeans.lib.awtextra.AbsoluteConstraints(480, 280, -1, -1));
 
         pagarGas.setText("Pagar Gas");
         pagarGas.addActionListener(new java.awt.event.ActionListener() {
@@ -80,6 +87,7 @@ public class GestorPago extends javax.swing.JFrame {
                 pagarGasActionPerformed(evt);
             }
         });
+        getContentPane().add(pagarGas, new org.netbeans.lib.awtextra.AbsoluteConstraints(480, 310, 109, -1));
 
         pagarAgua.setText("Pagar Agua");
         pagarAgua.addActionListener(new java.awt.event.ActionListener() {
@@ -87,26 +95,41 @@ public class GestorPago extends javax.swing.JFrame {
                 pagarAguaActionPerformed(evt);
             }
         });
+        getContentPane().add(pagarAgua, new org.netbeans.lib.awtextra.AbsoluteConstraints(480, 370, 109, -1));
 
         textEstrato.setText("Su estrato:");
+        getContentPane().add(textEstrato, new org.netbeans.lib.awtextra.AbsoluteConstraints(360, 120, -1, -1));
 
         jLabel2.setText("Recibo Gas:");
+        getContentPane().add(jLabel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(360, 150, -1, -1));
 
         jLabel3.setText("Recibo Agua:");
+        getContentPane().add(jLabel3, new org.netbeans.lib.awtextra.AbsoluteConstraints(360, 170, -1, -1));
 
         jLabel4.setText("Recibo Luz:");
+        getContentPane().add(jLabel4, new org.netbeans.lib.awtextra.AbsoluteConstraints(360, 190, -1, -1));
 
         estrato.setText("null");
+        getContentPane().add(estrato, new org.netbeans.lib.awtextra.AbsoluteConstraints(460, 120, -1, -1));
 
         gas.setText("aun no...");
+        getContentPane().add(gas, new org.netbeans.lib.awtextra.AbsoluteConstraints(460, 150, -1, -1));
 
         agua.setText("aun no...");
+        getContentPane().add(agua, new org.netbeans.lib.awtextra.AbsoluteConstraints(460, 170, -1, -1));
 
         luz.setText("aun no...");
+        getContentPane().add(luz, new org.netbeans.lib.awtextra.AbsoluteConstraints(460, 190, -1, -1));
 
         textDinero.setText("Dinero:");
+        getContentPane().add(textDinero, new org.netbeans.lib.awtextra.AbsoluteConstraints(550, 120, -1, -1));
 
         dinero.setText("null");
+        getContentPane().add(dinero, new org.netbeans.lib.awtextra.AbsoluteConstraints(600, 120, -1, -1));
+
+        titulo.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
+        titulo.setText("Gestor Pago");
+        getContentPane().add(titulo, new org.netbeans.lib.awtextra.AbsoluteConstraints(480, 60, -1, -1));
 
         exit.setFont(new java.awt.Font("Segoe UI", 1, 12)); // NOI18N
         exit.setText("Exit");
@@ -115,6 +138,7 @@ public class GestorPago extends javax.swing.JFrame {
                 exitActionPerformed(evt);
             }
         });
+        getContentPane().add(exit, new org.netbeans.lib.awtextra.AbsoluteConstraints(650, 0, -1, -1));
 
         back.setFont(new java.awt.Font("Segoe UI", 1, 12)); // NOI18N
         back.setText("Back");
@@ -123,9 +147,7 @@ public class GestorPago extends javax.swing.JFrame {
                 backActionPerformed(evt);
             }
         });
-
-        titulo.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
-        titulo.setText("Gestor Pago");
+        getContentPane().add(back, new org.netbeans.lib.awtextra.AbsoluteConstraints(570, 0, -1, -1));
 
         pagarLuz.setText("Pagar Luz");
         pagarLuz.addActionListener(new java.awt.event.ActionListener() {
@@ -133,89 +155,11 @@ public class GestorPago extends javax.swing.JFrame {
                 pagarLuzActionPerformed(evt);
             }
         });
+        getContentPane().add(pagarLuz, new org.netbeans.lib.awtextra.AbsoluteConstraints(480, 340, 109, -1));
 
-        javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
-        getContentPane().setLayout(layout);
-        layout.setHorizontalGroup(
-            layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                .addGap(0, 0, Short.MAX_VALUE)
-                .addComponent(back)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(exit))
-            .addGroup(layout.createSequentialGroup()
-                .addGap(43, 43, 43)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                    .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                        .addComponent(pagarLuz, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                        .addComponent(pagarAgua, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                        .addComponent(pagarArriendo, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                        .addComponent(pagarGas, javax.swing.GroupLayout.PREFERRED_SIZE, 109, javax.swing.GroupLayout.PREFERRED_SIZE))
-                    .addGroup(layout.createSequentialGroup()
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                            .addComponent(textEstrato)
-                            .addGroup(javax.swing.GroupLayout.Alignment.LEADING, layout.createSequentialGroup()
-                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                                    .addComponent(jLabel2, javax.swing.GroupLayout.Alignment.LEADING)
-                                    .addComponent(jLabel3, javax.swing.GroupLayout.Alignment.LEADING)
-                                    .addComponent(jLabel4, javax.swing.GroupLayout.Alignment.LEADING))
-                                .addGap(8, 8, 8)))
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addGroup(layout.createSequentialGroup()
-                                .addGap(31, 31, 31)
-                                .addComponent(estrato))
-                            .addGroup(layout.createSequentialGroup()
-                                .addGap(23, 23, 23)
-                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                    .addComponent(agua)
-                                    .addComponent(gas)
-                                    .addComponent(luz)
-                                    .addComponent(titulo))))
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(textDinero)))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                .addComponent(dinero)
-                .addContainerGap(97, Short.MAX_VALUE))
-        );
-        layout.setVerticalGroup(
-            layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(layout.createSequentialGroup()
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(exit)
-                    .addComponent(back))
-                .addGap(9, 9, 9)
-                .addComponent(titulo)
-                .addGap(18, 18, 18)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(layout.createSequentialGroup()
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                            .addComponent(textEstrato)
-                            .addComponent(estrato))
-                        .addGap(12, 12, 12)
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                            .addComponent(jLabel2)
-                            .addComponent(gas))
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                            .addComponent(jLabel3)
-                            .addComponent(agua))
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                            .addComponent(jLabel4)
-                            .addComponent(luz)))
-                    .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                        .addComponent(textDinero)
-                        .addComponent(dinero)))
-                .addGap(40, 40, 40)
-                .addComponent(pagarArriendo)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                .addComponent(pagarGas)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(pagarAgua)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(pagarLuz)
-                .addContainerGap(22, Short.MAX_VALUE))
-        );
+        imagenLateral.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagenes/edificioColorFondo.png"))); // NOI18N
+        imagenLateral.setText("jLabel2");
+        getContentPane().add(imagenLateral, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 330, 510));
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
@@ -229,7 +173,7 @@ public class GestorPago extends javax.swing.JFrame {
             GestionInmuebleUdc.listaUsuarios.get(InicioSesion.sesionActivaUbic).setDinero(-1*(dineroStatic - Float.parseFloat(gas.getText())));
 
             //ahora creamos la factura, que sera un movimiento bancario
-            GestionInmuebleUdc.listaMovimientosBancarios.add(new gestioninmuebleudc.MovimientoBancario("Pago Recibo Gas",Usuario.time, gasStatic, GestionInmuebleUdc.listaUsuarios.get(sesionActivaUbic).getNombre(), "Gas Udc"));
+            GestionInmuebleUdc.listaMovimientosBancarios.add(new gestioninmuebleudc.MovimientoBancario("Ingreso","Pago Recibo Gas",Usuario.time, gasStatic, GestionInmuebleUdc.listaUsuarios.get(sesionActivaUbic).getNombre(), "Gas Udc"));
             JOptionPane.showMessageDialog(null, "Recibo pagado con exito", "Transaccion Exitosa", JOptionPane.INFORMATION_MESSAGE);
             //actualizamos informacion del menu, actualizando el dinero que se muestra y el gas en tiempo real
             gas.setText(String.valueOf(0));
@@ -294,8 +238,9 @@ public class GestorPago extends javax.swing.JFrame {
                     
                     if(dineroStatic >= deuda){
                         //ahora creamos la factura, que sera un movimiento bancario
-                        GestionInmuebleUdc.listaMovimientosBancarios.add(new gestioninmuebleudc.MovimientoBancario("Pago Renta",Usuario.time, deuda, GestionInmuebleUdc.listaUsuarios.get(sesionActivaUbic).getNombre(), "Inmobiliaria Udc"));
+                        GestionInmuebleUdc.listaMovimientosBancarios.add(new gestioninmuebleudc.MovimientoBancario("Ingreso","Pago Renta",Usuario.time, deuda, GestionInmuebleUdc.listaUsuarios.get(sesionActivaUbic).getNombre(), "Inmobiliaria Udc"));
                         JOptionPane.showMessageDialog(null, "Arriendo (mas impuestos): " + deuda + "\nRecibo pagado con exito", "Transaccion Exitosa", JOptionPane.INFORMATION_MESSAGE);
+                        dinero.setText(String.valueOf(dineroStatic));
                     } else {
                         JOptionPane.showMessageDialog(null, "Arriendo (mas impuestos): " + deuda + "\nDinero Insuficiente", "Transaccion Fallida", JOptionPane.INFORMATION_MESSAGE);
                     }
@@ -310,6 +255,8 @@ public class GestorPago extends javax.swing.JFrame {
         this.setVisible(false);
         
         InicioExitoso back = new InicioExitoso();
+        back.actualizarFecha(Usuario.time);
+        back.actualizarDinero();
         back.setVisible(true);
     }//GEN-LAST:event_backActionPerformed
 
@@ -325,7 +272,7 @@ public class GestorPago extends javax.swing.JFrame {
             GestionInmuebleUdc.listaUsuarios.get(InicioSesion.sesionActivaUbic).setDinero(-1*(dineroStatic - Float.parseFloat(gas.getText())));
 
             //ahora creamos la factura, que sera un movimiento bancario
-            GestionInmuebleUdc.listaMovimientosBancarios.add(new gestioninmuebleudc.MovimientoBancario("Pago Recibo Agua",Usuario.time, aguaStatic, GestionInmuebleUdc.listaUsuarios.get(sesionActivaUbic).getNombre(), "Aguas Udc"));
+            GestionInmuebleUdc.listaMovimientosBancarios.add(new gestioninmuebleudc.MovimientoBancario("Ingreso","Pago Recibo Agua",Usuario.time, aguaStatic, GestionInmuebleUdc.listaUsuarios.get(sesionActivaUbic).getNombre(), "Aguas Udc"));
             JOptionPane.showMessageDialog(null, "Recibo pagado con exito", "Transaccion Exitosa", JOptionPane.INFORMATION_MESSAGE);
             agua.setText(String.valueOf(0));
             dinero.setText(String.valueOf(dineroStatic));
@@ -342,7 +289,7 @@ public class GestorPago extends javax.swing.JFrame {
             GestionInmuebleUdc.listaUsuarios.get(InicioSesion.sesionActivaUbic).setDinero(-1*(dineroStatic - Float.parseFloat(gas.getText())));
 
             //ahora creamos la factura, que sera un movimiento bancario
-            GestionInmuebleUdc.listaMovimientosBancarios.add(new gestioninmuebleudc.MovimientoBancario("Pago Recibo Luz",Usuario.time, luzStatic, GestionInmuebleUdc.listaUsuarios.get(sesionActivaUbic).getNombre(), "Luz Udc"));
+            GestionInmuebleUdc.listaMovimientosBancarios.add(new gestioninmuebleudc.MovimientoBancario("Ingreso","Pago Recibo Luz",Usuario.time, luzStatic, GestionInmuebleUdc.listaUsuarios.get(sesionActivaUbic).getNombre(), "Luz Udc"));
             JOptionPane.showMessageDialog(null, "Recibo pagado con exito", "Transaccion Exitosa", JOptionPane.INFORMATION_MESSAGE);
             luz.setText(String.valueOf(0));
             dinero.setText(String.valueOf(dineroStatic));
@@ -396,6 +343,7 @@ public class GestorPago extends javax.swing.JFrame {
     private javax.swing.JLabel estrato;
     private javax.swing.JButton exit;
     private javax.swing.JLabel gas;
+    private javax.swing.JLabel imagenLateral;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;
     private javax.swing.JLabel jLabel4;
