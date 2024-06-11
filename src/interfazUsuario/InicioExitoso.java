@@ -140,7 +140,7 @@ public class InicioExitoso extends javax.swing.JFrame {
         });
         getContentPane().add(avanzarTime, new org.netbeans.lib.awtextra.AbsoluteConstraints(430, 430, 213, -1));
 
-        verDisponible.setText("Ver lista de inmuebles Disponibles");
+        verDisponible.setText("Ver Inmuebles");
         verDisponible.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 verDisponibleActionPerformed(evt);
@@ -162,6 +162,11 @@ public class InicioExitoso extends javax.swing.JFrame {
 
         infoEvento.setFont(new java.awt.Font("Segoe UI", 1, 12)); // NOI18N
         infoEvento.setText("Ver Información Evento");
+        infoEvento.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                infoEventoActionPerformed(evt);
+            }
+        });
         getContentPane().add(infoEvento, new org.netbeans.lib.awtextra.AbsoluteConstraints(430, 390, 213, -1));
 
         textDinero.setText("Dinero:");
@@ -260,6 +265,9 @@ public class InicioExitoso extends javax.swing.JFrame {
                         //para esto necesitamos a la variable static ccStatic, la misma se explica que hace en InicioSesion en el apartado de confirmar
                         GestionInmuebleUdc.listaInmuebles.get(i).setAlquilado(Integer.parseInt(InicioSesion.ccStatic));
                         alquilerYes = true;
+                    
+                        JOptionPane.showMessageDialog(null, "Felicitaciones, ha adquirido un inmueble","Alquiler Exitoso",JOptionPane.INFORMATION_MESSAGE);
+                    
                     } else {
                         JOptionPane.showMessageDialog(null,"Inmueble ocupado :/","Busqueda Fallida",JOptionPane.INFORMATION_MESSAGE);
                     }//end if else interno
@@ -274,6 +282,7 @@ public class InicioExitoso extends javax.swing.JFrame {
             if(!encontrado){
                 JOptionPane.showMessageDialog(null,"ID del inmueble no encontrado :/","Busqueda Fallida",JOptionPane.INFORMATION_MESSAGE);
             }
+            
         }//end if else externo de comprobar si ya tiene cuenta        
     }//GEN-LAST:event_alquilarActionPerformed
 
@@ -338,6 +347,10 @@ public class InicioExitoso extends javax.swing.JFrame {
  
     }//GEN-LAST:event_desalojarActionPerformed
 
+    private void infoEventoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_infoEventoActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_infoEventoActionPerformed
+
     /**
      * @param args the command line arguments
      */
@@ -378,7 +391,6 @@ public class InicioExitoso extends javax.swing.JFrame {
     private javax.swing.JButton alquilar;
     private javax.swing.JButton avanzarTime;
     private javax.swing.JButton back;
-    private javax.swing.JButton back1;
     private javax.swing.JLabel debePagar;
     private javax.swing.JButton desalojar;
     private javax.swing.JLabel dinero;

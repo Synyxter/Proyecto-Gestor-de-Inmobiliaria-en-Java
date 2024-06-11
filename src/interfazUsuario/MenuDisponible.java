@@ -230,7 +230,7 @@ public class MenuDisponible extends javax.swing.JFrame {
                 backActionPerformed(evt);
             }
         });
-        getContentPane().add(back, new org.netbeans.lib.awtextra.AbsoluteConstraints(600, 0, -1, -1));
+        getContentPane().add(back, new org.netbeans.lib.awtextra.AbsoluteConstraints(680, 0, -1, -1));
 
         exit.setFont(new java.awt.Font("Segoe UI", 1, 12)); // NOI18N
         exit.setText("Exit");
@@ -239,7 +239,7 @@ public class MenuDisponible extends javax.swing.JFrame {
                 exitActionPerformed(evt);
             }
         });
-        getContentPane().add(exit, new org.netbeans.lib.awtextra.AbsoluteConstraints(680, 0, -1, -1));
+        getContentPane().add(exit, new org.netbeans.lib.awtextra.AbsoluteConstraints(750, 0, -1, -1));
 
         imagenLateral.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagenes/edificioColorFondo.png"))); // NOI18N
         imagenLateral.setText("jLabel2");

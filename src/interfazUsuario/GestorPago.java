@@ -244,6 +244,8 @@ public class GestorPago extends javax.swing.JFrame {
                     } else {
                         JOptionPane.showMessageDialog(null, "Arriendo (mas impuestos): " + deuda + "\nDinero Insuficiente", "Transaccion Fallida", JOptionPane.INFORMATION_MESSAGE);
                     }
+                    
+                    
                 } else {
                    //inmueble no encontrado
                     JOptionPane.showMessageDialog(null, "ID del Inmueble no encontrado", "Transaccion Fallida", JOptionPane.INFORMATION_MESSAGE);
