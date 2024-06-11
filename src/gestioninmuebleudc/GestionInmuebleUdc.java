@@ -1,5 +1,8 @@
 package gestioninmuebleudc;
 
+import java.io.File;
+import java.io.IOException;
+
 import interfazMain.Inicio;
 import interfazMain.MenuIngreso;
 import interfazEmpresa.MenuEmpresa;
@@ -51,12 +54,38 @@ public class GestionInmuebleUdc {
          RUTA_USUARIOS = "usuarios.txt";
          RUTA_MOVIMIENTOS  = "movimientos.txt";
         
+        InmuebleUdc.crearArchivosSiNoExisten();
         InmuebleUdc.leerArchivoInmuebles();
         InmuebleUdc.leerArchivoUsuarios();
         InmuebleUdc.leerArchivoMovimientos();
+        InmuebleUdc.escribirArchivoInmuebles();
+        InmuebleUdc.escribirArchivoMovimientos();
+        InmuebleUdc.escribirArchivoUsuarios();
+        
         }
     
- // Método para escribir inmuebles a un archivo
+private void crearArchivosSiNoExisten() {
+        try {
+            File fileInmuebles = new File(RUTA_INMUEBLES);
+            File fileUsuarios = new File(RUTA_USUARIOS);
+            File fileMovimientos = new File(RUTA_MOVIMIENTOS);
+
+            if (fileInmuebles.createNewFile()) {
+                System.out.println("Archivo inmuebles.txt creado en: " + fileInmuebles.getAbsolutePath());
+            }
+
+            if (fileUsuarios.createNewFile()) {
+                System.out.println("Archivo usuarios.txt creado en: " + fileUsuarios.getAbsolutePath());
+            }
+
+            if (fileMovimientos.createNewFile()) {
+                System.out.println("Archivo movimientos.txt creado en: " + fileMovimientos.getAbsolutePath());
+            }
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+    }
+
     private void escribirArchivoInmuebles() {
         try (BufferedWriter writer = new BufferedWriter(new FileWriter(RUTA_INMUEBLES))) {
             for (Inmueble inmueble : listaInmuebles) {
@@ -67,6 +96,7 @@ public class GestionInmuebleUdc {
             e.printStackTrace();
         }
     }
+
 
     private void leerArchivoInmuebles() {
     try (BufferedReader reader = new BufferedReader(new FileReader(RUTA_INMUEBLES))) {
@@ -162,6 +192,8 @@ public class GestionInmuebleUdc {
         e.printStackTrace();
     }
 }
+       
+    // Método main y otros métodos de la clase
 
     //Metodo que busca inmuebles por direccion.
      private Inmueble buscarInmueblePorDireccion(String direccion) {
