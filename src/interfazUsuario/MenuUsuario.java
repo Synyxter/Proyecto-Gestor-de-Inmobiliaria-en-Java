@@ -58,7 +58,7 @@ public class MenuUsuario extends javax.swing.JFrame {
                 registrarActionPerformed(evt);
             }
         });
-        getContentPane().add(registrar, new org.netbeans.lib.awtextra.AbsoluteConstraints(470, 420, 110, -1));
+        getContentPane().add(registrar, new org.netbeans.lib.awtextra.AbsoluteConstraints(460, 420, 130, -1));
 
         iniciarSesion.setText("Iniciar Sesión");
         iniciarSesion.addActionListener(new java.awt.event.ActionListener() {
@@ -66,7 +66,7 @@ public class MenuUsuario extends javax.swing.JFrame {
                 iniciarSesionActionPerformed(evt);
             }
         });
-        getContentPane().add(iniciarSesion, new org.netbeans.lib.awtextra.AbsoluteConstraints(470, 450, 110, -1));
+        getContentPane().add(iniciarSesion, new org.netbeans.lib.awtextra.AbsoluteConstraints(460, 450, 130, -1));
 
         tituloInmobiliaria.setFont(new java.awt.Font("Segoe UI", 1, 18)); // NOI18N
         tituloInmobiliaria.setText("¡Inmobiliaria UdC!");

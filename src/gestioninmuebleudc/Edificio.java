@@ -7,7 +7,7 @@ public class Edificio extends Inmueble {
     public static ArrayList<Local> listaLocales; //
     
     //este impuesto varia dependiendo la clase
-    public final static double IMPUESTO = 0.4; //cremaos este atributo static
+    public final static float IMPUESTO = 0.4f; //cremaos este atributo static
     //es final porque no varia, es un valor que no modificadores
     
     public Edificio(String direccion, float precioAlquiler, int alquilado, int id) {
@@ -26,7 +26,7 @@ public class Edificio extends Inmueble {
     }
     @Override
     public float consultarPrecioAlquiler(int i) {
-        GestionInmuebleUdc.listaInmuebles.get(i).precioAlquiler = this.precioAlquiler + (this.precioAlquiler * (float)IMPUESTO);
-        return this.precioAlquiler + (this.precioAlquiler * (float)IMPUESTO);
+        GestionInmuebleUdc.listaInmuebles.get(i).precioAlquiler = GestionInmuebleUdc.listaInmuebles.get(i).precioAlquiler + (GestionInmuebleUdc.listaInmuebles.get(i).precioAlquiler * (IMPUESTO));
+        return GestionInmuebleUdc.listaInmuebles.get(i).precioAlquiler;
     }
 }

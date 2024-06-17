@@ -27,7 +27,7 @@ public class InicioExitoso extends javax.swing.JFrame {
     }
     
     public void actualizarDinero(){
-        dinero.setText(String.valueOf(dineroStatic));
+        dinero.setText(String.valueOf(GestorPago.dineroStatic)); //igualamos para que en ambos menus se tenga el mismo dinero
     }
     
     public void actualizarFecha(LocalDate date){
@@ -85,7 +85,6 @@ public class InicioExitoso extends javax.swing.JFrame {
         debePagar = new javax.swing.JLabel();
         textEventos = new javax.swing.JLabel();
         eventoInfo = new javax.swing.JLabel();
-        infoEvento = new javax.swing.JButton();
         textDinero = new javax.swing.JLabel();
         dinero = new javax.swing.JLabel();
         gestionarPago = new javax.swing.JButton();
@@ -138,7 +137,7 @@ public class InicioExitoso extends javax.swing.JFrame {
                 avanzarTimeActionPerformed(evt);
             }
         });
-        getContentPane().add(avanzarTime, new org.netbeans.lib.awtextra.AbsoluteConstraints(430, 430, 213, -1));
+        getContentPane().add(avanzarTime, new org.netbeans.lib.awtextra.AbsoluteConstraints(430, 390, 213, -1));
 
         verDisponible.setText("Ver Inmuebles");
         verDisponible.addActionListener(new java.awt.event.ActionListener() {
@@ -159,15 +158,6 @@ public class InicioExitoso extends javax.swing.JFrame {
 
         eventoInfo.setText("no");
         getContentPane().add(eventoInfo, new org.netbeans.lib.awtextra.AbsoluteConstraints(510, 160, -1, -1));
-
-        infoEvento.setFont(new java.awt.Font("Segoe UI", 1, 12)); // NOI18N
-        infoEvento.setText("Ver Información Evento");
-        infoEvento.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                infoEventoActionPerformed(evt);
-            }
-        });
-        getContentPane().add(infoEvento, new org.netbeans.lib.awtextra.AbsoluteConstraints(430, 390, 213, -1));
 
         textDinero.setText("Dinero:");
         getContentPane().add(textDinero, new org.netbeans.lib.awtextra.AbsoluteConstraints(380, 180, -1, -1));
@@ -347,10 +337,6 @@ public class InicioExitoso extends javax.swing.JFrame {
  
     }//GEN-LAST:event_desalojarActionPerformed
 
-    private void infoEventoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_infoEventoActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_infoEventoActionPerformed
-
     /**
      * @param args the command line arguments
      */
@@ -399,7 +385,6 @@ public class InicioExitoso extends javax.swing.JFrame {
     private javax.swing.JLabel fecha;
     private javax.swing.JButton gestionarPago;
     private javax.swing.JLabel imagenLateral;
-    private javax.swing.JButton infoEvento;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel mensaje;
     private javax.swing.JLabel textDinero;

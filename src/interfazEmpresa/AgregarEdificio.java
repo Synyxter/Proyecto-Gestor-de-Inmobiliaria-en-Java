@@ -156,7 +156,6 @@ public class AgregarEdificio extends javax.swing.JFrame {
     }//GEN-LAST:event_nombreActionPerformed
 
     private void confirmarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_confirmarActionPerformed
-        // TODO add your handling code here:
         //aca inicia la verdadera magia
         
         //generamos un codigo random para el id

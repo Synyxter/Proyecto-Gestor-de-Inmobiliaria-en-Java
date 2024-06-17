@@ -1,14 +1,13 @@
-/*
- * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
- * Click nbfs://nbhost/SystemFileSystem/Templates/Classes/Class.java to edit this template
- */
+
 package gestioninmuebleudc;
+
+import javax.swing.JOptionPane;
 
 public class Finca extends Inmueble {
     private String descripcion;
     
     //este impuesto varia dependiendo la clase
-    public final static double IMPUESTO = 0.1; //cremaos este atributo static
+    public final static float IMPUESTO = 0.1f; //cremaos este atributo static
     //es final porque no varia, es un valor que no modificadores
     
     public Finca(String direccion, float precioAlquiler, String descripcion, int alquilado, int id) {
@@ -18,8 +17,8 @@ public class Finca extends Inmueble {
 
     @Override
     public float consultarPrecioAlquiler(int i) {
-        GestionInmuebleUdc.listaInmuebles.get(i).precioAlquiler = this.precioAlquiler + (this.precioAlquiler * (float)IMPUESTO);
-        return this.precioAlquiler + (this.precioAlquiler * (float)IMPUESTO);
+        GestionInmuebleUdc.listaInmuebles.get(i).precioAlquiler = this.precioAlquiler + (this.precioAlquiler * (IMPUESTO));
+        return GestionInmuebleUdc.listaInmuebles.get(i).precioAlquiler;
     }
 
 }

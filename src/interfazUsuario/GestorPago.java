@@ -1,7 +1,4 @@
-/*
- * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
- * Click nbfs://nbhost/SystemFileSystem/Templates/GUIForms/JFrame.java to edit this template
- */
+
 package interfazUsuario;
 
 import gestioninmuebleudc.GestionInmuebleUdc;
@@ -26,11 +23,85 @@ public class GestorPago extends javax.swing.JFrame {
     public static float gasStatic;
     public static float aguaStatic;
     public static float luzStatic;
+    public static float arriendoStatic;
+    
+    //metodo para calcular el arriendo y asi le aparezca al usuario en el menu de GestorPago
+    public void calcularArriendo(){
+        
+            //poner que el usuario ingrese el codigo del inmueble
+            String s = JOptionPane.showInputDialog(null, "Ingrese el ID del inmueble", "Pagar Arriendo", JOptionPane.QUESTION_MESSAGE);
+            
+            boolean encontrado = false;
+            int auxCase = 0; ///aqui se asigna un numero de 1 a 4 dependiendo del tipo de inmueble que es
+            
+            for(int i = 0; i < GestionInmuebleUdc.listaInmuebles.size(); i++){
+                //aca determinamos si se encontro o no el id introducido por el usuario
+                if(Integer.parseInt(s) == GestionInmuebleUdc.listaInmuebles.get(i).getId() ){
+                    
+                    //a partir del id podemos determinar el tipo de inmueble
+                    //100 a 199 = edificio - paga 40% de impuesto
+                    //200 a 299 = finca - paga 10% de impuesto
+                    //300 a 399 = local - paga 30% de impuesto
+                    //400 a 499 = piso - paga 20% de impuesto
+    
+                    if(GestionInmuebleUdc.listaInmuebles.get(i).getId() > 99 && GestionInmuebleUdc.listaInmuebles.get(i).getId() < 200){
+                        auxCase = 1;
+                    } else if(GestionInmuebleUdc.listaInmuebles.get(i).getId() > 199 && GestionInmuebleUdc.listaInmuebles.get(i).getId() < 300){
+                        auxCase = 2;
+                    } else if(GestionInmuebleUdc.listaInmuebles.get(i).getId() > 299 && GestionInmuebleUdc.listaInmuebles.get(i).getId() < 400){
+                        auxCase = 3;
+                    } else if(GestionInmuebleUdc.listaInmuebles.get(i).getId() > 399 && GestionInmuebleUdc.listaInmuebles.get(i).getId() < 500){
+                        auxCase = 4;
+                    } 
+                    
+                    switch (auxCase){
+                        case 1:
+                            //creamos un objeto de Edificio
+                            gestioninmuebleudc.Edificio next = new gestioninmuebleudc.Edificio("",GestionInmuebleUdc.listaInmuebles.get(i).getPrecioAlquiler(),0,0);
+                            //enviamos la posicion i del arraylist al metodo consultarPrecioAlquiler donde se le sumara
+                            //un impuesto al precio total a pagar
+                            //si el usuario dijo que costaba 100 alquilar su piso, a ese 100 se le aplica un impuesto
+                            //el impuesto varia dependiendo del objeto y la clase, es decir, estamos aplicando abstraccion y polimorfismo
+                            arriendoStatic = next.consultarPrecioAlquiler(i); 
+                            break;
+                        case 2:
+                            gestioninmuebleudc.Finca next2 = new gestioninmuebleudc.Finca("",GestionInmuebleUdc.listaInmuebles.get(i).getPrecioAlquiler(),"",0,0); 
+                            arriendoStatic = next2.consultarPrecioAlquiler(i);
+                            break;
+                        case 3:
+                            gestioninmuebleudc.Local next3 = new gestioninmuebleudc.Local("",GestionInmuebleUdc.listaInmuebles.get(i).getPrecioAlquiler(),"",0,0); 
+                            arriendoStatic = next3.consultarPrecioAlquiler(i);
+                            break;
+                        case 4:    
+                            gestioninmuebleudc.Piso next4 = new gestioninmuebleudc.Piso("",GestionInmuebleUdc.listaInmuebles.get(i).getPrecioAlquiler(),0,"",0,0); 
+                            arriendoStatic = next4.consultarPrecioAlquiler(i);
+                            break;    
+                    } //end swhitch 
+       
+                    arriendo.setText(String.valueOf(arriendoStatic));
+                    encontrado = true;
+                    //aca actualizamos el menu con el valor a pagar  
+                    }//end if de inmueble encontrado               
+                }//end for
+                
+                if(!encontrado) {
+                   //inmueble no encontrado
+                    JOptionPane.showMessageDialog(null, "ID del Inmueble no encontrado", "Transaccion Fallida", JOptionPane.INFORMATION_MESSAGE);
+                    this.setVisible(false);
+                    //nos devolvemos al menu anterior
+                    InicioExitoso back = new InicioExitoso();
+                    back.actualizarFecha(Usuario.time);
+                    back.actualizarDinero();
+                    back.setVisible(true);
+                } //end else de inmueble no encontrado
+            
+    }//cerrar funcion
     
     public void actualizarRecibo(){
         gas.setText(String.valueOf(gasStatic));
         agua.setText(String.valueOf(aguaStatic));
         luz.setText(String.valueOf(luzStatic));
+        this.calcularArriendo(); //llamamos al metodo para saber cuanto se debe en arriendo
     }
     
     public void actualizarDinero(){
@@ -54,9 +125,9 @@ public class GestorPago extends javax.swing.JFrame {
         pagarGas = new javax.swing.JButton();
         pagarAgua = new javax.swing.JButton();
         textEstrato = new javax.swing.JLabel();
-        jLabel2 = new javax.swing.JLabel();
-        jLabel3 = new javax.swing.JLabel();
-        jLabel4 = new javax.swing.JLabel();
+        textGas = new javax.swing.JLabel();
+        texrAgua = new javax.swing.JLabel();
+        textLuz = new javax.swing.JLabel();
         estrato = new javax.swing.JLabel();
         gas = new javax.swing.JLabel();
         agua = new javax.swing.JLabel();
@@ -68,6 +139,8 @@ public class GestorPago extends javax.swing.JFrame {
         back = new javax.swing.JButton();
         pagarLuz = new javax.swing.JButton();
         imagenLateral = new javax.swing.JLabel();
+        textArriendo = new javax.swing.JLabel();
+        arriendo = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setUndecorated(true);
@@ -100,14 +173,14 @@ public class GestorPago extends javax.swing.JFrame {
         textEstrato.setText("Su estrato:");
         getContentPane().add(textEstrato, new org.netbeans.lib.awtextra.AbsoluteConstraints(360, 120, -1, -1));
 
-        jLabel2.setText("Recibo Gas:");
-        getContentPane().add(jLabel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(360, 150, -1, -1));
+        textGas.setText("Recibo Gas:");
+        getContentPane().add(textGas, new org.netbeans.lib.awtextra.AbsoluteConstraints(360, 150, -1, -1));
 
-        jLabel3.setText("Recibo Agua:");
-        getContentPane().add(jLabel3, new org.netbeans.lib.awtextra.AbsoluteConstraints(360, 170, -1, -1));
+        texrAgua.setText("Recibo Agua:");
+        getContentPane().add(texrAgua, new org.netbeans.lib.awtextra.AbsoluteConstraints(360, 170, -1, -1));
 
-        jLabel4.setText("Recibo Luz:");
-        getContentPane().add(jLabel4, new org.netbeans.lib.awtextra.AbsoluteConstraints(360, 190, -1, -1));
+        textLuz.setText("Recibo Luz:");
+        getContentPane().add(textLuz, new org.netbeans.lib.awtextra.AbsoluteConstraints(360, 190, -1, -1));
 
         estrato.setText("null");
         getContentPane().add(estrato, new org.netbeans.lib.awtextra.AbsoluteConstraints(460, 120, -1, -1));
@@ -161,6 +234,12 @@ public class GestorPago extends javax.swing.JFrame {
         imagenLateral.setText("jLabel2");
         getContentPane().add(imagenLateral, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 330, 510));
 
+        textArriendo.setText("Arriendo:");
+        getContentPane().add(textArriendo, new org.netbeans.lib.awtextra.AbsoluteConstraints(360, 210, -1, -1));
+
+        arriendo.setText("aun no...");
+        getContentPane().add(arriendo, new org.netbeans.lib.awtextra.AbsoluteConstraints(460, 210, -1, -1));
+
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
@@ -184,73 +263,21 @@ public class GestorPago extends javax.swing.JFrame {
     }//GEN-LAST:event_pagarGasActionPerformed
 
     private void pagarArriendoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_pagarArriendoActionPerformed
- 
-            //poner que el usuario ingrese el codigo del inmueble
-            String s = JOptionPane.showInputDialog(null, "Ingrese el ID del inmueble", "Pagar Arriendo", JOptionPane.QUESTION_MESSAGE);
-            
-            int auxCase = 0;
-            float deuda = 0;
-            
-            for(int i = 0; i < GestionInmuebleUdc.listaInmuebles.size(); i++){
-                //aca determinamos si se encontro o no el id introducido por el usuario
-                if(Integer.parseInt(s) == GestionInmuebleUdc.listaInmuebles.get(i).getId() ){
-                    //a partir del id podemos determinar el tipo de inmueble
-                    //100 a 199 = edificio - paga 40% de impuesto
-                    //200 a 299 = finca - paga 10% de impuesto
-                    //300 a 399 = local - paga 30% de impuesto
-                    //400 a 499 = piso - paga 20% de impuesto
-                    
-                    
-                    if(GestionInmuebleUdc.listaInmuebles.get(i).getId() > 99 && GestionInmuebleUdc.listaInmuebles.get(i).getId() < 200){
-                        auxCase = 1;
-                    } else if(GestionInmuebleUdc.listaInmuebles.get(i).getId() > 199 && GestionInmuebleUdc.listaInmuebles.get(i).getId() < 300){
-                        auxCase = 2;
-                    } else if(GestionInmuebleUdc.listaInmuebles.get(i).getId() > 299 && GestionInmuebleUdc.listaInmuebles.get(i).getId() < 400){
-                        auxCase = 3;
-                    } else if(GestionInmuebleUdc.listaInmuebles.get(i).getId() > 399 && GestionInmuebleUdc.listaInmuebles.get(i).getId() < 500){
-                        auxCase = 4;
-                    } 
-                    
-                    switch (auxCase){
-                        case 1:
-                            //creamos un objeto de Edificio
-                            gestioninmuebleudc.Edificio next = new gestioninmuebleudc.Edificio("",GestionInmuebleUdc.listaInmuebles.get(i).getPrecioAlquiler(),0,0);
-                            //enviamos la posicion i del arraylist al metodo consultarPrecioAlquiler donde se le sumara
-                            //un impuesto al precio total a pagar
-                            //si el usuario dijo que costaba 100 alquilar su piso, a ese 100 se le aplica un impuesto
-                            //el impuesto varia dependiendo del objeto y la clase, es decir, estamos aplicando abstraccion y polimorfismo
-                            deuda = next.consultarPrecioAlquiler(i);
-                            //gestioninmuebleudc.Edificio.                                    
-                            break;
-                        case 2:
-                            gestioninmuebleudc.Finca next2 = new gestioninmuebleudc.Finca("",GestionInmuebleUdc.listaInmuebles.get(i).getPrecioAlquiler(),"",0,0); 
-                            deuda = next2.consultarPrecioAlquiler(i);
-                            break;
-                        case 3:
-                            gestioninmuebleudc.Local next3 = new gestioninmuebleudc.Local("",GestionInmuebleUdc.listaInmuebles.get(i).getPrecioAlquiler(),"",0,0); 
-                            deuda = next3.consultarPrecioAlquiler(i);
-                            break;
-                        case 4:    
-                            gestioninmuebleudc.Piso next4 = new gestioninmuebleudc.Piso("",GestionInmuebleUdc.listaInmuebles.get(i).getPrecioAlquiler(),0,"",0,0); 
-                            deuda = next4.consultarPrecioAlquiler(i);
-                            break;
-                    }
-                    
-                    if(dineroStatic >= deuda){
-                        //ahora creamos la factura, que sera un movimiento bancario
-                        GestionInmuebleUdc.listaMovimientosBancarios.add(new gestioninmuebleudc.MovimientoBancario("Ingreso","Pago Renta",Usuario.time, deuda, GestionInmuebleUdc.listaUsuarios.get(sesionActivaUbic).getNombre(), "Inmobiliaria Udc"));
-                        JOptionPane.showMessageDialog(null, "Arriendo (mas impuestos): " + deuda + "\nRecibo pagado con exito", "Transaccion Exitosa", JOptionPane.INFORMATION_MESSAGE);
-                        dinero.setText(String.valueOf(dineroStatic));
-                    } else {
-                        JOptionPane.showMessageDialog(null, "Arriendo (mas impuestos): " + deuda + "\nDinero Insuficiente", "Transaccion Fallida", JOptionPane.INFORMATION_MESSAGE);
-                    }
-                    
-                    
-                } else {
-                   //inmueble no encontrado
-                    JOptionPane.showMessageDialog(null, "ID del Inmueble no encontrado", "Transaccion Fallida", JOptionPane.INFORMATION_MESSAGE);
-                } //end else de inmueble no encontrado
-            } //end for
+        if(dineroStatic >= Float.parseFloat(arriendo.getText())){
+            //disminuimos el dinero
+            dineroStatic = dineroStatic - Float.parseFloat(arriendo.getText());
+            //actualizamos en el arraylist
+            GestionInmuebleUdc.listaUsuarios.get(InicioSesion.sesionActivaUbic).setDinero(-1*(dineroStatic - Float.parseFloat(arriendo.getText())));
+
+            //ahora creamos la factura, que sera un movimiento bancario
+            GestionInmuebleUdc.listaMovimientosBancarios.add(new gestioninmuebleudc.MovimientoBancario("Ingreso","Pago arriendo",Usuario.time, arriendoStatic, GestionInmuebleUdc.listaUsuarios.get(sesionActivaUbic).getNombre(), "Arriendo Udc"));
+            JOptionPane.showMessageDialog(null, "Recibo pagado con exito", "Transaccion Exitosa", JOptionPane.INFORMATION_MESSAGE);
+            //actualizamos informacion del menu, actualizando el dinero que se muestra y el gas en tiempo real
+            arriendo.setText(String.valueOf(0));
+            dinero.setText(String.valueOf(dineroStatic));
+        } else {
+            JOptionPane.showMessageDialog(null, "No cuenta con suficiente dinero...", "Transaccion Fallida", JOptionPane.INFORMATION_MESSAGE);
+        }     
     }//GEN-LAST:event_pagarArriendoActionPerformed
 
     private void backActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_backActionPerformed
@@ -340,22 +367,24 @@ public class GestorPago extends javax.swing.JFrame {
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JLabel agua;
+    private javax.swing.JLabel arriendo;
     private javax.swing.JButton back;
     private javax.swing.JLabel dinero;
     private javax.swing.JLabel estrato;
     private javax.swing.JButton exit;
     private javax.swing.JLabel gas;
     private javax.swing.JLabel imagenLateral;
-    private javax.swing.JLabel jLabel2;
-    private javax.swing.JLabel jLabel3;
-    private javax.swing.JLabel jLabel4;
     private javax.swing.JLabel luz;
     private javax.swing.JButton pagarAgua;
     private javax.swing.JButton pagarArriendo;
     private javax.swing.JButton pagarGas;
     private javax.swing.JButton pagarLuz;
+    private javax.swing.JLabel texrAgua;
+    private javax.swing.JLabel textArriendo;
     private javax.swing.JLabel textDinero;
     private javax.swing.JLabel textEstrato;
+    private javax.swing.JLabel textGas;
+    private javax.swing.JLabel textLuz;
     private javax.swing.JLabel titulo;
     // End of variables declaration//GEN-END:variables
 }

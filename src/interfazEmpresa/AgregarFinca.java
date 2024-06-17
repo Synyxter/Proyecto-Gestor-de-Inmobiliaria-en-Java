@@ -98,7 +98,7 @@ public class AgregarFinca extends javax.swing.JFrame {
         });
         getContentPane().add(confirmar, new org.netbeans.lib.awtextra.AbsoluteConstraints(460, 290, -1, -1));
 
-        precio.setText("500000");
+        precio.setText("500");
         precio.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 precioActionPerformed(evt);

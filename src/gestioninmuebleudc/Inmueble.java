@@ -16,8 +16,7 @@ public abstract class Inmueble {
         this.direccion = direccion;
         this.precioAlquiler = precioAlquiler;
         this.alquilado = alquilado;
-        this.id = id;
-        
+        this.id = id;    
     }
     
     public abstract float consultarPrecioAlquiler(int i);
